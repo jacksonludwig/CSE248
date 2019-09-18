@@ -1,5 +1,5 @@
 1.) add javafx to module path
 2.) run time arg for javafx:
 --module-path C:\Users\Jackson\Downloads\openjfx-11.0.2_windows-x64_bin-sdk(1)\javafx-sdk-11.0.2\lib --add-modules=javafx.controls
-
+(path dependent on install)
 
