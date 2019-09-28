@@ -33,6 +33,5 @@ class CalculatorTest {
 	void testDenomIsZero() {
 		Calculator c = new Calculator(5);
 		assertTrue(c.denomIsZero(5));
-		
 	}
 }
