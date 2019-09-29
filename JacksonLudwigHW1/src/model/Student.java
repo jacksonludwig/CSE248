@@ -36,27 +36,34 @@ public class Student {
 	private void generateId() {
 		long temp = Long.parseLong(idCounter);
 		int padSize = 8 - (int) (Math.log10(temp) + 1);
-		id = String.format("%0" + padSize + "d", temp++);
+//		id = String.format("%0" + padSize + "d", temp++);
+		id = String.valueOf(temp);
 		idCounter = id;
 	}
 
 	private void generateUsername() {
-		username = firstName.substring(0, 5) + lastName.charAt(0) + id.charAt(id.length() - 1);
-		username.toLowerCase();
+		if(firstName.length() >= 3) {
+			username = lastName.substring(0, 4) + firstName.charAt(0) + id.charAt(id.length() - 1);
+		} else {
+			username = lastName.substring(0) + firstName.charAt(0) + id.charAt(id.length() - 1);
+		}
+		
+		username = username.toLowerCase();
 	}
 
 	private void generatePassword() {
-		password = firstName.substring(0, 5) + lastName.charAt(0) + id.charAt(id.length() - 1);
+		if(firstName.length() >= 3) {
+			password = lastName.substring(0, 4) + firstName.charAt(0) + id.charAt(id.length() - 1);
+		} else {
+			password = lastName.substring(0) + firstName.charAt(0) + id.charAt(id.length() - 1);
+		}
+		
 		password = password.substring(0, 1).toUpperCase() + password.substring(1).toLowerCase();
 	}
 
 	private void generateGpa() {
 		double gpa = new Random().nextInt(400) / 100.0;
-		if (gpa < 1) {
-			this.gpa = "0" + String.valueOf(gpa);
-		} else {
-			this.gpa = String.valueOf(gpa);
-		}
+		this.gpa = String.valueOf(gpa);
 	}
 
 	public String getFirstName() {

@@ -10,19 +10,20 @@ public class Utilities {
 
 		raf = new RandomAccessFile(file, "r");
 
-		long leftLimit = 0;
-		long rightLimit = file.length();
-		long randomByteValue = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
+		long randomByteValue = (long) (Math.random() * file.length());
 
 		raf.seek(randomByteValue);
 
-		do {
-			randomByteValue -= 2;
+		while (randomByteValue > 0 && raf.readChar() != '\n') {
+			randomByteValue -= 1;
 			raf.seek(randomByteValue);
-		} while (randomByteValue > 0 && raf.readChar() != '\n');
-
+		}
+		
+//		raf.readLine();
+		String random = raf.readLine();
 		raf.close();
-		return raf.readLine();
+
+		return random;
 	}
 
 }
