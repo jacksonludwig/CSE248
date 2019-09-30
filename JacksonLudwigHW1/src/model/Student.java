@@ -1,3 +1,6 @@
+// username must be unique
+// no array as data structure
+
 package model;
 
 import java.io.File;
