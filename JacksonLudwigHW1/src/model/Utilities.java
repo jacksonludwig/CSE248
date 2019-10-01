@@ -14,16 +14,36 @@ public class Utilities {
 
 		raf.seek(randomByteValue);
 
-		while (randomByteValue > 0 && raf.readChar() != '\n') {
-			randomByteValue -= 1;
-			raf.seek(randomByteValue);
-		}
-		
-//		raf.readLine();
-		String random = raf.readLine();
-		raf.close();
+		String random;
+		do {
+			raf.readLine();
+			random = raf.readLine();
+		} while(random == null);
 
+		raf.close();
+		System.out.println(random);
 		return random;
 	}
+
+//	public static String getRandomLine(File file) throws IOException {
+//		RandomAccessFile raf = null;
+//
+//		raf = new RandomAccessFile(file, "r");
+//		
+//		long start = 5000;
+//
+//		long pos = (start % 2 == 0) ? start : start -1;
+//
+//	    if(pos == 0) return raf.readLine();
+//
+//	    do{
+//	        pos -= 2;
+//	        raf.seek(pos);
+//	    }while(pos > 0 && raf.readChar() != '\n');
+//
+//	    pos = (pos <= 0) ? 0 : pos + 2;
+//	    raf.seek(pos);
+//	    return raf.readLine();
+//	}
 
 }

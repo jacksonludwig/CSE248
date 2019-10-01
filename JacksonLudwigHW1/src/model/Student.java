@@ -1,4 +1,4 @@
-// username must be unique
+// username must be unique -- since uniqueness is almost guaranteed, check on insert in bag class
 // no array as data structure
 
 package model;
@@ -38,14 +38,14 @@ public class Student {
 
 	private void generateId() {
 		long temp = Long.parseLong(idCounter);
-		int padSize = 8 - (int) (Math.log10(temp) + 1);
+//		int padSize = 8 - (int) (Math.log10(temp) + 1);
 //		id = String.format("%0" + padSize + "d", temp++);
-		id = String.valueOf(temp);
+		id = String.valueOf(temp + 1);
 		idCounter = id;
 	}
 
 	private void generateUsername() {
-		if(firstName.length() >= 3) {
+		if(lastName.length() > 3) {
 			username = lastName.substring(0, 4) + firstName.charAt(0) + id.charAt(id.length() - 1);
 		} else {
 			username = lastName.substring(0) + firstName.charAt(0) + id.charAt(id.length() - 1);
@@ -55,7 +55,7 @@ public class Student {
 	}
 
 	private void generatePassword() {
-		if(firstName.length() >= 3) {
+		if(lastName.length() > 3) {
 			password = lastName.substring(0, 4) + firstName.charAt(0) + id.charAt(id.length() - 1);
 		} else {
 			password = lastName.substring(0) + firstName.charAt(0) + id.charAt(id.length() - 1);
