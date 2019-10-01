@@ -31,10 +31,8 @@ public class Student {
 	}
 
 	private void generateId() {
-		long temp = Long.parseLong(idCounter);
-//		int padSize = 8 - (int) (Math.log10(temp) + 1);
-//		id = String.format("%0" + padSize + "d", temp++);
-		id = String.valueOf(temp);
+		int temp = Integer.parseInt(idCounter);
+		id = String.format("%08d", temp);
 		idCounter = String.valueOf(temp + 1);
 	}
 

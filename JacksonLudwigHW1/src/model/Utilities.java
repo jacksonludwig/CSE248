@@ -9,17 +9,22 @@ import java.util.Random;
 
 public class Utilities {
 
-	public static String[] getWordsArray(File file) throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader(file));
-		ArrayList<String> names = new ArrayList<String>();
+	public static String[] getWordsArray(File file) {
+		ArrayList<String> names = null;
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			names = new ArrayList<String>();
 
-		String currentLine;
+			String currentLine;
 
-		while ((currentLine = br.readLine()) != null) {
-			names.add(currentLine);
+			while ((currentLine = br.readLine()) != null) {
+				names.add(currentLine);
+			}
+
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-
-		br.close();
 		return names.toArray(new String[0]);
 	}
 
