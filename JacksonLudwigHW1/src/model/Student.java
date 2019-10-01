@@ -17,50 +17,44 @@ public class Student {
 	private String password;
 	private String gpa;
 
-	public Student() {
-		generateName();
+	public Student(String[] firstNames, String[] lastNames) {
+		generateName(firstNames, lastNames);
 		generateId();
 		generateUsername();
 		generatePassword();
 		generateGpa();
 	}
 
-	private void generateName() {
-		File first = new File("inputFiles/firstNames.txt");
-		File last = new File("inputFiles/lastNames.txt");
-		try {
-			firstName = Utilities.getRandomLine(first);
-			lastName = Utilities.getRandomLine(last);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	private void generateName(String[] firstNames, String[] lastNames) {
+		firstName = Utilities.getRandomName(firstNames);
+		lastName = Utilities.getRandomName(lastNames);
 	}
 
 	private void generateId() {
 		long temp = Long.parseLong(idCounter);
 //		int padSize = 8 - (int) (Math.log10(temp) + 1);
 //		id = String.format("%0" + padSize + "d", temp++);
-		id = String.valueOf(temp + 1);
-		idCounter = id;
+		id = String.valueOf(temp);
+		idCounter = String.valueOf(temp + 1);
 	}
 
 	private void generateUsername() {
-		if(lastName.length() > 3) {
+		if (lastName.length() > 3) {
 			username = lastName.substring(0, 4) + firstName.charAt(0) + id.charAt(id.length() - 1);
 		} else {
 			username = lastName.substring(0) + firstName.charAt(0) + id.charAt(id.length() - 1);
 		}
-		
+
 		username = username.toLowerCase();
 	}
 
 	private void generatePassword() {
-		if(lastName.length() > 3) {
+		if (lastName.length() > 3) {
 			password = lastName.substring(0, 4) + firstName.charAt(0) + id.charAt(id.length() - 1);
 		} else {
 			password = lastName.substring(0) + firstName.charAt(0) + id.charAt(id.length() - 1);
 		}
-		
+
 		password = password.substring(0, 1).toUpperCase() + password.substring(1).toLowerCase();
 	}
 
@@ -92,7 +86,7 @@ public class Student {
 	public String getGpa() {
 		return gpa;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Student [firstName=" + firstName + ", lastName=" + lastName + ", id=" + id + ", username=" + username
