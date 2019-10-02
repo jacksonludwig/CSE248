@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class Student {
-	public static String idCounter = "00000000";
+	private static String idCounter = "00000000";
 
 	private String firstName;
 	private String lastName;
