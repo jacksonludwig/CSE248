@@ -1,10 +1,6 @@
-// username must be unique -- since uniqueness is almost guaranteed, check on insert in bag class
-// no array as data structure
-
 package model;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Student {
@@ -17,7 +13,7 @@ public class Student {
 	private String password;
 	private String gpa;
 
-	public Student(String[] firstNames, String[] lastNames) {
+	public Student(ArrayList<String> firstNames, ArrayList<String> lastNames) {
 		generateName(firstNames, lastNames);
 		generateId();
 		generateUsername();
@@ -25,9 +21,9 @@ public class Student {
 		generateGpa();
 	}
 
-	private void generateName(String[] firstNames, String[] lastNames) {
-		firstName = Utilities.getRandomName(firstNames);
-		lastName = Utilities.getRandomName(lastNames);
+	private void generateName(ArrayList<String> firstNames, ArrayList<String> lastNames) {
+		firstName = Utilities.getRandomFirstName(firstNames);
+		lastName = Utilities.getRandomLastName(lastNames);
 	}
 
 	private void generateId() {
