@@ -1,9 +1,6 @@
-package com.example.csschedulemaker;
+package com.example.csschedulemaker.courseData;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class getOnlyCSClassesDemo {
@@ -50,19 +47,6 @@ public class getOnlyCSClassesDemo {
                 langClasses.add(allClasses.get(i));
             }
         }
-
-        FileWriter fw = null;
-        try {
-            fw = new FileWriter("langClasses.txt", true);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        PrintWriter pw = new PrintWriter(fw);
-
-        for(int i = 0; i < langClasses.size(); i++) {
-            pw.println(langClasses.get(i));
-        }
-        pw.close();
 
     }
 }
