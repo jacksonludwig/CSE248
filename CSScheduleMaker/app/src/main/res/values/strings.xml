@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CSScheduleMaker</string>
+    <string name="WelcomeText">Welcome.</string>
+    <string name="welcome_description">Below you can adjust your schedule for any semester. You can also add or remove semesters.</string>
+</resources>
