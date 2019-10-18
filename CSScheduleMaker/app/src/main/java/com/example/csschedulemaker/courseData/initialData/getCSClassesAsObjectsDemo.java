@@ -1,4 +1,7 @@
-package com.example.csschedulemaker.courseData;
+package com.example.csschedulemaker.courseData.initialData;
+
+import com.example.csschedulemaker.courseData.CourseBag;
+import com.example.csschedulemaker.courseData.Utilities;
 
 import java.io.Serializable;
 
