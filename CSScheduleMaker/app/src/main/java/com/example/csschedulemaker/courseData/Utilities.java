@@ -15,6 +15,27 @@ import java.util.Scanner;
 
 public class Utilities implements Serializable {
 
+    public static ArrayList<Semester> createBaseSemesters(CourseBag courseBag) {
+        ArrayList<Semester> semesters = new ArrayList<>();
+
+        Semester fall1 = new Semester("Fall 2019", courseBag);
+        semesters.add(fall1);
+        Semester winter1 = new Semester("Winter 2020", courseBag);
+        semesters.add(winter1);
+        Semester spring1 = new Semester("Spring 2020", courseBag);
+        semesters.add(spring1);
+        Semester summer1 = new Semester("Summer 2020", courseBag);
+        semesters.add(summer1);
+        Semester fall2 = new Semester("Fall 2020", courseBag);
+        semesters.add(fall2);
+        Semester winter2 = new Semester("Winter 2021", courseBag);
+        semesters.add(winter2);
+        Semester spring2 = new Semester("Spring 2021", courseBag);
+        semesters.add(spring2);
+
+        return semesters;
+    }
+
     public static void saveCourses(CourseBag courses, String fileName) {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
