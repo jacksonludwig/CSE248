@@ -2,15 +2,18 @@ package com.example.csschedulemaker.courseData;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Utilities {
+public class Utilities implements Serializable {
 
     public static void saveCourses(CourseBag courses, String fileName) {
         FileOutputStream fos = null;
@@ -25,8 +28,17 @@ public class Utilities {
         }
     }
 
-    public static void loadCourses() {
-
+    public static CourseBag loadCourses(String fileName) {
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            fis = new FileInputStream(fileName);
+            ois = new ObjectInputStream(fis);
+            return (CourseBag) ois.readObject();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static ArrayList<String> getWordsArray(File file) {
@@ -60,7 +72,7 @@ public class Utilities {
         while (scanner.hasNext()) {
             data = scanner.nextLine();
             Course course = new Course(data);
-            System.out.println(data);
+          //  System.out.println(data);
             courses.insert(course);
         }
 

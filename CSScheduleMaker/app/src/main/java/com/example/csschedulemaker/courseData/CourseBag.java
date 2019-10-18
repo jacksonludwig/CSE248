@@ -1,8 +1,9 @@
 package com.example.csschedulemaker.courseData;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class CourseBag {
+public class CourseBag implements Serializable {
     private HashMap<String, Course> cseCourses;
 
     public CourseBag() {
