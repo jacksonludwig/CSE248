@@ -11,7 +11,6 @@ import com.example.csschedulemaker.courseData.Semester;
 import com.example.csschedulemaker.courseData.Utilities;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     private static final String relativeFilePath = System.getProperty("user.dir") + "\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\courseData.dat";
@@ -33,4 +32,6 @@ public class MainActivity extends AppCompatActivity {
         semestersRecycler.setLayoutManager(new LinearLayoutManager(this));
 
     }
+
+
 }

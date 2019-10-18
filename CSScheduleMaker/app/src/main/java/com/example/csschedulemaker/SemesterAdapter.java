@@ -19,12 +19,14 @@ public class SemesterAdapter extends RecyclerView.Adapter<SemesterAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView semesterTextView;
         public Button messageButton;
+        public Button deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             semesterTextView = (TextView) itemView.findViewById(R.id.semester_name);
             messageButton = (Button) itemView.findViewById(R.id.message_button);
+            deleteButton = (Button) itemView.findViewById(R.id.delete_button);
         }
     }
 
@@ -57,6 +59,8 @@ public class SemesterAdapter extends RecyclerView.Adapter<SemesterAdapter.ViewHo
         textView.setText(semester.getSemesterName());
         Button button = viewHolder.messageButton;
         button.setText("Adjust");
+        Button delButton = viewHolder.deleteButton;
+        delButton.setText("Delete");
     }
 
     @Override
