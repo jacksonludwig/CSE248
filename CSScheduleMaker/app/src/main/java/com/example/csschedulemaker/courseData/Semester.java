@@ -51,6 +51,10 @@ public class Semester {
         return semester;
     }
 
+    public HashMap<String, Course> getSemCourses() {
+        return semCourses;
+    }
+
     public void setSemesterName(String semester) {
         this.semester = semester;
     }

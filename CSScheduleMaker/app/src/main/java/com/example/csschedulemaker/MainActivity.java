@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         semesters = Utilities.createBaseSemesters(courseBag);
 
-        SemesterAdapter adapter = new SemesterAdapter(semesters);
+        SemesterAdapter adapter = new SemesterAdapter();
+        adapter.addMoreSemesters(semesters);
 
         semestersRecycler.setAdapter(adapter);
         semestersRecycler.setLayoutManager(new LinearLayoutManager(this));
