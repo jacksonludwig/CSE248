@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
     <TextView
         android:id="@+id/semester_name"
@@ -19,13 +21,9 @@
         android:id="@+id/delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_rowSpan="2"
-        android:layout_column="2"
         android:backgroundTint="#a52a2a"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:text="@string/deleteButtonText"
         android:textColor="@android:color/white"
         android:textSize="12sp" />
 
@@ -33,24 +31,8 @@
         android:id="@+id/message_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_row="0"
-        android:layout_rowSpan="2"
-        android:layout_column="3"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
-        android:text="@string/adjustButtonText"
         android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/class_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="0"
-        android:layout_weight="1"
-        android:text="0 classes"
-        android:textColor="@android:color/white"
-        android:textSize="12sp" />
-
-
-</GridLayout>
+</LinearLayout>

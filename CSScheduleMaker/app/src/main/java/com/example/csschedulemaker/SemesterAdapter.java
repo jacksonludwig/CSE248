@@ -92,9 +92,7 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
         TextView textView = viewHolder.semesterTextView;
         textView.setText(semester.getSemesterName());
         Button button = viewHolder.messageButton;
-        button.setText("Adjust");
         Button delButton = viewHolder.deleteButton;
-        delButton.setText("Delete");
     }
 
     /* ListAdapter manages the item count

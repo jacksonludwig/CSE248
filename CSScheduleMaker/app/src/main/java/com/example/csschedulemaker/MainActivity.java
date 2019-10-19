@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 
@@ -25,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView semestersRecycler = (RecyclerView) findViewById(R.id.semester_RecyclerView);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        layoutManager.scrollToPosition(0);
-        semestersRecycler.setLayoutManager(layoutManager);
+        SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(16);
+        semestersRecycler.addItemDecoration(spacesItemDecoration);
 
         RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         semestersRecycler.addItemDecoration(itemDecorationHorizLine);
+
 
         CourseBag courseBag = Utilities.loadCourses(relativeFilePath);
 
