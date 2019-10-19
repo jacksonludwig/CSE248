@@ -48,4 +48,16 @@
         app:layout_constraintTop_toBottomOf="@+id/infoWelcome_textview"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageButton
+        android:id="@+id/add_semester_button"
+        android:layout_width="42dp"
+        android:layout_height="55dp"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintBottom_toTopOf="@+id/semester_RecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/infoWelcome_textview"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.682"
+        app:srcCompat="@drawable/ic_more_vert_white_48dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

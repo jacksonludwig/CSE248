@@ -1,8 +1,10 @@
 package com.example.csschedulemaker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Bundle;
 
@@ -22,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         RecyclerView semestersRecycler = (RecyclerView) findViewById(R.id.semester_RecyclerView);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        layoutManager.scrollToPosition(0);
+        semestersRecycler.setLayoutManager(layoutManager);
+
+        RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        semestersRecycler.addItemDecoration(itemDecorationHorizLine);
+
         CourseBag courseBag = Utilities.loadCourses(relativeFilePath);
 
         semesters = Utilities.createBaseSemesters(courseBag);

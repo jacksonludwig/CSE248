@@ -30,6 +30,8 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
             semesterTextView = (TextView) itemView.findViewById(R.id.semester_name);
             messageButton = (Button) itemView.findViewById(R.id.message_button);
             deleteButton = (Button) itemView.findViewById(R.id.delete_button);
+
+
         }
     }
 
@@ -55,6 +57,7 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
     public SemesterAdapter() {
         super(DIFF_CALLBACK);
         mySemesters = new ArrayList<>();
+
     }
 
     public void addMoreSemesters(List<Semester> newSemesters) {
