@@ -9,4 +9,5 @@
     <string name="semester_season_prompt">Semester Season</string>
     <string name="add_semester_button">Accept and Add</string>
     <string name="cancelButtonText">Cancel</string>
+    <string name="classAmountString">%2$d %1d$s</string>
 </resources>

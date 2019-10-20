@@ -7,10 +7,13 @@ public class Semester {
     private CourseBag courseBag;
     private HashMap<String, Course> semCourses;
 
+    private int numClasses;
+
     public Semester(String semester, CourseBag courseBag) {
         this.semester = semester;
         this.courseBag = courseBag;
         semCourses = new HashMap<>();
+        numClasses = 0;
     }
 
     public boolean addClass(Course course) {
@@ -18,6 +21,7 @@ public class Semester {
             return false;
         } else {
             semCourses.put(course.getCourseTitleShort(), course);
+            numClasses++;
             return true;
         }
     }
@@ -27,15 +31,18 @@ public class Semester {
             return false;
         } else {
             semCourses.put(courseName, courseBag.get(courseName));
+            numClasses++;
             return true;
         }
     }
 
     public Course removeClass(Course course) {
+        numClasses--;
         return semCourses.remove(course.getCourseTitleShort());
     }
 
     public Course removeClass(String courseName) {
+        numClasses--;
         return semCourses.remove(courseName);
     }
 
@@ -53,6 +60,17 @@ public class Semester {
 
     public HashMap<String, Course> getSemCourses() {
         return semCourses;
+    }
+
+    public int getNumClasses() {
+        return numClasses;
+    }
+
+    @Override
+    public String toString() {
+        return "Semester{" +
+                "semester='" + semester + '\'' +
+                '}';
     }
 
     public void setSemesterName(String semester) {

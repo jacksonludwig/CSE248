@@ -22,6 +22,7 @@
         android:layout_row="0"
         android:layout_rowSpan="2"
         android:layout_column="2"
+        android:onClick="deleteSemester"
         android:backgroundTint="#a52a2a"
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
@@ -30,7 +31,7 @@
         android:textSize="12sp" />
 
     <Button
-        android:id="@+id/message_button"
+        android:id="@+id/adjust_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="0"

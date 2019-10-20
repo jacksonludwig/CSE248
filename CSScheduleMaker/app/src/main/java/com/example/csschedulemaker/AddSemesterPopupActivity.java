@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.csschedulemaker.courseData.SemesterTypes;
 
@@ -81,10 +82,10 @@ public class AddSemesterPopupActivity extends Activity {
     private void connectSeasonSpinner() {
         seasonSpinner = (Spinner) findViewById(R.id.sem_title_spinner);
         List<String> list = new ArrayList<>();
-        list.add(String.valueOf(SemesterTypes.FALL));
-        list.add(String.valueOf(SemesterTypes.WINTER));
-        list.add(String.valueOf(SemesterTypes.SPRING));
-        list.add(String.valueOf(SemesterTypes.SUMMER));
+        list.add(String.valueOf(SemesterTypes.Fall));
+        list.add(String.valueOf(SemesterTypes.Winter));
+        list.add(String.valueOf(SemesterTypes.Spring));
+        list.add(String.valueOf(SemesterTypes.Summer));
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         seasonSpinner.setAdapter(dataAdapter);

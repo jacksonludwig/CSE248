@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -63,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         popupMenu.show();
     }
 
-
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
@@ -87,22 +87,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 // Get String data from Intent
                 String returnString = data.getStringExtra("semKey");
                 Semester newSemester = new Semester(returnString, courseBag);
+
                 adapter.addMoreSemesters(newSemester);
+
                 Toast addedToast = Toast.makeText(this, "New Semester Added", Toast.LENGTH_SHORT);
                 addedToast.show();
             }
         }
     }
 
-    public RecyclerView getSemestersRecycler() {
-        return semestersRecycler;
-    }
-
-    public SemesterAdapter getAdapter() {
-        return adapter;
-    }
-
-    public CourseBag getCourseBag() {
-        return courseBag;
-    }
 }

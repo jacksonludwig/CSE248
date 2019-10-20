@@ -1,11 +1,13 @@
 package com.example.csschedulemaker;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -19,16 +21,20 @@ import java.util.List;
 
 public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewHolder> {
 
+    private List<Semester> mySemesters;
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView semesterTextView;
-        public Button messageButton;
+        public TextView classNumTextView;
+        public Button adjustButton;
         public Button deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             semesterTextView = (TextView) itemView.findViewById(R.id.semester_name);
-            messageButton = (Button) itemView.findViewById(R.id.message_button);
+            classNumTextView = (TextView) itemView.findViewById(R.id.class_amount);
+            adjustButton = (Button) itemView.findViewById(R.id.adjust_button);
             deleteButton = (Button) itemView.findViewById(R.id.delete_button);
         }
     }
@@ -45,12 +51,14 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
                 @Override
                 public boolean areContentsTheSame(@NonNull Semester oldItem, @NonNull Semester newItem) {
                     // compares hashmap of courses in semester
-                    //return oldItem.getSemCourses().equals(newItem.getSemCourses());
-                      return false;
+                    return oldItem.getSemCourses().equals(newItem.getSemCourses());
                 }
             };
 
-    private List<Semester> mySemesters;
+    @Override
+    public void submitList(final List<Semester> list) {
+        super.submitList(list != null ? new ArrayList<>(list) : null);
+    }
 
     public SemesterAdapter() {
         super(DIFF_CALLBACK);
@@ -84,20 +92,40 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
     @Override
     public void onBindViewHolder(SemesterAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        Semester semester = getItem(position);
+        final Semester semester = getItem(position);
 
         // Set item views based on your views and data model
-        TextView textView = viewHolder.semesterTextView;
-        textView.setText(semester.getSemesterName());
-        Button button = viewHolder.messageButton;
+        TextView semTextView = viewHolder.semesterTextView;
+        semTextView.setText(semester.getSemesterName());
+        TextView classNumTextView = viewHolder.classNumTextView;
+        classNumTextView.setText(String.valueOf(semester.getNumClasses()) + " classes");
+        Button adjButton = viewHolder.adjustButton;
         Button delButton = viewHolder.deleteButton;
+
+        delButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mySemesters.remove(semester);
+                submitList(mySemesters);
+                showToastMethod(view.getContext());
+            }
+        });
+
+
+        adjButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
-    /* ListAdapter manages the item count
-    @Override
-    public int getItemCount() {
-        return mySemesters.size();
+    public static void showToastMethod(Context context) {
+        Toast.makeText(context, "Semester deleted", Toast.LENGTH_SHORT).show();
     }
-    */
+
+    public List<Semester> getMySemesters() {
+        return mySemesters;
+    }
 
 }
