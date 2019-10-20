@@ -1,7 +1,6 @@
 package com.example.csschedulemaker;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.csschedulemaker.courseData.Semester;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewHolder> {
@@ -55,15 +55,17 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
                 }
             };
 
-    @Override
-    public void submitList(final List<Semester> list) {
-        super.submitList(list != null ? new ArrayList<>(list) : null);
+    public SemesterAdapter(List<Semester> semesters) {
+        super(DIFF_CALLBACK);
+        mySemesters = semesters;
+        submitList(mySemesters);
     }
 
-    public SemesterAdapter() {
-        super(DIFF_CALLBACK);
-        mySemesters = new ArrayList<>();
-
+    @Override
+    public void submitList(final List<Semester> list) {
+        Collections.sort(mySemesters, Semester.semSeasonComparator);
+        Collections.sort(mySemesters, Semester.semYearComparator);
+        super.submitList(list != null ? new ArrayList<>(list) : null);
     }
 
     public void addMoreSemesters(List<Semester> newSemesters) {
@@ -107,7 +109,8 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
             public void onClick(View view) {
                 mySemesters.remove(semester);
                 submitList(mySemesters);
-                showToastMethod(view.getContext());
+                System.out.println(mySemesters);
+                showDeleteToast(view.getContext());
             }
         });
 
@@ -120,12 +123,8 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
         });
     }
 
-    public static void showToastMethod(Context context) {
+    public static void showDeleteToast(Context context) {
         Toast.makeText(context, "Semester deleted", Toast.LENGTH_SHORT).show();
-    }
-
-    public List<Semester> getMySemesters() {
-        return mySemesters;
     }
 
 }

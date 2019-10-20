@@ -20,6 +20,7 @@ import com.example.csschedulemaker.courseData.Semester;
 import com.example.csschedulemaker.courseData.Utilities;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String relativeFilePath = System.getProperty("user.dir") + "\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\courseData.dat";
@@ -49,8 +50,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         semesters = Utilities.createBaseSemesters(courseBag);
 
-        adapter = new SemesterAdapter();
-        adapter.addMoreSemesters(semesters);
+        adapter = new SemesterAdapter(semesters);
 
         semestersRecycler.setAdapter(adapter);
         semestersRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -87,13 +87,24 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 // Get String data from Intent
                 String returnString = data.getStringExtra("semKey");
                 Semester newSemester = new Semester(returnString, courseBag);
-
-                adapter.addMoreSemesters(newSemester);
-
-                Toast addedToast = Toast.makeText(this, "New Semester Added", Toast.LENGTH_SHORT);
-                addedToast.show();
+                if(!searchListByName(newSemester)) {
+                    adapter.addMoreSemesters(newSemester);
+                    Toast addedToast = Toast.makeText(this, "New semester added", Toast.LENGTH_SHORT);
+                    addedToast.show();
+                } else {
+                    Toast repeatToast = Toast.makeText(this, "Please only add new semesters", Toast.LENGTH_SHORT);
+                    repeatToast.show();
+                }
             }
         }
     }
 
+    private boolean searchListByName(Semester newSemester) {
+        for(Semester semester : semesters) {
+            if(newSemester.getSemesterName().equalsIgnoreCase(semester.getSemesterName())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
