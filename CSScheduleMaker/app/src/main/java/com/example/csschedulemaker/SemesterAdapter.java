@@ -30,8 +30,6 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
             semesterTextView = (TextView) itemView.findViewById(R.id.semester_name);
             messageButton = (Button) itemView.findViewById(R.id.message_button);
             deleteButton = (Button) itemView.findViewById(R.id.delete_button);
-
-
         }
     }
 
@@ -47,8 +45,8 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
                 @Override
                 public boolean areContentsTheSame(@NonNull Semester oldItem, @NonNull Semester newItem) {
                     // compares hashmap of courses in semester
-                    return oldItem.getSemCourses().equals(newItem.getSemCourses());
-                    //  return false;
+                    //return oldItem.getSemCourses().equals(newItem.getSemCourses());
+                      return false;
                 }
             };
 

@@ -4,4 +4,9 @@
     <string name="welcome_description">Below you can adjust your schedule for any semester. You can also add or remove semesters.</string>
     <string name="adjustButtonText">Adjust</string>
     <string name="deleteButtonText">Delete</string>
+    <string name="add_semester_from_popup_window">Add a New Semester</string>
+    <string name="semester_year_prompt">Year</string>
+    <string name="semester_season_prompt">Semester Season</string>
+    <string name="add_semester_button">Accept and Add</string>
+    <string name="cancelButtonText">Cancel</string>
 </resources>

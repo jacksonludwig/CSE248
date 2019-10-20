@@ -5,7 +5,14 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.csschedulemaker.courseData.CourseBag;
 import com.example.csschedulemaker.courseData.Semester;
@@ -13,16 +20,22 @@ import com.example.csschedulemaker.courseData.Utilities;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String relativeFilePath = System.getProperty("user.dir") + "\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\courseData.dat";
-    ArrayList<Semester> semesters;
+
+    private static final int ADD_SEMESTER_REQUEST_CODE = 0;
+
+    private ArrayList<Semester> semesters;
+    private CourseBag courseBag;
+    private RecyclerView semestersRecycler;
+    private SemesterAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView semestersRecycler = (RecyclerView) findViewById(R.id.semester_RecyclerView);
+        semestersRecycler = (RecyclerView) findViewById(R.id.semester_RecyclerView);
 
         SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(16);
         semestersRecycler.addItemDecoration(spacesItemDecoration);
@@ -31,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
         semestersRecycler.addItemDecoration(itemDecorationHorizLine);
 
 
-        CourseBag courseBag = Utilities.loadCourses(relativeFilePath);
+        courseBag = Utilities.loadCourses(relativeFilePath);
 
         semesters = Utilities.createBaseSemesters(courseBag);
 
-        SemesterAdapter adapter = new SemesterAdapter();
+        adapter = new SemesterAdapter();
         adapter.addMoreSemesters(semesters);
 
         semestersRecycler.setAdapter(adapter);
@@ -43,5 +56,53 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void addNewSemester(View view) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.setOnMenuItemClickListener(this);
+        popupMenu.inflate(R.menu.semester_popup_menu);
+        popupMenu.show();
+    }
 
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.addSemester:
+                Intent intent = new Intent(getApplicationContext(), AddSemesterPopupActivity.class);
+                startActivityForResult(intent, ADD_SEMESTER_REQUEST_CODE);
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    // This method is called when the second activity finishes
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Check that it is the SecondActivity with an OK result
+        if (requestCode == ADD_SEMESTER_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                // Get String data from Intent
+                String returnString = data.getStringExtra("semKey");
+                Semester newSemester = new Semester(returnString, courseBag);
+                adapter.addMoreSemesters(newSemester);
+                Toast addedToast = Toast.makeText(this, "New Semester Added", Toast.LENGTH_SHORT);
+                addedToast.show();
+            }
+        }
+    }
+
+    public RecyclerView getSemestersRecycler() {
+        return semestersRecycler;
+    }
+
+    public SemesterAdapter getAdapter() {
+        return adapter;
+    }
+
+    public CourseBag getCourseBag() {
+        return courseBag;
+    }
 }

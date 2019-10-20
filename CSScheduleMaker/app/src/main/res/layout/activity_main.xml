@@ -53,6 +53,7 @@
         android:layout_width="42dp"
         android:layout_height="55dp"
         android:background="?android:attr/selectableItemBackground"
+        android:onClick="addNewSemester"
         app:layout_constraintBottom_toTopOf="@+id/semester_RecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/infoWelcome_textview"
