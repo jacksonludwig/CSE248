@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <ComboBox fx:id="stateBox" layoutX="175.0" layoutY="176.0" onAction="#selectionMade" prefWidth="150.0" promptText="State" />
+      <Button fx:id="okBtn" layoutX="184.0" layoutY="223.0" mnemonicParsing="false" onAction="#btnClicked" text="OK"></Button>
+   </children>
+</AnchorPane>
