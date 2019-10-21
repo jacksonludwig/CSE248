@@ -109,7 +109,6 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
             public void onClick(View view) {
                 mySemesters.remove(semester);
                 submitList(mySemesters);
-                System.out.println(mySemesters);
                 showDeleteToast(view.getContext());
             }
         });

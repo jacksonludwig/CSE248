@@ -91,9 +91,9 @@ public class Semester {
             sem2SeasonOnly = sem2SeasonOnly.replaceAll("\\s+","");
 
             int winterWeight = 1;
-            int fallWeight = 2;
-            int springWeight = 3;
-            int summerWeight = 4;
+            int fallWeight = 4;
+            int springWeight = 2;
+            int summerWeight = 3;
             int sem1Weight = -1;
             int sem2Weight = -1;
 
