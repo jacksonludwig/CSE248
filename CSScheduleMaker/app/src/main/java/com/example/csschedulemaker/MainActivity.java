@@ -96,6 +96,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         } else if (requestCode == ADD_CLASS_REQUEST_CODE) {
             System.out.println("THE COURSE ACTIVITY HAS PUSHED IT'S CALL CODE");
+            if (resultCode == RESULT_OK) {
+                System.out.println("THE COURSE ACTIVITY HAS PUSHED IT'S RESULT");
+            }
         }
     }
 

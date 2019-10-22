@@ -1,9 +1,10 @@
 package com.example.csschedulemaker.courseData;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Comparator;
 
-public class Semester {
+public class Semester implements Serializable {
     private String semester;
     private CourseBag courseBag;
     private HashMap<String, Course> semCourses;

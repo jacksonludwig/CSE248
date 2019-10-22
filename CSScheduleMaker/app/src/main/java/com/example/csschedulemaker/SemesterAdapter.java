@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.csschedulemaker.courseData.Semester;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -97,7 +99,7 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
     }
 
     @Override
-    public void onBindViewHolder(final SemesterAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(final SemesterAdapter.ViewHolder viewHolder, final int position) {
         // Get the data model based on position
         final Semester semester = getItem(position);
 
@@ -141,6 +143,7 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), AddCoursesIntermediateActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("originalClassList", (Serializable) mySemesters.get(position));
                 ((Activity) view.getContext()).startActivityForResult(intent, ADD_CLASS_REQUEST_CODE);
             }
         });
