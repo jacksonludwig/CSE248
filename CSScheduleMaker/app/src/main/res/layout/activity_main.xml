@@ -11,12 +11,14 @@
         android:id="@+id/welcome_textview"
         android:layout_width="232dp"
         android:layout_height="33dp"
+        android:layout_marginTop="5dp"
         android:text="@string/WelcomeText"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/infoWelcome_textview"
-        app:layout_constraintStart_toStartOf="@+id/infoWelcome_textview" />
+        app:layout_constraintStart_toStartOf="@+id/infoWelcome_textview"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/infoWelcome_textview"

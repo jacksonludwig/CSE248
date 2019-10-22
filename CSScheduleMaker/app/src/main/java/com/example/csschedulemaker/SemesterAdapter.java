@@ -1,6 +1,8 @@
 package com.example.csschedulemaker;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +94,7 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
     }
 
     @Override
-    public void onBindViewHolder(SemesterAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(final SemesterAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
         final Semester semester = getItem(position);
 
@@ -107,13 +109,31 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mySemesters.remove(semester);
-                submitList(mySemesters);
-                showDeleteToast(view.getContext());
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setCancelable(true);
+                builder.setTitle("Delete Semester");
+                builder.setMessage("Are you sure you want to remove this semester?");
+                builder.setPositiveButton("Confirm",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mySemesters.remove(semester);
+                                submitList(mySemesters);
+                                showDeleteToast(builder.getContext());
+                            }
+                        });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do not delete
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
-
-
+        
         adjButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
