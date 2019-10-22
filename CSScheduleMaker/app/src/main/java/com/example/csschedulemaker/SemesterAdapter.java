@@ -1,8 +1,10 @@
 package com.example.csschedulemaker;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +26,7 @@ import java.util.List;
 public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewHolder> {
 
     private List<Semester> mySemesters;
+    private static final int ADD_CLASS_REQUEST_CODE = 1;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView semesterTextView;
@@ -109,7 +112,6 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setCancelable(true);
                 builder.setTitle("Delete Semester");
@@ -137,7 +139,9 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
         adjButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(view.getContext(), AddCoursesIntermediateActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                ((Activity) view.getContext()).startActivityForResult(intent, ADD_CLASS_REQUEST_CODE);
             }
         });
     }

@@ -10,9 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.csschedulemaker.courseData.CourseBag;
@@ -20,13 +18,13 @@ import com.example.csschedulemaker.courseData.Semester;
 import com.example.csschedulemaker.courseData.Utilities;
 
 import java.util.ArrayList;
-import java.util.stream.IntStream;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String relativeFilePath = System.getProperty("user.dir") + "\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\courseData.dat";
     private static final String computerScienceHelpURL = "https://www.sunysuffolk.edu/explore-academics/majors-and-programs/COSC-AS.jsp";
 
     private static final int ADD_SEMESTER_REQUEST_CODE = 0;
+    private static final int ADD_CLASS_REQUEST_CODE = 1;
 
     private ArrayList<Semester> semesters;
     private CourseBag courseBag;
@@ -45,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         semestersRecycler.addItemDecoration(itemDecorationHorizLine);
-
 
         courseBag = Utilities.loadCourses(relativeFilePath);
 
@@ -88,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 // Get String data from Intent
                 String returnString = data.getStringExtra("semKey");
                 Semester newSemester = new Semester(returnString, courseBag);
-                if(!searchListByName(newSemester)) {
+                if (!searchListByName(newSemester)) {
                     adapter.addMoreSemesters(newSemester);
                     Toast addedToast = Toast.makeText(this, "New semester added", Toast.LENGTH_SHORT);
                     addedToast.show();
@@ -97,12 +94,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     repeatToast.show();
                 }
             }
+        } else if (requestCode == ADD_CLASS_REQUEST_CODE) {
+            System.out.println("THE COURSE ACTIVITY HAS PUSHED IT'S CALL CODE");
         }
     }
 
     private boolean searchListByName(Semester newSemester) {
-        for(Semester semester : semesters) {
-            if(newSemester.getSemesterName().equalsIgnoreCase(semester.getSemesterName())) {
+        for (Semester semester : semesters) {
+            if (newSemester.getSemesterName().equalsIgnoreCase(semester.getSemesterName())) {
                 return true;
             }
         }

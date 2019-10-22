@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9464958"
+    tools:context=".AddCoursesIntermediateActivity">
+
+    <TextView
+        android:id="@+id/course_intermediate_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/course_intermediate_title"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/course_intermediate_desc"
+        app:layout_constraintStart_toStartOf="@+id/course_intermediate_desc"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/course_intermediate_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="29dp"
+        android:text="@string/course_intermediate_description"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/course_intermediate_title" />
+
+    <Button
+        android:id="@+id/add_course_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/add_course_intermediate"
+        app:layout_constraintEnd_toEndOf="@+id/course_intermediate_desc"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/course_intermediate_desc"
+        app:layout_constraintTop_toBottomOf="@+id/course_intermediate_desc" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/current_courses_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/course_intermediate_desc"
+        app:layout_constraintStart_toStartOf="@+id/course_intermediate_desc"
+        app:layout_constraintTop_toBottomOf="@+id/add_course_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
