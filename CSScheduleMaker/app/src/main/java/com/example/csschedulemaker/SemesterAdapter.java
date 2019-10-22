@@ -114,7 +114,7 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
                 builder.setCancelable(true);
                 builder.setTitle("Delete Semester");
                 builder.setMessage("Are you sure you want to remove this semester?");
-                builder.setPositiveButton("Confirm",
+                builder.setPositiveButton("Yes, delete",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
