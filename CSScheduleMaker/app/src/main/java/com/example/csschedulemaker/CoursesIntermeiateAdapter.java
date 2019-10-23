@@ -17,70 +17,63 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.csschedulemaker.courseData.Semester;
+import com.example.csschedulemaker.courseData.Course;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CoursesIntermeiateAdapter extends ListAdapter<Semester, CoursesIntermeiateAdapter.ViewHolder> {
+public class CoursesIntermeiateAdapter extends ListAdapter<Course, CoursesIntermeiateAdapter.ViewHolder> {
 
-    private List<Semester> myCourses;
+    private List<Course> myCourses;
     private static final int ADD_CLASS_REQUEST_CODE = 1;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView semesterTextView;
-        public TextView classNumTextView;
-        public Button adjustButton;
-        public Button deleteButton;
+        public TextView courseTitleTextView;
+        public TextView courseNumberTextView;
+        public Button deleteCourseButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
-
-            semesterTextView = (TextView) itemView.findViewById(R.id.semester_name);
-            classNumTextView = (TextView) itemView.findViewById(R.id.class_amount);
-            adjustButton = (Button) itemView.findViewById(R.id.adjust_button);
-            deleteButton = (Button) itemView.findViewById(R.id.delete_button);
+            courseTitleTextView = (TextView) itemView.findViewById(R.id.my_schedule_course_name);
+            courseNumberTextView = (TextView) itemView.findViewById(R.id.my_schedule_course_number);
+            deleteCourseButton = (Button) itemView.findViewById(R.id.delete_course_button);
         }
     }
 
     // checks if the thing being added to the list is unique
-    public static final DiffUtil.ItemCallback<Semester> DIFF_CALLBACK =
-            new DiffUtil.ItemCallback<Semester>() {
+    public static final DiffUtil.ItemCallback<Course> DIFF_CALLBACK =
+            new DiffUtil.ItemCallback<Course>() {
                 @Override
-                public boolean areItemsTheSame(@NonNull Semester oldItem, @NonNull Semester newItem) {
-                    // compares name of semester
-                    return oldItem.getSemesterName().equalsIgnoreCase(newItem.getSemesterName());
+                public boolean areItemsTheSame(@NonNull Course oldItem, @NonNull Course newItem) {
+                    return oldItem.getCourseTitleShort().equalsIgnoreCase(newItem.getCourseTitleShort());
                 }
 
                 @Override
-                public boolean areContentsTheSame(@NonNull Semester oldItem, @NonNull Semester newItem) {
-                    // compares hashmap of courses in semester
-                    return oldItem.getSemCourses().equals(newItem.getSemCourses());
+                public boolean areContentsTheSame(@NonNull Course oldItem, @NonNull Course newItem) {
+                    return oldItem.getCourseDescription().equals(newItem.getCourseDescription());
                 }
             };
 
-    public CoursesIntermeiateAdapter(List<Semester> semesters) {
+    public CoursesIntermeiateAdapter(List<Course> courses) {
         super(DIFF_CALLBACK);
-        myCourses = semesters;
+        myCourses = courses;
         submitList(myCourses);
     }
 
     @Override
-    public void submitList(final List<Semester> list) {
-        Collections.sort(myCourses, Semester.semSeasonComparator);
-        Collections.sort(myCourses, Semester.semYearComparator);
+    public void submitList(final List<Course> list) {
         super.submitList(list != null ? new ArrayList<>(list) : null);
     }
 
-    public void addMoreSemesters(List<Semester> newSemesters) {
-        myCourses.addAll(newSemesters);
+    public void addMoreCourses(List<Course> newCourses) {
+        myCourses.addAll(newCourses);
         submitList(myCourses);
     }
 
-    public void addMoreSemesters(Semester semester) {
-        myCourses.add(semester);
+    public void addMoreCourses(Course course) {
+        myCourses.add(course);
         submitList(myCourses);
     }
 
@@ -100,28 +93,27 @@ public class CoursesIntermeiateAdapter extends ListAdapter<Semester, CoursesInte
     @Override
     public void onBindViewHolder(final CoursesIntermeiateAdapter.ViewHolder viewHolder, final int position) {
         // Get the data model based on position
-        final Semester semester = getItem(position);
+        final Course course = getItem(position);
 
         // Set item views based on your views and data model
-        TextView semTextView = viewHolder.semesterTextView;
-        semTextView.setText(semester.getSemesterName());
-        TextView classNumTextView = viewHolder.classNumTextView;
-        classNumTextView.setText(String.valueOf(semester.getNumClasses()) + " classes");
-        Button adjButton = viewHolder.adjustButton;
-        Button delButton = viewHolder.deleteButton;
+        TextView courseTitleTextView = viewHolder.courseTitleTextView;
+        courseTitleTextView.setText(course.getCourseTitleLong());
+        TextView courseNumTextView = viewHolder.courseNumberTextView;
+        courseNumTextView.setText(course.getCourseTitleShort());
+        Button delButton = viewHolder.deleteCourseButton;
 
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setCancelable(true);
-                builder.setTitle("Delete Semester");
-                builder.setMessage("Are you sure you want to remove this semester?");
+                builder.setTitle("Delete Course");
+                builder.setMessage("Are you sure you want to remove this course?");
                 builder.setPositiveButton("Yes, delete",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                myCourses.remove(semester);
+                                myCourses.remove(course);
                                 submitList(myCourses);
                                 showDeleteToast(builder.getContext());
                             }
@@ -136,20 +128,11 @@ public class CoursesIntermeiateAdapter extends ListAdapter<Semester, CoursesInte
                 dialog.show();
             }
         });
-        
-        adjButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddCoursesIntermediateActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("originalClassList", (Serializable) myCourses.get(position));
-                ((Activity) view.getContext()).startActivityForResult(intent, ADD_CLASS_REQUEST_CODE);
-            }
-        });
+
     }
 
     public static void showDeleteToast(Context context) {
-        Toast.makeText(context, "Semester deleted", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Course deleted", Toast.LENGTH_SHORT).show();
     }
 
 }

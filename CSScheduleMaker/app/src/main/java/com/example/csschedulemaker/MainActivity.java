@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -26,10 +25,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     private static final int ADD_SEMESTER_REQUEST_CODE = 0;
     private static final int ADD_CLASS_REQUEST_CODE = 1;
 
+
     private ArrayList<Semester> semesters;
     private CourseBag courseBag;
     private RecyclerView semestersRecycler;
     private SemesterAdapter adapter;
+
+    private static Semester currentSemester;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         } else if (requestCode == ADD_CLASS_REQUEST_CODE) {
             System.out.println("THE COURSE ACTIVITY HAS PUSHED IT'S CALL CODE");
+            currentSemester = (Semester) data.getSerializableExtra("originalClassList");
             if (resultCode == RESULT_OK) {
                 System.out.println("THE COURSE ACTIVITY HAS PUSHED IT'S RESULT");
             }
@@ -109,5 +112,13 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         }
         return false;
+    }
+
+    public static Semester getCurrentSemester() {
+        return currentSemester;
+    }
+
+    public void setCurrentSemester(Semester currentSemester) {
+        this.currentSemester = currentSemester;
     }
 }
