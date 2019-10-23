@@ -2,6 +2,7 @@ if time:
 make way to save schedule, login, ...
 add "help" which links to schedule example
 ---
+The HashMap of courses will need to be converted to arraylist for the adapter/view. 
 for class selection: 
 -add sem is clicked
 -ask what type to add
