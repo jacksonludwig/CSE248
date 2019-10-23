@@ -1,0 +1,12 @@
+if time:
+make way to save schedule, login, ...
+add "help" which links to schedule example
+---
+for class selection: 
+-add sem is clicked
+-ask what type to add
+-show list of that type
+-courses are shown by title w/number under
+-on click show popupwindow showing more info (e.g. pre reqs, once the add functionality works correctly, add
+a preq field to courses)
+-click to confirm add
