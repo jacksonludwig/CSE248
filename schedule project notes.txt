@@ -2,6 +2,11 @@ if time:
 make way to save schedule, login, ...
 add "help" which links to schedule example
 ---
+changes:
+-check pre req only for math, CSE
+-check science sequences
+-allow entry of courses already taken (could just add button, and entered classes could be removed from course pool)
+
 The HashMap of courses will need to be converted to arraylist for the adapter/view. 
 for class selection: 
 -add sem is clicked
