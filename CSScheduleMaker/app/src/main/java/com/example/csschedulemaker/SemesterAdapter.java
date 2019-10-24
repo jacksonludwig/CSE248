@@ -1,11 +1,9 @@
 package com.example.csschedulemaker;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.csschedulemaker.courseData.Semester;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -141,10 +138,11 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
         adjButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddCoursesIntermediateActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("originalClassList", (Serializable) mySemesters.get(position));
-                ((Activity) view.getContext()).startActivityForResult(intent, ADD_CLASS_REQUEST_CODE);
+                Context context = view.getContext();
+                Intent intent = new Intent(context, AddCoursesIntermediateActivity.class);
+               // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("originalClassList", mySemesters.get(position));
+                context.startActivity(intent);
             }
         });
     }

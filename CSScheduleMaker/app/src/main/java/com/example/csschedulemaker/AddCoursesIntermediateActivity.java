@@ -1,6 +1,8 @@
 package com.example.csschedulemaker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -9,14 +11,12 @@ import com.example.csschedulemaker.courseData.Course;
 import com.example.csschedulemaker.courseData.CourseBag;
 import com.example.csschedulemaker.courseData.Semester;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class AddCoursesIntermediateActivity extends AppCompatActivity {
-
-    // not yet sure if this will be used here
-    private static final int ADD_CLASS_REQUEST_CODE = 1;
+public class AddCoursesIntermediateActivity extends AppCompatActivity implements Serializable {
 
     private CourseBag courseBag;
     private Semester currentSemesterFromMain;
@@ -29,11 +29,31 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_courses_intermediate);
 
-        currentSemesterFromMain = MainActivity.getCurrentSemester();
+        currentSemesterFromMain = (Semester) getIntent().getSerializableExtra("originalClassList");
 
         hashToCourseList = new ArrayList<>();
         hashToCourseList.addAll(currentSemesterFromMain.getSemCourses().values());
 
-        
+        myCoursesRecycler = (RecyclerView) findViewById(R.id.current_courses_recycler);
+
+        SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(16);
+        myCoursesRecycler.addItemDecoration(spacesItemDecoration);
+        RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        myCoursesRecycler.addItemDecoration(itemDecorationHorizLine);
+
+        courseBag = currentSemesterFromMain.getCourseBag();
+
+        adapter = new CoursesIntermeiateAdapter(hashToCourseList);
+
+        myCoursesRecycler.setAdapter(adapter);
+        myCoursesRecycler.setLayoutManager(new LinearLayoutManager(this));
+    /*
+        adapter.addMoreCourses(courseBag.get("CSE110"));
+        adapter.addMoreCourses(courseBag.get("MAT142"));
+        adapter.addMoreCourses(courseBag.get("POL105"));
+    */
+
     }
+
+
 }

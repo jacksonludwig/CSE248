@@ -1,5 +1,7 @@
 package com.example.csschedulemaker.courseData;
 
+import android.content.Context;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -54,6 +57,19 @@ public class Utilities implements Serializable {
         ObjectInputStream ois = null;
         try {
             fis = new FileInputStream(fileName);
+            ois = new ObjectInputStream(fis);
+            return (CourseBag) ois.readObject();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static CourseBag loadCourses(String fileName, Context context) {
+        InputStream fis = null;
+        ObjectInputStream ois = null;
+        try {
+            fis = context.getAssets().open(fileName);
             ois = new ObjectInputStream(fis);
             return (CourseBag) ois.readObject();
         } catch (ClassNotFoundException | IOException e) {

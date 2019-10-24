@@ -16,9 +16,11 @@ import com.example.csschedulemaker.courseData.CourseBag;
 import com.example.csschedulemaker.courseData.Semester;
 import com.example.csschedulemaker.courseData.Utilities;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, Serializable {
     private static final String relativeFilePath = System.getProperty("user.dir") + "\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\courseData.dat";
     private static final String computerScienceHelpURL = "https://www.sunysuffolk.edu/explore-academics/majors-and-programs/COSC-AS.jsp";
 
@@ -30,8 +32,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     private CourseBag courseBag;
     private RecyclerView semestersRecycler;
     private SemesterAdapter adapter;
-
-    private static Semester currentSemester;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         semestersRecycler.addItemDecoration(itemDecorationHorizLine);
 
-        courseBag = Utilities.loadCourses(relativeFilePath);
+
+        courseBag = Utilities.loadCourses("courseData.dat", getApplicationContext());
+        System.out.println(courseBag);
 
         semesters = Utilities.createBaseSemesters(courseBag);
 
@@ -96,12 +98,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     repeatToast.show();
                 }
             }
-        } else if (requestCode == ADD_CLASS_REQUEST_CODE) {
-            System.out.println("THE COURSE ACTIVITY HAS PUSHED IT'S CALL CODE");
-            currentSemester = (Semester) data.getSerializableExtra("originalClassList");
-            if (resultCode == RESULT_OK) {
-                System.out.println("THE COURSE ACTIVITY HAS PUSHED IT'S RESULT");
-            }
         }
     }
 
@@ -114,11 +110,4 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         return false;
     }
 
-    public static Semester getCurrentSemester() {
-        return currentSemester;
-    }
-
-    public void setCurrentSemester(Semester currentSemester) {
-        this.currentSemester = currentSemester;
-    }
 }

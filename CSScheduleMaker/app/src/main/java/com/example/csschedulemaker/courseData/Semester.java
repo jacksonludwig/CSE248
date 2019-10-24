@@ -64,6 +64,14 @@ public class Semester implements Serializable {
         return semCourses;
     }
 
+    public CourseBag getCourseBag() {
+        return courseBag;
+    }
+
+    public void setCourseBag(CourseBag courseBag) {
+        this.courseBag = courseBag;
+    }
+
     public int getNumClasses() {
         return numClasses;
     }

@@ -25,7 +25,7 @@ public class getCSClassesAsObjectsDemo implements Serializable {
 
         courses = Utilities.loadCourses("D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\courseData.dat");
         System.out.println(courses.get("MAT141"));
-        System.out.println(courses.get("CSE148"));
+        System.out.println(courses);
     }
 
 
