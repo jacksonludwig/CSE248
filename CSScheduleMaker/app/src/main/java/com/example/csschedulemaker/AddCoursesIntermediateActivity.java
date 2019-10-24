@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.csschedulemaker.courseData.Course;
 import com.example.csschedulemaker.courseData.CourseBag;
@@ -18,7 +20,7 @@ import java.util.List;
 
 public class AddCoursesIntermediateActivity extends AppCompatActivity implements Serializable {
 
-    private CourseBag courseBag;
+  //  private CourseBag courseBag;
     private Semester currentSemesterFromMain;
     private List<Course> hashToCourseList;
     private RecyclerView myCoursesRecycler;
@@ -41,7 +43,7 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
         RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         myCoursesRecycler.addItemDecoration(itemDecorationHorizLine);
 
-        courseBag = currentSemesterFromMain.getCourseBag();
+       // courseBag = currentSemesterFromMain.getCourseBag();
 
         adapter = new CoursesIntermeiateAdapter(hashToCourseList);
 
@@ -53,6 +55,12 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
         adapter.addMoreCourses(courseBag.get("POL105"));
     */
 
+    }
+
+    public void addNewCourse(View view) {
+        Intent intent = new Intent(this, CourseSectionSelectionPopupActivity.class);
+        intent.putExtra("currentSemesterInter", currentSemesterFromMain);
+        startActivity(intent);
     }
 
 

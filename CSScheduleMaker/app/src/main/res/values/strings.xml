@@ -13,4 +13,6 @@
     <string name="course_intermediate_title">Schedule Adjustment</string>
     <string name="course_intermediate_description">You may view your current schedule here. Additionally, you can add or remove courses.</string>
     <string name="add_course_intermediate">Add Course</string>
+    <string name="course_type_title">Choose the type of course you would like to add:</string>
+    <string name="go_to_this_type">Go</string>
 </resources>

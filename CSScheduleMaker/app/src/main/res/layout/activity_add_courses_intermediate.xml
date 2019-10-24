@@ -41,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:onClick="addNewCourse"
         android:text="@string/add_course_intermediate"
         app:layout_constraintEnd_toEndOf="@+id/course_intermediate_desc"
         app:layout_constraintHorizontal_bias="0.5"

@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".AddCoursesIntermediateActivity"></activity>
+        <activity
+            android:name=".CourseSectionSelectionPopupActivity"
+            android:theme="@style/AppTheme.CourseTypePopup" />
+        <activity android:name=".AddCoursesIntermediateActivity" />
         <activity
             android:name=".AddSemesterPopupActivity"
             android:theme="@style/AppTheme.SemesterPopUp" />

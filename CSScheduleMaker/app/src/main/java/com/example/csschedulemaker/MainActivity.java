@@ -21,12 +21,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, Serializable {
-    private static final String relativeFilePath = System.getProperty("user.dir") + "\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\courseData.dat";
     private static final String computerScienceHelpURL = "https://www.sunysuffolk.edu/explore-academics/majors-and-programs/COSC-AS.jsp";
 
     private static final int ADD_SEMESTER_REQUEST_CODE = 0;
-    private static final int ADD_CLASS_REQUEST_CODE = 1;
-
 
     private ArrayList<Semester> semesters;
     private CourseBag courseBag;
@@ -46,9 +43,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         semestersRecycler.addItemDecoration(itemDecorationHorizLine);
 
-
         courseBag = Utilities.loadCourses("courseData.dat", getApplicationContext());
-        System.out.println(courseBag);
 
         semesters = Utilities.createBaseSemesters(courseBag);
 
