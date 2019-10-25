@@ -1,17 +1,26 @@
 package com.example.csschedulemaker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.WindowManager;
 
+import com.example.csschedulemaker.courseData.CourseTypes;
 import com.example.csschedulemaker.courseData.Semester;
+
+import java.util.ArrayList;
 
 public class CourseSectionSelectionPopupActivity extends AppCompatActivity {
 
     private Semester semesterFromIntermediate;
+    private RecyclerView courseTypeRecycler;
+    private CourseTypeAdapter adapter;
+    private ArrayList<CourseTypes> courseTypes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +45,32 @@ public class CourseSectionSelectionPopupActivity extends AppCompatActivity {
         semesterFromIntermediate = (Semester) getIntent().getSerializableExtra("currentSemesterInter");
         System.out.println("LINKED CORRECTLY");
 
+        courseTypeRecycler = (RecyclerView) findViewById(R.id.recyclerView);
 
+        SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(16);
+        courseTypeRecycler.addItemDecoration(spacesItemDecoration);
+
+        RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        courseTypeRecycler.addItemDecoration(itemDecorationHorizLine);
+
+        courseTypes = new ArrayList<>();
+        populateCourseList();
+
+        adapter = new CourseTypeAdapter(courseTypes, semesterFromIntermediate);
+
+        courseTypeRecycler.setAdapter(adapter);
+        courseTypeRecycler.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void populateCourseList() {
+        courseTypes.add(CourseTypes.COMPSCI);
+        courseTypes.add(CourseTypes.ENGLISH);
+        courseTypes.add(CourseTypes.HISTORY);
+        courseTypes.add(CourseTypes.HUMANITY);
+        courseTypes.add(CourseTypes.MATH);
+        courseTypes.add(CourseTypes.GYM);
+        courseTypes.add(CourseTypes.SCIENCE);
+        courseTypes.add(CourseTypes.LANGUAGE);
+        courseTypes.add(CourseTypes.SOCIOLOGY);
     }
 }
