@@ -25,18 +25,6 @@ public class CourseChoicesActivity extends AppCompatActivity {
     private CourseChoiceAdapter courseChoiceAdapter;
     private ArrayList<Course> courseList;
 
-    /*
-    private ArrayList<Course> cseList;
-    private ArrayList<Course> engList;
-    private ArrayList<Course> gymList;
-    private ArrayList<Course> hisList;
-    private ArrayList<Course> humList;
-    private ArrayList<Course> langList;
-    private ArrayList<Course> mathList;
-    private ArrayList<Course> sciList;
-    private ArrayList<Course> socList;
-    */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +45,6 @@ public class CourseChoicesActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(itemDecorationHorizLine);
 
         courseChoiceAdapter = new CourseChoiceAdapter(courseList, semesterFromPopup);
-       // courseChoiceAdapter.addMoreCourses(courseList);
 
         recyclerView.setAdapter(courseChoiceAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -80,7 +67,6 @@ public class CourseChoicesActivity extends AppCompatActivity {
 
         switch (selectedType) {
             case COMPSCI:
-                System.out.println("COMPSCI");
                 for (Course course : allCourses) {
                     if (course.getCourseTitleShort().substring(0, 3).equalsIgnoreCase("CSE")) {
                         courseList.add(course);

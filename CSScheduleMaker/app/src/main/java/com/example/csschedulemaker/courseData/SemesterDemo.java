@@ -8,7 +8,7 @@ public class SemesterDemo {
         System.out.println(courseBag);
         Semester fall = new Semester("fall 2019", courseBag);
 
-        fall.addClass("CSE110");
+       // fall.addClass("CSE110");
         System.out.println(fall.getSemesterName());
         System.out.println(fall.getClass("CSE110"));
     }

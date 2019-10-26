@@ -117,7 +117,8 @@ public class CourseChoiceAdapter extends ListAdapter<Course, CourseChoiceAdapter
         chooseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addMoreCourses(course);
+                currentSemester.addClass(course);
+                System.out.println(currentSemester.getSemCourses());
             }
         });
     }

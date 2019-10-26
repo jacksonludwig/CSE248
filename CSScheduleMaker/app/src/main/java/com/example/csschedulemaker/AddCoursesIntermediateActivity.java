@@ -20,9 +20,8 @@ import java.util.List;
 
 public class AddCoursesIntermediateActivity extends AppCompatActivity implements Serializable {
 
-  //  private CourseBag courseBag;
+    private CourseBag courseBag;
     private Semester currentSemesterFromMain;
-    private List<Course> hashToCourseList;
     private RecyclerView myCoursesRecycler;
     private CoursesIntermeiateAdapter adapter;
 
@@ -33,9 +32,6 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
 
         currentSemesterFromMain = (Semester) getIntent().getSerializableExtra("originalClassList");
 
-        hashToCourseList = new ArrayList<>();
-        hashToCourseList.addAll(currentSemesterFromMain.getSemCourses().values());
-
         myCoursesRecycler = (RecyclerView) findViewById(R.id.current_courses_recycler);
 
         SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(16);
@@ -43,18 +39,14 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
         RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         myCoursesRecycler.addItemDecoration(itemDecorationHorizLine);
 
-       // courseBag = currentSemesterFromMain.getCourseBag();
+        courseBag = currentSemesterFromMain.getCourseBag();
 
-        adapter = new CoursesIntermeiateAdapter(hashToCourseList);
+        adapter = new CoursesIntermeiateAdapter(currentSemesterFromMain.getSemCourses());
 
         myCoursesRecycler.setAdapter(adapter);
         myCoursesRecycler.setLayoutManager(new LinearLayoutManager(this));
-    /*
-        adapter.addMoreCourses(courseBag.get("CSE110"));
-        adapter.addMoreCourses(courseBag.get("MAT142"));
-        adapter.addMoreCourses(courseBag.get("POL105"));
-    */
 
+      //  adapter.addMoreCourses(courseBag.get("CSE110"));
     }
 
     public void addNewCourse(View view) {
