@@ -9,14 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.csschedulemaker.courseData.Course;
 import com.example.csschedulemaker.courseData.CourseBag;
 import com.example.csschedulemaker.courseData.Semester;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class AddCoursesIntermediateActivity extends AppCompatActivity implements Serializable {
 
@@ -46,13 +42,26 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
         myCoursesRecycler.setAdapter(adapter);
         myCoursesRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-      //  adapter.addMoreCourses(courseBag.get("CSE110"));
+        adapter.addMoreCourses(courseBag.get("CSE110"));
     }
 
     public void addNewCourse(View view) {
         Intent intent = new Intent(this, CourseSectionSelectionPopupActivity.class);
         intent.putExtra("currentSemesterInter", currentSemesterFromMain);
         startActivity(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        System.out.println("USER COURSE ACTIVITY DESTROYED");
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        System.out.println(currentSemesterFromMain.getSemCourses().size());
+        adapter.submitList(currentSemesterFromMain.getSemCourses());
     }
 
 

@@ -64,12 +64,12 @@ public class CourseTypeAdapter extends ListAdapter<CourseTypes, CourseTypeAdapte
         super.submitList(list != null ? new ArrayList<>(list) : null);
     }
 
-    public void addMoreCourseTypess(List<CourseTypes> newCourseTypes) {
+    public void addMoreCourseTypes(List<CourseTypes> newCourseTypes) {
         myCourseTypes.addAll(newCourseTypes);
         submitList(myCourseTypes);
     }
 
-    public void addMoreCourseTypess(CourseTypes courseType) {
+    public void addMoreCourseTypes(CourseTypes courseType) {
         myCourseTypes.add(courseType);
         submitList(myCourseTypes);
     }

@@ -34,7 +34,6 @@ public class CourseChoicesActivity extends AppCompatActivity {
         setTitle();
         setSemester();
         filterSemester();
-        System.out.println(courseList);
 
         recyclerView = (RecyclerView) findViewById(R.id.course_choice_recycler);
 
@@ -59,6 +58,7 @@ public class CourseChoicesActivity extends AppCompatActivity {
 
     private void setSemester() {
         semesterFromPopup = (Semester) (getIntent().getSerializableExtra("originalClassListFromTypePopup"));
+        System.out.println(semesterFromPopup.getSemesterName());
     }
 
     private void filterSemester() {

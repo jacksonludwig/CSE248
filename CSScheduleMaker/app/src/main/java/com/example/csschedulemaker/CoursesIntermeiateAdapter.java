@@ -19,9 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.csschedulemaker.courseData.Course;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CoursesIntermeiateAdapter extends ListAdapter<Course, CoursesIntermeiateAdapter.ViewHolder> {
