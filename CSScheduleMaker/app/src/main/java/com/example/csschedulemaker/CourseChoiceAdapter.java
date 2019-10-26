@@ -120,6 +120,9 @@ public class CourseChoiceAdapter extends ListAdapter<Course, CourseChoiceAdapter
             @Override
             public void onClick(View view) {
                 currentSemester.addClass(course);
+                System.out.println(currentSemester.getSemCourses());
+                Intent intent=new Intent(view.getContext(), AddCoursesIntermediateActivity.class);
+                intent.putExtra("updatedSemester", currentSemester);
             }
         });
     }

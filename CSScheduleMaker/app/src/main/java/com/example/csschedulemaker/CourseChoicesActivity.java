@@ -142,4 +142,5 @@ public class CourseChoicesActivity extends AppCompatActivity {
                 break;
         }
     }
+
 }

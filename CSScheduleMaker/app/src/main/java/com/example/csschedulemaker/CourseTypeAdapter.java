@@ -1,5 +1,6 @@
 package com.example.csschedulemaker;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -106,6 +107,7 @@ public class CourseTypeAdapter extends ListAdapter<CourseTypes, CourseTypeAdapte
                 intent.putExtra("chosenCourseType", myCourseTypes.get(position));
                 intent.putExtra("originalClassListFromTypePopup", semesterFromIntermediate);
                 context.startActivity(intent);
+                ((Activity)context).finish();
             }
         });
 

@@ -58,11 +58,14 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
+
+        Bundle extras = getIntent().getExtras();
+        System.out.println(extras);
+
         System.out.println(currentSemesterFromMain.getSemCourses().size());
         adapter.submitList(currentSemesterFromMain.getSemCourses());
     }
-
-
 }
+
