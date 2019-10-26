@@ -11,6 +11,8 @@ public class Course implements Serializable {
     private String textbookISBN;
     private String classroom;
 
+    private static final long serialVersionUID = -2395023583743766868L;
+
     public Course(String dataLine) {
         courseTitleShort = generateCourseTitleShortFromFile(dataLine);
         courseTitleLong = generateCourseTitleLongFromFile(dataLine);

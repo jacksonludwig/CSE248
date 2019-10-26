@@ -1,15 +1,12 @@
 package com.example.csschedulemaker;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -67,8 +64,8 @@ public class CourseTypeAdapter extends ListAdapter<CourseTypes, CourseTypeAdapte
         super.submitList(list != null ? new ArrayList<>(list) : null);
     }
 
-    public void addMoreCourseTypess(List<CourseTypes> newCourseTypess) {
-        myCourseTypes.addAll(newCourseTypess);
+    public void addMoreCourseTypess(List<CourseTypes> newCourseTypes) {
+        myCourseTypes.addAll(newCourseTypes);
         submitList(myCourseTypes);
     }
 
@@ -105,7 +102,7 @@ public class CourseTypeAdapter extends ListAdapter<CourseTypes, CourseTypeAdapte
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
-                Intent intent = new Intent(context, CourseChoicesAcitivty.class);
+                Intent intent = new Intent(context, CourseChoicesActivity.class);
                 intent.putExtra("chosenCourseType", myCourseTypes.get(position));
                 intent.putExtra("originalClassListFromTypePopup", semesterFromIntermediate);
                 context.startActivity(intent);

@@ -16,4 +16,6 @@
     <string name="course_type_title">Choose the type of course you would like to add:</string>
     <string name="go_to_this_type">Go</string>
     <string name="course_selection_title">Course Title</string>
+    <string name="choose_course">Take Course</string>
+    <string name="course_info">Info</string>
 </resources>

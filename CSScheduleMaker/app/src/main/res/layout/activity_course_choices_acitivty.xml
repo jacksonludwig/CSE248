@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#263136"
-    tools:context=".CourseChoicesAcitivty">
+    tools:context=".CourseChoicesActivity">
 
     <TextView
         android:id="@+id/course_select_title"
@@ -16,13 +16,13 @@
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerView2"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView2"
+        app:layout_constraintBottom_toTopOf="@+id/course_choice_recycler"
+        app:layout_constraintEnd_toEndOf="@+id/course_choice_recycler"
+        app:layout_constraintStart_toStartOf="@+id/course_choice_recycler"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+        android:id="@+id/course_choice_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"

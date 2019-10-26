@@ -23,6 +23,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, Serializable {
     private static final String computerScienceHelpURL = "https://www.sunysuffolk.edu/explore-academics/majors-and-programs/COSC-AS.jsp";
 
+    private static final long serialVersionUID = 7384564696463742131L;
+
     private static final int ADD_SEMESTER_REQUEST_CODE = 0;
 
     private ArrayList<Semester> semesters;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         semestersRecycler.addItemDecoration(itemDecorationHorizLine);
 
         courseBag = Utilities.loadCourses("courseData.dat", getApplicationContext());
+        System.out.println(courseBag);
 
         semesters = Utilities.createBaseSemesters(courseBag);
 

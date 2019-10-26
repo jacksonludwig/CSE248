@@ -18,6 +18,8 @@ import java.util.Scanner;
 
 public class Utilities implements Serializable {
 
+    private static final long serialVersionUID = 7384564696463742131L;
+
     public static ArrayList<Semester> createBaseSemesters(CourseBag courseBag) {
         ArrayList<Semester> semesters = new ArrayList<>();
 

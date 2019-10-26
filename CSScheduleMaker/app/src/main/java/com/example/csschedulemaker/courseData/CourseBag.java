@@ -6,6 +6,8 @@ import java.util.HashMap;
 public class CourseBag implements Serializable {
     private HashMap<String, Course> cseCourses;
 
+    private static final long serialVersionUID = -8263569645527485974L;
+
     public CourseBag() {
         cseCourses = new HashMap<>();
     }
@@ -40,6 +42,11 @@ public class CourseBag implements Serializable {
     public int size() {
         return cseCourses.size();
     }
+
+    public HashMap<String, Course> getCourseHash() {
+        return cseCourses;
+    }
+
 
     @Override
     public String toString() {
