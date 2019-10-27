@@ -5,14 +5,18 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.WindowManager;
 
+import com.example.csschedulemaker.courseData.Course;
 import com.example.csschedulemaker.courseData.CourseTypes;
 import com.example.csschedulemaker.courseData.Semester;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class CourseSectionSelectionPopupActivity extends AppCompatActivity {
@@ -21,6 +25,8 @@ public class CourseSectionSelectionPopupActivity extends AppCompatActivity {
     private RecyclerView courseTypeRecycler;
     private CourseTypeAdapter adapter;
     private ArrayList<CourseTypes> courseTypes;
+
+    private static final int OPEN_COURSE_TYPE_POPUP_RESULT = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +66,34 @@ public class CourseSectionSelectionPopupActivity extends AppCompatActivity {
 
         courseTypeRecycler.setAdapter(adapter);
         courseTypeRecycler.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    /*
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == OPEN_COURSE_TYPE_POPUP_RESULT) {
+            if (resultCode == RESULT_OK) {
+                Semester result = (Semester) (data.getSerializableExtra("updatedSemester"));
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("updatedSem", result); // send the result of Activity3
+                setResult(Activity.RESULT_OK, returnIntent);
+                finish();
+            }
+        }
+    }
+    */
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == OPEN_COURSE_TYPE_POPUP_RESULT) {
+            if (resultCode == RESULT_OK) {
+                Course result = (Course) (data.getSerializableExtra("updatedSemester"));
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("updatedSem", result); // send the result of Activity3
+                setResult(Activity.RESULT_OK, returnIntent);
+                finish();
+            }
+        }
     }
 
     private void populateCourseList() {

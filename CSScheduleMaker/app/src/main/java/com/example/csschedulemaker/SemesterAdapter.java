@@ -1,5 +1,6 @@
 package com.example.csschedulemaker;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -25,7 +26,7 @@ import java.util.List;
 public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewHolder> {
 
     private List<Semester> mySemesters;
-    private static final int ADD_CLASS_REQUEST_CODE = 1;
+    private static final int OPEN_SPECIFIC_SEMESTER_CODE = 1;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView semesterTextView;
@@ -134,15 +135,15 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
                 dialog.show();
             }
         });
-        
+
         adjButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, AddCoursesIntermediateActivity.class);
-               // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("originalClassList", mySemesters.get(position));
-                context.startActivity(intent);
+                ((Activity) context).startActivityForResult(intent, OPEN_SPECIFIC_SEMESTER_CODE);
             }
         });
     }

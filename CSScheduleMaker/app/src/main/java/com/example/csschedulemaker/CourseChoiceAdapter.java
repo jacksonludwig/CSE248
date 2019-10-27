@@ -24,6 +24,7 @@ public class CourseChoiceAdapter extends ListAdapter<Course, CourseChoiceAdapter
 
     private List<Course> myCourses;
     private Semester currentSemester;
+    private Activity mActivity;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView courseTextView;
@@ -57,9 +58,10 @@ public class CourseChoiceAdapter extends ListAdapter<Course, CourseChoiceAdapter
                 }
             };
 
-    public CourseChoiceAdapter(List<Course> courses, Semester currentSemester) {
+    public CourseChoiceAdapter(List<Course> courses, Semester currentSemester, Activity mActivity) {
         super(DIFF_CALLBACK);
         this.currentSemester = currentSemester;
+        this.mActivity = mActivity;
         myCourses = courses;
         submitList(myCourses);
     }
@@ -115,14 +117,30 @@ public class CourseChoiceAdapter extends ListAdapter<Course, CourseChoiceAdapter
 
             }
         });
-        
+
+        /*
         chooseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentSemester.addClass(course);
-                System.out.println(currentSemester.getSemCourses());
-                Intent intent=new Intent(view.getContext(), AddCoursesIntermediateActivity.class);
-                intent.putExtra("updatedSemester", currentSemester);
+
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("updatedSemester", currentSemester);
+                mActivity.setResult(Activity.RESULT_OK, returnIntent);
+
+                mActivity.finish();
+
+            }
+        });
+        */
+        chooseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("updatedSemester", course);
+                mActivity.setResult(Activity.RESULT_OK, returnIntent);
+
+                mActivity.finish();
             }
         });
     }

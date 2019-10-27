@@ -16,7 +16,6 @@ import com.example.csschedulemaker.courseData.CourseBag;
 import com.example.csschedulemaker.courseData.Semester;
 import com.example.csschedulemaker.courseData.Utilities;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -26,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     private static final long serialVersionUID = 7384564696463742131L;
 
     private static final int ADD_SEMESTER_REQUEST_CODE = 0;
+    private static final int OPEN_SPECIFIC_SEMESTER_CODE = 1;
 
     private ArrayList<Semester> semesters;
     private CourseBag courseBag;
@@ -96,6 +96,14 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     repeatToast.show();
                 }
             }
+        } else if (requestCode == OPEN_SPECIFIC_SEMESTER_CODE) {
+            if (resultCode == RESULT_OK) {
+                System.out.println("MADE IT BACK AROUND");
+                Semester result = (Semester) (data.getSerializableExtra("userSem"));
+                int index = searchListBySemester(result);
+                semesters.remove(index);
+                semesters.add(index, result);
+            }
         }
     }
 
@@ -106,6 +114,15 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         }
         return false;
+    }
+
+    private int searchListBySemester(Semester newSemester) {
+        for (int i = 0; i < semesters.size(); i++) {
+            if (newSemester.getSemesterName().equalsIgnoreCase(semesters.get(i).getSemesterName())) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }

@@ -5,10 +5,13 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.example.csschedulemaker.courseData.Course;
 import com.example.csschedulemaker.courseData.CourseBag;
 import com.example.csschedulemaker.courseData.Semester;
 
@@ -20,6 +23,8 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
     private Semester currentSemesterFromMain;
     private RecyclerView myCoursesRecycler;
     private CoursesIntermeiateAdapter adapter;
+
+    private static final int OPEN_COURSE_POPUP_RESULT = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +47,47 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
         myCoursesRecycler.setAdapter(adapter);
         myCoursesRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter.addMoreCourses(courseBag.get("CSE110"));
+       // adapter.addMoreCourses(courseBag.get("CSE110"));
     }
 
     public void addNewCourse(View view) {
         Intent intent = new Intent(this, CourseSectionSelectionPopupActivity.class);
         intent.putExtra("currentSemesterInter", currentSemesterFromMain);
-        startActivity(intent);
+        startActivityForResult(intent, OPEN_COURSE_POPUP_RESULT);
+    }
+
+    /*
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == OPEN_COURSE_POPUP_RESULT) {
+            if (resultCode == RESULT_OK) {
+                Semester result = (Semester) (data.getSerializableExtra("updatedSem"));
+
+                System.out.println("ALMOST THERE " + result.getSemCourses());
+                adapter.addMoreCourses(result.getSemCourses().get(0));
+
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("userSem", result); // send the result of Activity3
+                setResult(Activity.RESULT_OK, returnIntent);
+            }
+        }
+    }
+    */
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == OPEN_COURSE_POPUP_RESULT) {
+            if (resultCode == RESULT_OK) {
+                Course result = (Course) (data.getSerializableExtra("updatedSem"));
+
+                System.out.println("ALMOST THERE " + result);
+                adapter.addMoreCourses(result);
+
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("userSem", currentSemesterFromMain); // send the result of Activity3
+                setResult(Activity.RESULT_OK, returnIntent);
+            }
+        }
     }
 
     @Override
@@ -60,9 +99,6 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
     @Override
     public void onResume() {
         super.onResume();
-
-        Bundle extras = getIntent().getExtras();
-        System.out.println(extras);
 
         System.out.println(currentSemesterFromMain.getSemCourses().size());
         adapter.submitList(currentSemesterFromMain.getSemCourses());

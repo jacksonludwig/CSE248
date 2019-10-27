@@ -43,7 +43,7 @@ public class CourseChoicesActivity extends AppCompatActivity {
         RecyclerView.ItemDecoration itemDecorationHorizLine = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecorationHorizLine);
 
-        courseChoiceAdapter = new CourseChoiceAdapter(courseList, semesterFromPopup);
+        courseChoiceAdapter = new CourseChoiceAdapter(courseList, semesterFromPopup, this);
 
         recyclerView.setAdapter(courseChoiceAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -58,7 +58,7 @@ public class CourseChoicesActivity extends AppCompatActivity {
 
     private void setSemester() {
         semesterFromPopup = (Semester) (getIntent().getSerializableExtra("originalClassListFromTypePopup"));
-        System.out.println(semesterFromPopup.getSemesterName());
+       // System.out.println(semesterFromPopup.getSemesterName());
     }
 
     private void filterSemester() {

@@ -24,6 +24,7 @@ public class CourseTypeAdapter extends ListAdapter<CourseTypes, CourseTypeAdapte
 
     private List<CourseTypes> myCourseTypes;
     private Semester semesterFromIntermediate;
+    private static final int OPEN_COURSE_TYPE_POPUP_RESULT = 3;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView courseTypeTextView;
@@ -106,8 +107,8 @@ public class CourseTypeAdapter extends ListAdapter<CourseTypes, CourseTypeAdapte
                 Intent intent = new Intent(context, CourseChoicesActivity.class);
                 intent.putExtra("chosenCourseType", myCourseTypes.get(position));
                 intent.putExtra("originalClassListFromTypePopup", semesterFromIntermediate);
-                context.startActivity(intent);
-                ((Activity)context).finish();
+                ((Activity)context).startActivityForResult(intent, OPEN_COURSE_TYPE_POPUP_RESULT);
+                //((Activity)context).finish();
             }
         });
 
