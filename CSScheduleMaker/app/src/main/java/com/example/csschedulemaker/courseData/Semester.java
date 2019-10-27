@@ -162,9 +162,11 @@ public class Semester implements Serializable {
 
     @Override
     public String toString() {
-        return "Semester{" +
-                "semester='" + semester + '\'' +
-                '}';
+        String returnString = "";
+        for(int i = 0; i < semCourses.size(); i++) {
+            returnString = returnString + semCourses.get(i).getCourseTitleShort() + "\n";
+        }
+        return semester + ":\n" + returnString + "\n";
     }
 
     public void setSemesterName(String semester) {

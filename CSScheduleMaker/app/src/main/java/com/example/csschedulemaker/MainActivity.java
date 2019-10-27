@@ -1,12 +1,17 @@
 package com.example.csschedulemaker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
@@ -18,9 +23,16 @@ import android.net.Uri;
 import com.example.csschedulemaker.courseData.CourseBag;
 import com.example.csschedulemaker.courseData.Semester;
 import com.example.csschedulemaker.courseData.Utilities;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
+import java.io.FileOutputStream;
 import java.io.Serializable;
+import java.lang.annotation.Documented;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, Serializable {
     private static final String computerScienceHelpURL = "https://www.sunysuffolk.edu/explore-academics/majors-and-programs/COSC-AS.jsp";
@@ -29,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     private static final int ADD_SEMESTER_REQUEST_CODE = 0;
     private static final int OPEN_SPECIFIC_SEMESTER_CODE = 1;
+    private static final int STORAGE_CODE = 1000;
 
     private ArrayList<Semester> semesters;
     private CourseBag courseBag;
@@ -76,12 +89,56 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 return true;
             case R.id.helpLink:
                 goToUrl(computerScienceHelpURL);
+                return true;
+            case R.id.exportAsPDF:
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {
+                    if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permissions, STORAGE_CODE);
+                    } else {
+                        savePdf();
+                    }
+                } else {
+                    savePdf();
+                }
+                return true;
             default:
                 return false;
         }
     }
 
-    private void goToUrl (String url) {
+    private void savePdf() {
+        Document mDoc = new Document();
+        String fileName = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(System.currentTimeMillis());
+        String filePath = Environment.getExternalStorageDirectory() + "/" + fileName + ".pdf";
+
+        try {
+            PdfWriter.getInstance(mDoc, new FileOutputStream(filePath));
+            mDoc.open();
+            String mText = printSemesters();
+            mDoc.addAuthor("CSSchedule App");
+            mDoc.add(new Paragraph(mText));
+            mDoc.close();
+            Toast.makeText(this, fileName + ".pdf exported to " + filePath, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case STORAGE_CODE: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    savePdf();
+                } else {
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    private void goToUrl(String url) {
         Uri uriUrl = Uri.parse(url);
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(launchBrowser);
@@ -135,6 +192,15 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         }
         return -1;
+    }
+
+    private String printSemesters() {
+        String returnString = "";
+        for(int i = 0; i < semesters.size(); i++) {
+            Semester semester = semesters.get(i);
+            returnString = returnString + semester + "\n";
+        }
+        return returnString;
     }
 
 }

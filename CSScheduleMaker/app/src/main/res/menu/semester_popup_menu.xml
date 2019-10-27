@@ -9,4 +9,8 @@
         android:id="@+id/helpLink"
         android:title="@string/help_menuItem" />
 
+    <item
+        android:id="@+id/exportAsPDF"
+        android:title="@string/pdf_menuItem" />
+
 </menu>

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">CSScheduleMaker</string>
+    <string name="app_title">Computer Science Schedule Maker</string>
     <string name="WelcomeText">Welcome.</string>
     <string name="welcome_description">Below you can adjust your schedule for any semester. You can also add or remove semesters.</string>
     <string name="adjustButtonText">Adjust</string>
@@ -20,4 +21,5 @@
     <string name="course_info">Info</string>
     <string name="add_semester_menuItem">Add a new Semester</string>
     <string name="help_menuItem">Example Schedule</string>
+    <string name="pdf_menuItem">Export as PDF</string>
 </resources>
