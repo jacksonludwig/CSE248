@@ -121,29 +121,6 @@ public class Utilities implements Serializable {
 
     }
 
-    /*
-    public static void showPrereqMissing(View view, String req, ArrayList<Course> courseList) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setCancelable(false);
-        builder.setTitle("Missing Pre-requisite");
-        builder.setMessage("You must take the Pre-Requisite class: " + req);
-        builder.setPositiveButton("Yes, delete",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // do not delete
-            }
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-    }
-    */
     public static void showRepeatClass(View view) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
         builder.setCancelable(true);

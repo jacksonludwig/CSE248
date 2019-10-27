@@ -71,10 +71,6 @@ public class CourseChoiceAdapter extends ListAdapter<Course, CourseChoiceAdapter
 
     @Override
     public void submitList(final List<Course> list) {
-        /*
-        Collections.sort(myCourses, Course.semSeasonComparator);
-        Collections.sort(myCourses, Course.semYearComparator);
-        */
         super.submitList(list != null ? new ArrayList<>(list) : null);
     }
 
@@ -421,6 +417,65 @@ public class CourseChoiceAdapter extends ListAdapter<Course, CourseChoiceAdapter
                                 }
                             }
                         });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    } else if (course.getCourseTitleShort().equalsIgnoreCase("BIO150") || course.getCourseTitleShort().equalsIgnoreCase("BIO151")) {
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                        builder.setCancelable(true);
+                        builder.setTitle("Sequence Detected");
+                        builder.setMessage("It is recommended that students taking this class complete the BIO sequence (BIO150, BIO151) and one additional science class.");
+                        builder.setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent returnIntent = new Intent();
+                                        returnIntent.putExtra("updatedSemester", course);
+                                        mActivity.setResult(Activity.RESULT_OK, returnIntent);
+
+                                        mActivity.finish();
+                                    }
+                                });
+                        builder.setNegativeButton(android.R.string.no, null);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    } else if (course.getCourseTitleShort().equalsIgnoreCase("CHE133") || course.getCourseTitleShort().equalsIgnoreCase("CHE134")) {
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                        builder.setCancelable(true);
+                        builder.setTitle("Sequence Detected");
+                        builder.setMessage("It is recommended that students taking this class complete the CHE sequence (CHE133, CHE134) and one additional science class.");
+                        builder.setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent returnIntent = new Intent();
+                                        returnIntent.putExtra("updatedSemester", course);
+                                        mActivity.setResult(Activity.RESULT_OK, returnIntent);
+
+                                        mActivity.finish();
+                                    }
+                                });
+                        builder.setNegativeButton(android.R.string.no, null);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    } else if (course.getCourseTitleShort().equalsIgnoreCase("PHY130") || course.getCourseTitleShort().equalsIgnoreCase("PHY132")
+                            || course.getCourseTitleShort().equalsIgnoreCase("PHY230") || course.getCourseTitleShort().equalsIgnoreCase("PHY232")
+                            || course.getCourseTitleShort().equalsIgnoreCase("PHY245") || course.getCourseTitleShort().equalsIgnoreCase("PHY246")) {
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                        builder.setCancelable(true);
+                        builder.setTitle("Sequence Detected");
+                        builder.setMessage("It is recommended that students taking this class complete the PHY sequence (PHY130/132, PHY230/232, and PHY245/246).");
+                        builder.setPositiveButton("OK",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent returnIntent = new Intent();
+                                        returnIntent.putExtra("updatedSemester", course);
+                                        mActivity.setResult(Activity.RESULT_OK, returnIntent);
+
+                                        mActivity.finish();
+                                    }
+                                });
+                        builder.setNegativeButton(android.R.string.no, null);
                         AlertDialog dialog = builder.create();
                         dialog.show();
                     }
