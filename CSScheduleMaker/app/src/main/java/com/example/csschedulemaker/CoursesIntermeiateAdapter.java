@@ -97,7 +97,11 @@ public class CoursesIntermeiateAdapter extends ListAdapter<Course, CoursesInterm
         TextView courseTitleTextView = viewHolder.courseTitleTextView;
         courseTitleTextView.setText(course.getCourseTitleLong());
         TextView courseNumTextView = viewHolder.courseNumberTextView;
-        courseNumTextView.setText(course.getCourseTitleShort());
+        if ((int) (course.getNumberOfCredits()) == 1) {
+            courseNumTextView.setText(course.getCourseTitleShort() + ", " + (int) (course.getNumberOfCredits()) + " credit");
+        } else {
+            courseNumTextView.setText(course.getCourseTitleShort() + ", " + (int) (course.getNumberOfCredits()) + " credits");
+        }
         Button delButton = viewHolder.deleteCourseButton;
 
         delButton.setOnClickListener(new View.OnClickListener() {

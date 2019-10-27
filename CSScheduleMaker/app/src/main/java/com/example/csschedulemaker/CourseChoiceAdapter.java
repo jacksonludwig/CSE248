@@ -115,7 +115,7 @@ public class CourseChoiceAdapter extends ListAdapter<Course, CourseChoiceAdapter
             public void onClick(final View view) {
                 AlertDialog alertDialog = new AlertDialog.Builder(view.getContext()).create();
                 alertDialog.setTitle("Class Info");
-                alertDialog.setMessage("Course Number:\n" + course.getCourseTitleShort() + "\nCourse Description:\n" + course.getCourseDescription() + "\nCredits:\n" + course.getNumberOfCredits());
+                alertDialog.setMessage("Course Number:\n" + course.getCourseTitleShort() + "\nCourse Description:\n" + course.getCourseDescription() + "\nCredits:\n" + (int)(course.getNumberOfCredits()));
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {

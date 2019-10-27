@@ -29,13 +29,11 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
     private static final int OPEN_SPECIFIC_SEMESTER_CODE = 1;
 
     private TextView semTextView;
-    private TextView classNumTextView;
     private Button adjButton;
     private Button delButton;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView semesterTextView;
-        public TextView classNumTextView;
         public Button adjustButton;
         public Button deleteButton;
 
@@ -43,7 +41,6 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
             super(itemView);
 
             semesterTextView = (TextView) itemView.findViewById(R.id.semester_name);
-            classNumTextView = (TextView) itemView.findViewById(R.id.class_amount);
             adjustButton = (Button) itemView.findViewById(R.id.adjust_button);
             deleteButton = (Button) itemView.findViewById(R.id.delete_button);
         }
@@ -109,8 +106,6 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
         // Set item views based on your views and data model
         semTextView = viewHolder.semesterTextView;
         semTextView.setText(semester.getSemesterName());
-        classNumTextView = viewHolder.classNumTextView;
-        classNumTextView.setText(String.valueOf(semester.getNumClasses()) + " classes");
         adjButton = viewHolder.adjustButton;
         delButton = viewHolder.deleteButton;
 
