@@ -148,6 +148,8 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
         });
     }
 
+
+
     public static void showDeleteToast(Context context) {
         Toast.makeText(context, "Semester deleted", Toast.LENGTH_SHORT).show();
     }

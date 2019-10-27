@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 int index = searchListBySemester(result);
                 semesters.remove(index);
                 semesters.add(index, result);
+                adapter.submitList(semesters);
             }
         }
     }
