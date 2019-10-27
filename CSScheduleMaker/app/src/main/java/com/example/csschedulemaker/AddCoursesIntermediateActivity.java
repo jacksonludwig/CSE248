@@ -46,8 +46,6 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
 
         myCoursesRecycler.setAdapter(adapter);
         myCoursesRecycler.setLayoutManager(new LinearLayoutManager(this));
-
-       // adapter.addMoreCourses(courseBag.get("CSE110"));
     }
 
     public void addNewCourse(View view) {
@@ -55,24 +53,6 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
         intent.putExtra("currentSemesterInter", currentSemesterFromMain);
         startActivityForResult(intent, OPEN_COURSE_POPUP_RESULT);
     }
-
-    /*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == OPEN_COURSE_POPUP_RESULT) {
-            if (resultCode == RESULT_OK) {
-                Semester result = (Semester) (data.getSerializableExtra("updatedSem"));
-
-                System.out.println("ALMOST THERE " + result.getSemCourses());
-                adapter.addMoreCourses(result.getSemCourses().get(0));
-
-                Intent returnIntent = new Intent();
-                returnIntent.putExtra("userSem", result); // send the result of Activity3
-                setResult(Activity.RESULT_OK, returnIntent);
-            }
-        }
-    }
-    */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -99,8 +79,6 @@ public class AddCoursesIntermediateActivity extends AppCompatActivity implements
     @Override
     public void onResume() {
         super.onResume();
-
-        System.out.println(currentSemesterFromMain.getSemCourses().size());
         adapter.submitList(currentSemesterFromMain.getSemCourses());
     }
 }

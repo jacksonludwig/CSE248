@@ -10,7 +10,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import android.net.Uri;
 
 import com.example.csschedulemaker.courseData.CourseBag;
 import com.example.csschedulemaker.courseData.Semester;
@@ -71,9 +74,17 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 Intent intent = new Intent(getApplicationContext(), AddSemesterPopupActivity.class);
                 startActivityForResult(intent, ADD_SEMESTER_REQUEST_CODE);
                 return true;
+            case R.id.helpLink:
+                goToUrl(computerScienceHelpURL);
             default:
                 return false;
         }
+    }
+
+    private void goToUrl (String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
     }
 
     // This method is called when the second activity finishes

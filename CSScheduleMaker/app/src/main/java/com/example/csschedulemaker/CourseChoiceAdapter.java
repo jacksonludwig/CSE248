@@ -478,20 +478,14 @@ public class CourseChoiceAdapter extends ListAdapter<Course, CourseChoiceAdapter
                         builder.setNegativeButton(android.R.string.no, null);
                         AlertDialog dialog = builder.create();
                         dialog.show();
-                    }
-
-
-
-                    else {
+                    } else {
                         Intent returnIntent = new Intent();
                         returnIntent.putExtra("updatedSemester", course);
                         mActivity.setResult(Activity.RESULT_OK, returnIntent);
 
                         mActivity.finish();
                     }
-                }
-
-                else {
+                } else {
                     Utilities.showRepeatClass(view);
                 }
             }

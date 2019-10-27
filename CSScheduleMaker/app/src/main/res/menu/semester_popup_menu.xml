@@ -3,6 +3,10 @@
 
     <item
         android:id="@+id/addSemester"
-        android:title="Add a new Semester" />
+        android:title="@string/add_semester_menuItem" />
+
+    <item
+        android:id="@+id/helpLink"
+        android:title="@string/help_menuItem" />
 
 </menu>

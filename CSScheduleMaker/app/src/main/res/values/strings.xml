@@ -18,4 +18,6 @@
     <string name="course_selection_title">Course Title</string>
     <string name="choose_course">Take</string>
     <string name="course_info">Info</string>
+    <string name="add_semester_menuItem">Add a new Semester</string>
+    <string name="help_menuItem">Example Schedule</string>
 </resources>

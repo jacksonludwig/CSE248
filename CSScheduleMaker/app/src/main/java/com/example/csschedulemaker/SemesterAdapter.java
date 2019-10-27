@@ -28,6 +28,11 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
     private List<Semester> mySemesters;
     private static final int OPEN_SPECIFIC_SEMESTER_CODE = 1;
 
+    private TextView semTextView;
+    private TextView classNumTextView;
+    private Button adjButton;
+    private Button delButton;
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView semesterTextView;
         public TextView classNumTextView;
@@ -102,12 +107,12 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
         final Semester semester = getItem(position);
 
         // Set item views based on your views and data model
-        TextView semTextView = viewHolder.semesterTextView;
+        semTextView = viewHolder.semesterTextView;
         semTextView.setText(semester.getSemesterName());
-        TextView classNumTextView = viewHolder.classNumTextView;
+        classNumTextView = viewHolder.classNumTextView;
         classNumTextView.setText(String.valueOf(semester.getNumClasses()) + " classes");
-        Button adjButton = viewHolder.adjustButton;
-        Button delButton = viewHolder.deleteButton;
+        adjButton = viewHolder.adjustButton;
+        delButton = viewHolder.deleteButton;
 
         delButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,14 +146,12 @@ public class SemesterAdapter extends ListAdapter<Semester, SemesterAdapter.ViewH
             public void onClick(View view) {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, AddCoursesIntermediateActivity.class);
-                // intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("originalClassList", mySemesters.get(position));
                 ((Activity) context).startActivityForResult(intent, OPEN_SPECIFIC_SEMESTER_CODE);
+
             }
         });
     }
-
-
 
     public static void showDeleteToast(Context context) {
         Toast.makeText(context, "Semester deleted", Toast.LENGTH_SHORT).show();
