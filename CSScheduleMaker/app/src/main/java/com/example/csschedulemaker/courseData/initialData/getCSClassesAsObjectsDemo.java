@@ -8,20 +8,20 @@ import java.io.Serializable;
 public class getCSClassesAsObjectsDemo implements Serializable {
 
     public static void main(String[] args) {
-        CourseBag courses = null;
+        CourseBag courses = new CourseBag();
 
-        /*Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\cseClasses.txt");
-        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\engClasses.txt");
-        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\gymClasses.txt");
-        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\hisClasses.txt");
-        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\humClasses.txt");
-        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\langClasses.txt");
-        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\mathClasses.txt");
-        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\scienceClasses.txt");
-        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\socClasses.txt");
+        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\initialData\\cseClasses.txt");
+        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\initialData\\engClasses.txt");
+        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\initialData\\gymClasses.txt");
+        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\initialData\\hisClasses.txt");
+        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\initialData\\humClasses.txt");
+        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\initialData\\langClasses.txt");
+        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\initialData\\mathClasses.txt");
+        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\initialData\\scienceClasses.txt");
+        Utilities.buildCoursesFromFile(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\initialData\\socClasses.txt");
 
         Utilities.saveCourses(courses, "D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\courseData.dat");
-        */
+
 
         courses = Utilities.loadCourses("D:\\CSE248\\CSScheduleMaker\\app\\src\\main\\java\\com\\example\\csschedulemaker\\courseData\\courseData.dat");
         System.out.println(courses.get("MAT141"));

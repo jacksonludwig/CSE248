@@ -1,6 +1,9 @@
 package com.example.csschedulemaker.courseData;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,6 +17,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Utilities implements Serializable {
@@ -111,9 +115,48 @@ public class Utilities implements Serializable {
         while (scanner.hasNext()) {
             data = scanner.nextLine();
             Course course = new Course(data);
-          //  System.out.println(data);
+            System.out.println(data);
             courses.insert(course);
         }
 
+    }
+
+    /*
+    public static void showPrereqMissing(View view, String req, ArrayList<Course> courseList) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setCancelable(false);
+        builder.setTitle("Missing Pre-requisite");
+        builder.setMessage("You must take the Pre-Requisite class: " + req);
+        builder.setPositiveButton("Yes, delete",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // do not delete
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    */
+    public static void showRepeatClass(View view) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+        builder.setCancelable(true);
+        builder.setTitle("Repeat Class");
+        builder.setMessage("You may not take the same class more than once within a single semester");
+        builder.setPositiveButton("OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+        builder.setNegativeButton(android.R.string.no, null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

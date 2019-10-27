@@ -7,9 +7,12 @@
 
     <TextView
         android:id="@+id/course_name"
-        android:layout_width="wrap_content"
+        android:layout_width="218dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_gravity="fill"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:minLines="1"
         android:text="Course Name"
         android:textColor="@android:color/white"
         android:textSize="17sp"
@@ -38,6 +41,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:text="@string/choose_course"
+        android:textColor="@android:color/black"
         android:textSize="12sp" />
 
     <TextView
@@ -46,7 +50,6 @@
         android:layout_height="wrap_content"
         android:layout_row="1"
         android:layout_column="0"
-        android:layout_weight="1"
         android:text="Course number"
         android:textColor="@android:color/white"
         android:textSize="12sp" />

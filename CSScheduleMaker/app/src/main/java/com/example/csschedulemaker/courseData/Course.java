@@ -1,6 +1,7 @@
 package com.example.csschedulemaker.courseData;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 public class Course implements Serializable {
     private String courseTitleShort;
@@ -151,6 +152,15 @@ public class Course implements Serializable {
         }
         return description;
     }
+
+    public static Comparator<Course> courseNumComparator = new Comparator<Course>() {
+
+        public int compare(Course c1, Course c2) {
+            String course1 = c1.getCourseTitleShort().toUpperCase();
+            String course2 = c2.getCourseTitleShort().toUpperCase();
+
+            return course1.compareTo(course2);
+        }};
 
     public String getCourseTitleShort() {
         return courseTitleShort;

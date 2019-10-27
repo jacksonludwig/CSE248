@@ -14,6 +14,7 @@ import com.example.csschedulemaker.courseData.CourseTypes;
 import com.example.csschedulemaker.courseData.Semester;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CourseChoicesActivity extends AppCompatActivity {
@@ -34,6 +35,7 @@ public class CourseChoicesActivity extends AppCompatActivity {
         setTitle();
         setSemester();
         filterSemester();
+        Collections.sort(courseList, Course.courseNumComparator);
 
         recyclerView = (RecyclerView) findViewById(R.id.course_choice_recycler);
 
@@ -58,7 +60,7 @@ public class CourseChoicesActivity extends AppCompatActivity {
 
     private void setSemester() {
         semesterFromPopup = (Semester) (getIntent().getSerializableExtra("originalClassListFromTypePopup"));
-       // System.out.println(semesterFromPopup.getSemesterName());
+        // System.out.println(semesterFromPopup.getSemesterName());
     }
 
     private void filterSemester() {
