@@ -1,13 +1,12 @@
 package com.example.csschedulemaker;
 
+import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.TextView;
 
 import com.example.csschedulemaker.courseData.Course;
 import com.example.csschedulemaker.courseData.CourseTypes;
@@ -15,7 +14,6 @@ import com.example.csschedulemaker.courseData.Semester;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class CourseChoicesActivity extends AppCompatActivity {
 

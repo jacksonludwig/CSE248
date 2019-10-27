@@ -8,8 +8,8 @@ import java.util.Comparator;
 public class Semester implements Serializable {
     private String semester;
     private CourseBag courseBag;
-   // private HashMap<String, Course> semCourses;
-   private ArrayList<Course> semCourses;
+    // private HashMap<String, Course> semCourses;
+    private ArrayList<Course> semCourses;
 
     private int numClasses;
 
@@ -55,8 +55,8 @@ public class Semester implements Serializable {
     */
 
     public Course getClass(String courseName) {
-        for(Course c : semCourses) {
-            if(c.getCourseTitleShort().equalsIgnoreCase(courseName)) {
+        for (Course c : semCourses) {
+            if (c.getCourseTitleShort().equalsIgnoreCase(courseName)) {
                 return c;
             }
         }
@@ -101,7 +101,8 @@ public class Semester implements Serializable {
             String sem2YearOnly = semester2.replaceAll("[^0-9]", "");
 
             return sem1YearOnly.compareTo(sem2YearOnly);
-        }};
+        }
+    };
 
     public static Comparator<Semester> semSeasonComparator = new Comparator<Semester>() {
 
@@ -109,10 +110,10 @@ public class Semester implements Serializable {
             String semester1 = s1.getSemesterName().toUpperCase();
             String semester2 = s2.getSemesterName().toUpperCase();
 
-            String sem1SeasonOnly = semester1.replaceAll("\\d","");
-            sem1SeasonOnly = sem1SeasonOnly.replaceAll("\\s+","");
-            String sem2SeasonOnly = semester2.replaceAll("\\d","");
-            sem2SeasonOnly = sem2SeasonOnly.replaceAll("\\s+","");
+            String sem1SeasonOnly = semester1.replaceAll("\\d", "");
+            sem1SeasonOnly = sem1SeasonOnly.replaceAll("\\s+", "");
+            String sem2SeasonOnly = semester2.replaceAll("\\d", "");
+            sem2SeasonOnly = sem2SeasonOnly.replaceAll("\\s+", "");
 
             int winterWeight = 1;
             int fallWeight = 4;
@@ -156,14 +157,13 @@ public class Semester implements Serializable {
             }
 
             return sem1Weight - sem2Weight;
-        }};
-
-
+        }
+    };
 
     @Override
     public String toString() {
         String returnString = "";
-        for(int i = 0; i < semCourses.size(); i++) {
+        for (int i = 0; i < semCourses.size(); i++) {
             returnString = returnString + semCourses.get(i).getCourseTitleShort() + "\n";
         }
         return semester + ":\n" + returnString + "\n";

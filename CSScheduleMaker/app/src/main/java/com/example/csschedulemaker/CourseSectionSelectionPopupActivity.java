@@ -1,10 +1,5 @@
 package com.example.csschedulemaker;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +7,15 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.WindowManager;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.csschedulemaker.courseData.Course;
 import com.example.csschedulemaker.courseData.CourseTypes;
 import com.example.csschedulemaker.courseData.Semester;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class CourseSectionSelectionPopupActivity extends AppCompatActivity {

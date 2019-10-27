@@ -107,7 +107,7 @@ public class CourseTypeAdapter extends ListAdapter<CourseTypes, CourseTypeAdapte
                 Intent intent = new Intent(context, CourseChoicesActivity.class);
                 intent.putExtra("chosenCourseType", myCourseTypes.get(position));
                 intent.putExtra("originalClassListFromTypePopup", semesterFromIntermediate);
-                ((Activity)context).startActivityForResult(intent, OPEN_COURSE_TYPE_POPUP_RESULT);
+                ((Activity) context).startActivityForResult(intent, OPEN_COURSE_TYPE_POPUP_RESULT);
                 //((Activity)context).finish();
             }
         });

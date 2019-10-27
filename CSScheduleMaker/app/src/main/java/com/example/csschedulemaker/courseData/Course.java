@@ -160,7 +160,8 @@ public class Course implements Serializable {
             String course2 = c2.getCourseTitleShort().toUpperCase();
 
             return course1.compareTo(course2);
-        }};
+        }
+    };
 
     public String getCourseTitleShort() {
         return courseTitleShort;
