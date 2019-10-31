@@ -1,0 +1,11 @@
+~3k schools
+-name
+-# students
+-geographic region (coordinates)
+-tuition
+-public?/private?/provocial?
+
+
+Retrieved through java queries, parse to get all fields, 
+store in database, retrieve through local query.
+

@@ -1,0 +1,16 @@
+
+
+Your API key for ludwj61@mail.sunysuffolk.edu is:
+sKv5sBMASkdn4S1SiSvybvlGkmEb41AweWGoj8MS
+
+You can start using this key to make web service requests. Simply pass your key in the URL when making a web request. Here's an example:
+
+https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=sKv5sBMASkdn4S1SiSvybvlGkmEb41AweWGoj8MS&location=Denver+CO
+
+For additional support, please contact us. When contacting us, please tell us what API you're accessing and provide the following account details so we can quickly find you:
+Account Email: ludwj61@mail.sunysuffolk.edu
+Account Email: 11671b3f-7732-4896-973c-0de319dcd6dc
+
+-------------
+example:
+api.data.gov/ed/collegescorecard/v1/schools.json?api_key=sKv5sBMASkdn4S1SiSvybvlGkmEb41AweWGoj8MS&id=366395&_fields=school.name,latest.student.size,school.school_url
