@@ -5,14 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.http.HttpClient;
 import java.util.Scanner;
 
 public class Demo {
     public static void main(String[] args) throws IOException {
+        // example query
         URL url = new URL("https://api.data.gov/ed/collegescorecard/v1/schools?school.name=boston%20college&_fields=latest.student.size,id,school.name&api_key=sKv5sBMASkdn4S1SiSvybvlGkmEb41AweWGoj8MS&_per_page=100");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         connection.connect();
+        // this string will hold ALL of the data, concatenated together
         String inline = "";
         int responseCode = connection.getResponseCode();
         if (responseCode != 200) {
@@ -27,7 +30,7 @@ public class Demo {
         }
         // from Jackson
         ObjectMapper objectMapper = new ObjectMapper();
-
+        // JSON parse stuff below (check class example)
 
     }
 }

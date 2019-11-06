@@ -8,7 +8,14 @@ api.data.gov/ed/collegescorecard/v1/schools?school.name=boston%20college&_fields
 Check HTTP Query API guide from github for help, especially with zip/location/etc.
 Check Dictionary for call codes
 -------------
+***
+dont need to get info if there is no call code in the data dictionary, even if
+it says to get it on the project pdf
 JSON with Java:
-Newest java has parser built in, first try Jackson
+Newest java has parser built in? Has SSL certification in it
 
 Java 8, etc. can use Jackson for JSON
+import SSL certificate into JVM
+-------------
+SQLite
+Firebase

@@ -9,3 +9,7 @@
 Retrieved through java queries, parse to get all fields, 
 store in database, retrieve through local query.
 
+***
+dont need to get info if there is no call code in the data dictionary, even if
+it says to get it on the project pdf
+import SSL certificate into JVM
