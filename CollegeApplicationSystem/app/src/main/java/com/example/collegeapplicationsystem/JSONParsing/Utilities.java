@@ -2,6 +2,8 @@ package com.example.collegeapplicationsystem.JSONParsing;
 
 import android.content.Context;
 
+import com.example.collegeapplicationsystem.database.College;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

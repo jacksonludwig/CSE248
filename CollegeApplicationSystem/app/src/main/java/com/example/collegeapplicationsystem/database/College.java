@@ -1,4 +1,4 @@
-package com.example.collegeapplicationsystem.JSONParsing;
+package com.example.collegeapplicationsystem.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

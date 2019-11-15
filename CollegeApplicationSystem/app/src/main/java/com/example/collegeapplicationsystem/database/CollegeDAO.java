@@ -5,8 +5,6 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.example.collegeapplicationsystem.JSONParsing.College;
-
 import java.util.List;
 
 @Dao
