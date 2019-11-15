@@ -24,13 +24,13 @@ public class College {
     @JsonProperty("latest.cost.tuition.out_of_state")
     private Integer latestCostTuitionOutOfState;
     @JsonProperty("latest.admissions.sat_scores.75th_percentile.math")
-    private Object latestAdmissionsSatScores75thPercentileMath;
+    private Float latestAdmissionsSatScores75thPercentileMath;
     @JsonProperty("school.zip")
     private String schoolZip;
     @JsonProperty("latest.admissions.sat_scores.25th_percentile.critical_reading")
-    private Object latestAdmissionsSatScores25thPercentileCriticalReading;
+    private Float latestAdmissionsSatScores25thPercentileCriticalReading;
     @JsonProperty("latest.admissions.sat_scores.25th_percentile.math")
-    private Object latestAdmissionsSatScores25thPercentileMath;
+    private Float latestAdmissionsSatScores25thPercentileMath;
     @JsonProperty("school.school_url")
     private String schoolSchoolUrl;
     @JsonProperty("latest.cost.tuition.in_state")
@@ -38,7 +38,7 @@ public class College {
     @JsonProperty("school.name")
     private String schoolName;
     @JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")
-    private Object latestAdmissionsSatScores75thPercentileCriticalReading;
+    private Float latestAdmissionsSatScores75thPercentileCriticalReading;
     @JsonProperty("school.state")
     private String schoolState;
     @JsonProperty("id")
@@ -57,12 +57,12 @@ public class College {
     }
 
     @JsonProperty("latest.admissions.sat_scores.75th_percentile.math")
-    public Object getLatestAdmissionsSatScores75thPercentileMath() {
+    public Float getLatestAdmissionsSatScores75thPercentileMath() {
         return latestAdmissionsSatScores75thPercentileMath;
     }
 
     @JsonProperty("latest.admissions.sat_scores.75th_percentile.math")
-    public void setLatestAdmissionsSatScores75thPercentileMath(Object latestAdmissionsSatScores75thPercentileMath) {
+    public void setLatestAdmissionsSatScores75thPercentileMath(Float latestAdmissionsSatScores75thPercentileMath) {
         this.latestAdmissionsSatScores75thPercentileMath = latestAdmissionsSatScores75thPercentileMath;
     }
 
@@ -77,22 +77,22 @@ public class College {
     }
 
     @JsonProperty("latest.admissions.sat_scores.25th_percentile.critical_reading")
-    public Object getLatestAdmissionsSatScores25thPercentileCriticalReading() {
+    public Float getLatestAdmissionsSatScores25thPercentileCriticalReading() {
         return latestAdmissionsSatScores25thPercentileCriticalReading;
     }
 
     @JsonProperty("latest.admissions.sat_scores.25th_percentile.critical_reading")
-    public void setLatestAdmissionsSatScores25thPercentileCriticalReading(Object latestAdmissionsSatScores25thPercentileCriticalReading) {
+    public void setLatestAdmissionsSatScores25thPercentileCriticalReading(Float latestAdmissionsSatScores25thPercentileCriticalReading) {
         this.latestAdmissionsSatScores25thPercentileCriticalReading = latestAdmissionsSatScores25thPercentileCriticalReading;
     }
 
     @JsonProperty("latest.admissions.sat_scores.25th_percentile.math")
-    public Object getLatestAdmissionsSatScores25thPercentileMath() {
+    public Float getLatestAdmissionsSatScores25thPercentileMath() {
         return latestAdmissionsSatScores25thPercentileMath;
     }
 
     @JsonProperty("latest.admissions.sat_scores.25th_percentile.math")
-    public void setLatestAdmissionsSatScores25thPercentileMath(Object latestAdmissionsSatScores25thPercentileMath) {
+    public void setLatestAdmissionsSatScores25thPercentileMath(Float latestAdmissionsSatScores25thPercentileMath) {
         this.latestAdmissionsSatScores25thPercentileMath = latestAdmissionsSatScores25thPercentileMath;
     }
 
@@ -127,12 +127,12 @@ public class College {
     }
 
     @JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")
-    public Object getLatestAdmissionsSatScores75thPercentileCriticalReading() {
+    public Float getLatestAdmissionsSatScores75thPercentileCriticalReading() {
         return latestAdmissionsSatScores75thPercentileCriticalReading;
     }
 
     @JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")
-    public void setLatestAdmissionsSatScores75thPercentileCriticalReading(Object latestAdmissionsSatScores75thPercentileCriticalReading) {
+    public void setLatestAdmissionsSatScores75thPercentileCriticalReading(Float latestAdmissionsSatScores75thPercentileCriticalReading) {
         this.latestAdmissionsSatScores75thPercentileCriticalReading = latestAdmissionsSatScores75thPercentileCriticalReading;
     }
 
