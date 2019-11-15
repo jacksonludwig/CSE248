@@ -1,15 +1,21 @@
 package com.example.collegeapplicationsystem.JSONParsing;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.json.JSONException;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class JSONRetriever {
 
     private static final String API_KEY = "sKv5sBMASkdn4S1SiSvybvlGkmEb41AweWGoj8MS";
-    private static final String TAG = JSONRetriever.class.getSimpleName();
+
 
     public JSONRetriever() {
     }
@@ -44,8 +50,4 @@ public class JSONRetriever {
         return data;
     }
 
-    // need to make College class with desired fields so Jackson can turn JSON in objects
-    private Map parseJSONToMap(String data) {
-        return null;
-    }
 }
