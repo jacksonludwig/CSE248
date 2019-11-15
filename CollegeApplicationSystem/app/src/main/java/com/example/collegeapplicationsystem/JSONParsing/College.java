@@ -1,153 +1,186 @@
 package com.example.collegeapplicationsystem.JSONParsing;
 
-// Required fields:
-// ID, Name, Address, City, Zip, State, Web address, In state cost,
-// out of state cost, SAT 25th percentile (Reading + math), SAT 75th percentile (Reading + math)
-// if some of the above don't exist or are repetitive, don't include them.
-
-
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "latest.cost.tuition.out_of_state",
+        "latest.admissions.sat_scores.75th_percentile.math",
+        "school.zip",
+        "latest.admissions.sat_scores.25th_percentile.critical_reading",
+        "latest.admissions.sat_scores.25th_percentile.math",
+        "school.school_url",
+        "latest.cost.tuition.in_state",
+        "school.name",
+        "latest.admissions.sat_scores.75th_percentile.critical_reading",
+        "school.state",
+        "id",
+        "school.city"
+})
 public class College {
 
     @JsonProperty("latest.cost.tuition.out_of_state")
-    private int outOfStateTuition;
-    @JsonProperty("latest.cost.tuition.in_state")
-    private int inStateTuition;
-    @JsonProperty("id")
-    private int id;
-    @JsonProperty("school.name")
-    private String name;
-    @JsonProperty("school.city")
-    private String city;
-    @JsonProperty("school.zip")
-    private int zip;
-    @JsonProperty("school.state")
-    private String state;
-    @JsonProperty("school.school_url")
-    private String website;
-    @JsonProperty("latest.admissions.sat_scores.25th_percentile.critical_reading")
-    private int sat25Reading;
-    @JsonProperty("latest.admissions.sat_scores.25th_percentile.math")
-    private int sat25Math;
-    @JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")
-    private int sat75Reading;
+    private Integer latestCostTuitionOutOfState;
     @JsonProperty("latest.admissions.sat_scores.75th_percentile.math")
-    private int sat75Math;
+    private Object latestAdmissionsSatScores75thPercentileMath;
+    @JsonProperty("school.zip")
+    private String schoolZip;
+    @JsonProperty("latest.admissions.sat_scores.25th_percentile.critical_reading")
+    private Object latestAdmissionsSatScores25thPercentileCriticalReading;
+    @JsonProperty("latest.admissions.sat_scores.25th_percentile.math")
+    private Object latestAdmissionsSatScores25thPercentileMath;
+    @JsonProperty("school.school_url")
+    private String schoolSchoolUrl;
+    @JsonProperty("latest.cost.tuition.in_state")
+    private Integer latestCostTuitionInState;
+    @JsonProperty("school.name")
+    private String schoolName;
+    @JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")
+    private Object latestAdmissionsSatScores75thPercentileCriticalReading;
+    @JsonProperty("school.state")
+    private String schoolState;
+    @JsonProperty("id")
+    private Integer id;
+    @JsonProperty("school.city")
+    private String schoolCity;
 
-
-    public College() {
+    @JsonProperty("latest.cost.tuition.out_of_state")
+    public Integer getLatestCostTuitionOutOfState() {
+        return latestCostTuitionOutOfState;
     }
 
-    public int getId() {
+    @JsonProperty("latest.cost.tuition.out_of_state")
+    public void setLatestCostTuitionOutOfState(Integer latestCostTuitionOutOfState) {
+        this.latestCostTuitionOutOfState = latestCostTuitionOutOfState;
+    }
+
+    @JsonProperty("latest.admissions.sat_scores.75th_percentile.math")
+    public Object getLatestAdmissionsSatScores75thPercentileMath() {
+        return latestAdmissionsSatScores75thPercentileMath;
+    }
+
+    @JsonProperty("latest.admissions.sat_scores.75th_percentile.math")
+    public void setLatestAdmissionsSatScores75thPercentileMath(Object latestAdmissionsSatScores75thPercentileMath) {
+        this.latestAdmissionsSatScores75thPercentileMath = latestAdmissionsSatScores75thPercentileMath;
+    }
+
+    @JsonProperty("school.zip")
+    public String getSchoolZip() {
+        return schoolZip;
+    }
+
+    @JsonProperty("school.zip")
+    public void setSchoolZip(String schoolZip) {
+        this.schoolZip = schoolZip;
+    }
+
+    @JsonProperty("latest.admissions.sat_scores.25th_percentile.critical_reading")
+    public Object getLatestAdmissionsSatScores25thPercentileCriticalReading() {
+        return latestAdmissionsSatScores25thPercentileCriticalReading;
+    }
+
+    @JsonProperty("latest.admissions.sat_scores.25th_percentile.critical_reading")
+    public void setLatestAdmissionsSatScores25thPercentileCriticalReading(Object latestAdmissionsSatScores25thPercentileCriticalReading) {
+        this.latestAdmissionsSatScores25thPercentileCriticalReading = latestAdmissionsSatScores25thPercentileCriticalReading;
+    }
+
+    @JsonProperty("latest.admissions.sat_scores.25th_percentile.math")
+    public Object getLatestAdmissionsSatScores25thPercentileMath() {
+        return latestAdmissionsSatScores25thPercentileMath;
+    }
+
+    @JsonProperty("latest.admissions.sat_scores.25th_percentile.math")
+    public void setLatestAdmissionsSatScores25thPercentileMath(Object latestAdmissionsSatScores25thPercentileMath) {
+        this.latestAdmissionsSatScores25thPercentileMath = latestAdmissionsSatScores25thPercentileMath;
+    }
+
+    @JsonProperty("school.school_url")
+    public String getSchoolSchoolUrl() {
+        return schoolSchoolUrl;
+    }
+
+    @JsonProperty("school.school_url")
+    public void setSchoolSchoolUrl(String schoolSchoolUrl) {
+        this.schoolSchoolUrl = schoolSchoolUrl;
+    }
+
+    @JsonProperty("latest.cost.tuition.in_state")
+    public Integer getLatestCostTuitionInState() {
+        return latestCostTuitionInState;
+    }
+
+    @JsonProperty("latest.cost.tuition.in_state")
+    public void setLatestCostTuitionInState(Integer latestCostTuitionInState) {
+        this.latestCostTuitionInState = latestCostTuitionInState;
+    }
+
+    @JsonProperty("school.name")
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    @JsonProperty("school.name")
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
+    @JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")
+    public Object getLatestAdmissionsSatScores75thPercentileCriticalReading() {
+        return latestAdmissionsSatScores75thPercentileCriticalReading;
+    }
+
+    @JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")
+    public void setLatestAdmissionsSatScores75thPercentileCriticalReading(Object latestAdmissionsSatScores75thPercentileCriticalReading) {
+        this.latestAdmissionsSatScores75thPercentileCriticalReading = latestAdmissionsSatScores75thPercentileCriticalReading;
+    }
+
+    @JsonProperty("school.state")
+    public String getSchoolState() {
+        return schoolState;
+    }
+
+    @JsonProperty("school.state")
+    public void setSchoolState(String schoolState) {
+        this.schoolState = schoolState;
+    }
+
+    @JsonProperty("id")
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    @JsonProperty("id")
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    @JsonProperty("school.city")
+    public String getSchoolCity() {
+        return schoolCity;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public int getZip() {
-        return zip;
-    }
-
-    public void setZip(int zip) {
-        this.zip = zip;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getWebsite() {
-        return website;
-    }
-
-    public void setWebsite(String website) {
-        this.website = website;
-    }
-
-    public int getSat25Reading() {
-        return sat25Reading;
-    }
-
-    public void setSat25Reading(int sat25Reading) {
-        this.sat25Reading = sat25Reading;
-    }
-
-    public int getSat25Math() {
-        return sat25Math;
-    }
-
-    public void setSat25Math(int sat25Math) {
-        this.sat25Math = sat25Math;
-    }
-
-    public int getSat75Reading() {
-        return sat75Reading;
-    }
-
-    public void setSat75Reading(int sat75Reading) {
-        this.sat75Reading = sat75Reading;
-    }
-
-    public int getSat75Math() {
-        return sat75Math;
-    }
-
-    public void setSat75Math(int sat75Math) {
-        this.sat75Math = sat75Math;
-    }
-
-    public int getOutOfStateTuition() {
-        return outOfStateTuition;
-    }
-
-    public void setOutOfStateTuition(int outOfStateTuition) {
-        this.outOfStateTuition = outOfStateTuition;
-    }
-
-    public int getInStateTuition() {
-        return inStateTuition;
-    }
-
-    public void setInStateTuition(int inStateTuition) {
-        this.inStateTuition = inStateTuition;
+    @JsonProperty("school.city")
+    public void setSchoolCity(String schoolCity) {
+        this.schoolCity = schoolCity;
     }
 
     @Override
     public String toString() {
-        return "College{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", city='" + city + '\'' +
-                ", zip=" + zip +
-                ", state='" + state + '\'' +
-                ", website='" + website + '\'' +
-                ", sat25Reading=" + sat25Reading +
-                ", sat25Math=" + sat25Math +
-                ", sat75Reading=" + sat75Reading +
-                ", sat75Math=" + sat75Math +
+        return "Result{" +
+                "latestCostTuitionOutOfState=" + latestCostTuitionOutOfState +
+                ", latestAdmissionsSatScores75thPercentileMath=" + latestAdmissionsSatScores75thPercentileMath +
+                ", schoolZip='" + schoolZip + '\'' +
+                ", latestAdmissionsSatScores25thPercentileCriticalReading=" + latestAdmissionsSatScores25thPercentileCriticalReading +
+                ", latestAdmissionsSatScores25thPercentileMath=" + latestAdmissionsSatScores25thPercentileMath +
+                ", schoolSchoolUrl='" + schoolSchoolUrl + '\'' +
+                ", latestCostTuitionInState=" + latestCostTuitionInState +
+                ", schoolName='" + schoolName + '\'' +
+                ", latestAdmissionsSatScores75thPercentileCriticalReading=" + latestAdmissionsSatScores75thPercentileCriticalReading +
+                ", schoolState='" + schoolState + '\'' +
+                ", id=" + id +
+                ", schoolCity='" + schoolCity + '\'' +
                 '}';
     }
 }
