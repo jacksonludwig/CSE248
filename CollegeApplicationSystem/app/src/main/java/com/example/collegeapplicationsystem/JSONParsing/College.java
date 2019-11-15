@@ -1,8 +1,4 @@
-package com.example.collegeapplicationsystem.database;
-
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+package com.example.collegeapplicationsystem.JSONParsing;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -25,53 +21,40 @@ import java.io.Serializable;
         "id",
         "school.city"
 })
-@Entity
 public class College implements Serializable {
-    @ColumnInfo(name = "out_of_state_tuition")
     @JsonProperty("latest.cost.tuition.out_of_state")
     private Integer latestCostTuitionOutOfState;
 
-    @ColumnInfo(name = "sat_math_75")
     @JsonProperty("latest.admissions.sat_scores.75th_percentile.math")
     private Float latestAdmissionsSatScores75thPercentileMath;
 
-    @ColumnInfo(name = "zip")
     @JsonProperty("school.zip")
     private String schoolZip;
 
-    @ColumnInfo(name = "sat_reading_25")
     @JsonProperty("latest.admissions.sat_scores.25th_percentile.critical_reading")
     private Float latestAdmissionsSatScores25thPercentileCriticalReading;
 
-    @ColumnInfo(name = "sat_math_25")
     @JsonProperty("latest.admissions.sat_scores.25th_percentile.math")
     private Float latestAdmissionsSatScores25thPercentileMath;
 
-    @ColumnInfo(name = "url")
     @JsonProperty("school.school_url")
     private String schoolSchoolUrl;
 
-    @ColumnInfo(name = "in_state_tuition")
     @JsonProperty("latest.cost.tuition.in_state")
     private Integer latestCostTuitionInState;
 
-    @ColumnInfo(name = "name")
     @JsonProperty("school.name")
     private String schoolName;
 
-    @ColumnInfo(name = "sat_reading_75")
     @JsonProperty("latest.admissions.sat_scores.75th_percentile.critical_reading")
     private Float latestAdmissionsSatScores75thPercentileCriticalReading;
 
-    @ColumnInfo(name = "state")
     @JsonProperty("school.state")
     private String schoolState;
 
-    @PrimaryKey
     @JsonProperty("id")
     private Integer id;
 
-    @ColumnInfo(name = "city")
     @JsonProperty("school.city")
     private String schoolCity;
 
@@ -197,7 +180,7 @@ public class College implements Serializable {
 
     @Override
     public String toString() {
-        return "Result{" +
+        return "College{" +
                 "latestCostTuitionOutOfState=" + latestCostTuitionOutOfState +
                 ", latestAdmissionsSatScores75thPercentileMath=" + latestAdmissionsSatScores75thPercentileMath +
                 ", schoolZip='" + schoolZip + '\'' +
