@@ -18,6 +18,8 @@ public class JSONRetriever {
             "&page=";
     private static final int START_PAGE = 0;
     private static final int TOTAL_PAGES = 71;
+    private static final int TIMEOUT_TIME = 30000;
+
     private static int connectionCount = 0;
 
     public JSONRetriever() {
@@ -32,8 +34,7 @@ public class JSONRetriever {
 
             httpURLConnection.setDoOutput(true);
 
-            // give it 15 seconds to respond
-            httpURLConnection.setReadTimeout(15 * 1000);
+            httpURLConnection.setReadTimeout(TIMEOUT_TIME);
             httpURLConnection.connect();
             System.out.println("API Call #" + ++connectionCount);
 
