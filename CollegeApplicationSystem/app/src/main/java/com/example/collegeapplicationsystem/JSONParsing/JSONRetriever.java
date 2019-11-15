@@ -54,8 +54,8 @@ public class JSONRetriever {
         return data;
     }
 
-    public Holder mapToObject(int page) {
-        String data = getDataFromApi(BASE_LINK + String.valueOf(page));
+    public Holder mapPageToObject(int page) {
+        String data = getDataFromApi(BASE_LINK + page);
         ObjectMapper objectMapper = new ObjectMapper();
         Holder holder = null;
         try {
@@ -66,10 +66,10 @@ public class JSONRetriever {
         return holder;
     }
 
-    public Holder mapAllObjects() {
-        Holder allColleges = mapToObject(START_PAGE);
+    public Holder mapAllPagesToObjects() {
+        Holder allColleges = mapPageToObject(START_PAGE);
         for (int i = START_PAGE + 1; i < TOTAL_PAGES + 1; i++) {
-            allColleges.getColleges().addAll(mapToObject(i).getColleges());
+            allColleges.getColleges().addAll(mapPageToObject(i).getColleges());
         }
         return allColleges;
     }
