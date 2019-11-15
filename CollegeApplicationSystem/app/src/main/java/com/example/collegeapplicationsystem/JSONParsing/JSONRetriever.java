@@ -26,7 +26,7 @@ public class JSONRetriever {
     }
 
     private String getDataFromApi(String link) {
-        String data = null;
+        StringBuilder data = new StringBuilder();
         try {
             URL url = new URL(link);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -38,21 +38,20 @@ public class JSONRetriever {
             httpURLConnection.connect();
             System.out.println("API Call #" + ++connectionCount);
 
-            data = "";
             int responseCode = httpURLConnection.getResponseCode();
             if (responseCode != 200) {
                 throw new RuntimeException("HttpResponseCode: " + responseCode);
             } else {
                 Scanner scanner = new Scanner(url.openStream());
                 while (scanner.hasNext()) {
-                    data += scanner.nextLine();
+                    data.append(scanner.nextLine());
                 }
                 scanner.close();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return data;
+        return data.toString();
     }
 
     public Holder mapPageToObject(int page) {
