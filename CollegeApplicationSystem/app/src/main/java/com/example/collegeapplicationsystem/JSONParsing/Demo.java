@@ -1,14 +1,15 @@
 package com.example.collegeapplicationsystem.JSONParsing;
 
+import java.util.HashMap;
+
 public class Demo {
     public static void main(String[] args) {
         JSONRetriever jsonRetriever = new JSONRetriever();
-        //Holder holder = jsonRetriever.mapAllPagesToObjects();
-       // System.out.println(holder.getColleges().size());
-        Holder holder = jsonRetriever.mapPageToObject(20);
-        System.out.println(holder.getColleges().get(9));
+        Holder holder = jsonRetriever.mapAllPagesToObjects();
 
-      //  Utilities.saveColleges(holder.getColleges(), "colleges.dat");
+        HashMap<String, College> collegeHashMap = jsonRetriever.collegeListToHashMap(holder.getColleges());
 
+        Utilities.saveColleges(holder.getColleges(), "colleges_list.dat");
+        Utilities.saveColleges(collegeHashMap, "colleges_hash.dat");
     }
 }
