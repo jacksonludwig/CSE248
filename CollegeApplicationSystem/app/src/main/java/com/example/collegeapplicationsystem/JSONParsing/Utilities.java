@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -52,13 +51,13 @@ public class Utilities {
         return null;
     }
 
-    public static HashMap<String, College>  loadHashMapColleges(String fileName, Context context) {
+    public static HashMap<String, College> loadHashMapColleges(String fileName, Context context) {
         InputStream fis = null;
         ObjectInputStream ois = null;
         try {
             fis = context.getAssets().open(fileName);
             ois = new ObjectInputStream(fis);
-            return (HashMap<String, College> ) ois.readObject();
+            return (HashMap<String, College>) ois.readObject();
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }

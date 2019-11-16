@@ -79,7 +79,7 @@ public class JSONRetriever {
     public HashMap<String, College> collegeListToHashMap(List<College> colleges) {
         HashMap<String, College> collegeHashMap = new HashMap<>();
         for (College college : colleges) {
-            collegeHashMap.put(String.valueOf(college.getId()),college);
+            collegeHashMap.put(String.valueOf(college.getId()), college);
         }
         return collegeHashMap;
     }
