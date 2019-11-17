@@ -1,20 +1,3 @@
-~3k schools
--name
--# students
--geographic region (coordinates)
--tuition
--public?/private?/provocial?
+email: testuser@gmail.com
+password: password
 
-
-Retrieved through java queries, parse to get all fields, 
-store in database, retrieve through local query.
-
-***
-dont need to get info if there is no call code in the data dictionary, even if
-it says to get it on the project pdf
-import SSL certificate into JVM
-***
-
-dump database scripts when uploading project
-
-Test android studio with parsing and databases ASAP
