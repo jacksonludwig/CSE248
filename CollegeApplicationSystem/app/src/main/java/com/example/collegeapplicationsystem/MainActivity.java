@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         });
         */
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         List<AuthUI.IdpConfig> providers = Collections.singletonList(
                 new AuthUI.IdpConfig.EmailBuilder().build());
 
@@ -43,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAvailableProviders(providers)
                         .build(),
                 RC_SIGN_IN_REQUEST_CODE);
-
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     }
 
