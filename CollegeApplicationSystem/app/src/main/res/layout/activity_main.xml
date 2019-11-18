@@ -4,15 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#464958"
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/login_welcome_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/login_welcome_title"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07999998" />
+
+    <TextView
+        android:id="@+id/login_welcomesubtitle_textview"
+        android:layout_width="374dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/login_welcome_text"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_button"
+        app:layout_constraintEnd_toEndOf="@+id/login_welcome_textview"
+        app:layout_constraintStart_toStartOf="@+id/login_welcome_textview"
+        app:layout_constraintTop_toBottomOf="@+id/login_welcome_textview" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="123dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="5dp"
+        android:onClick="createSignInIntent"
+        android:text="@string/login_button_text"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/login_welcomesubtitle_textview"
+        app:layout_constraintStart_toStartOf="@+id/login_welcomesubtitle_textview"
+        app:layout_constraintTop_toBottomOf="@+id/login_welcomesubtitle_textview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

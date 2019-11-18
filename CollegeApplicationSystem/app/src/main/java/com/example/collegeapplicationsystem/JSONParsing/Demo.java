@@ -9,7 +9,7 @@ public class Demo {
 
         HashMap<String, College> collegeHashMap = jsonRetriever.collegeListToHashMap(holder.getColleges());
 
-        Utilities.saveColleges(holder.getColleges(), "colleges_list.dat");
-        Utilities.saveColleges(collegeHashMap, "colleges_hash.dat");
+       // Utilities.saveColleges(holder.getColleges(), "colleges_list.dat");
+       // Utilities.saveColleges(collegeHashMap, "colleges_hash.dat");
     }
 }

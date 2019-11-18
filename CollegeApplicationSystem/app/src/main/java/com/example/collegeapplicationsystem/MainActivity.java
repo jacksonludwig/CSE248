@@ -2,6 +2,7 @@ package com.example.collegeapplicationsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /* Example Query
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("colleges").document("100654");
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -33,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         */
+    }
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    public void createSignInIntent(View view) {
         List<AuthUI.IdpConfig> providers = Collections.singletonList(
                 new AuthUI.IdpConfig.EmailBuilder().build());
 
@@ -45,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAvailableProviders(providers)
                         .build(),
                 RC_SIGN_IN_REQUEST_CODE);
-
     }
 
     @Override
@@ -56,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
-                // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                // ...
+                // START THE REAL PURPOSE OF APP HERE, ELSE IT WILL RETURN TO LOGIN SCREEN
+
             } else {
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check
