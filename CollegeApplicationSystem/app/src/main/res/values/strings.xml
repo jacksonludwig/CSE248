@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">College Application System</string>
     <string name="login_welcome_title">Welcome.</string>
-    <string name="login_welcome_text">Use an existing account or type in a new email to make an account.</string>
-    <string name="login_button_text">LOGIN</string>
+    <string name="login_welcome_text">Use an account or a temporary guest to use the app. You must
+        be a user to save your favorites.</string>
+    <string name="login_button_text">LOGIN AS USER</string>
+    <string name="login_button_text_guest">LOGIN AS GUEST</string>
 </resources>
