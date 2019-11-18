@@ -155,3 +155,17 @@ lint/outputs/
 lint/tmp/
 # lint/reports/
 
+*.iml
+.gradle
+CollegeApplicationSystem/local.properties
+CollegeApplicationSystem/.idea/caches
+CollegeApplicationSystem/.idea/libraries
+CollegeApplicationSystem/.idea/modules.xml
+CollegeApplicationSystem/.idea/workspace.xml
+CollegeApplicationSystem/.idea/navEditor.xml
+CollegeApplicationSystem/.idea/assetWizardSettings.xml
+.DS_Store
+CollegeApplicationSystem/build
+CollegeApplicationSystem/captures
+.externalNativeBuild
+.cxx
