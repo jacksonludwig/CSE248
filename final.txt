@@ -1,5 +1,13 @@
 email: testuser@gmail.com
 password: password
+--------------------
+-live search filter not possible with firebase (too much data).
 
-2nd collection for user data
+-on sign in, add the email as a document to the userdata database. 
+
+-new favorites must be added to DB under current user;
+whenever favorites menu is clicked, all favs should be queried from DB.
+
+
+
 
