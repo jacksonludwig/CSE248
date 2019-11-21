@@ -1,6 +1,7 @@
 package com.example.collegeapplicationsystem;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,11 +34,11 @@ public class MainSearchMenuActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            ArrayList<College> colleges = new ArrayList<>();
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                colleges.add(document.toObject(College.class));
+                                Log.d("Query", document.getId() + " => " + document.getData());
                             }
-                            System.out.println(colleges);
+                        } else {
+                            Log.d("Query", "Error getting documents: ", task.getException());
                         }
                     }
                 });
