@@ -1,44 +1,46 @@
 package com.example.collegeapplicationsystem;
 
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.widget.Toast;
-
 import com.example.collegeapplicationsystem.JSONParsing.College;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class MainSearchMenuActivity extends AppCompatActivity {
+
+    ArrayList<College> collegeList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu_search);
 
-        // Example Query
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        /*
-        DocumentReference docRef = db.collection("colleges").document("100654");
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                College college = documentSnapshot.toObject(College.class);
-                System.out.println(college);
-                Toast.makeText(MainSearchMenuActivity.this, college.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        DocumentReference docRef = db.collection("userdata").document("jacksonludwig0@gmail.com");
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                System.out.println(documentSnapshot.getData());
-            }
-        });
-        */
+        db.collection("colleges")
+                .whereGreaterThanOrEqualTo("schoolName", "Stony")
+                .whereLessThan("schoolName", "Stonz")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            ArrayList<College> colleges = new ArrayList<>();
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                colleges.add(document.toObject(College.class));
+                            }
+                            System.out.println(colleges);
+                        }
+                    }
+                });
     }
+
 }
