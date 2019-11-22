@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN_REQUEST_CODE = 0;
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
 
     @Override
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
                 .setPersistenceEnabled(true)
                 .build();
@@ -88,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addAndSetUser() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         db.collection("userdata")
                 .whereEqualTo("email", user.getEmail())
