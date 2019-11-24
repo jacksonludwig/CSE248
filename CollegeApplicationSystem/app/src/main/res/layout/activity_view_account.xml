@@ -10,9 +10,10 @@
     <TextView
         android:id="@+id/email_textview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="27dp"
         android:layout_marginTop="16dp"
         android:text="email_placeholder"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/firstname_title_textview"
@@ -23,9 +24,10 @@
     <TextView
         android:id="@+id/firstname_textview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="27dp"
         android:layout_marginTop="16dp"
         android:text="firstName_placeholder"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/lastname_title_textview"
@@ -36,7 +38,7 @@
     <TextView
         android:id="@+id/lastname_textview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="27dp"
         android:layout_marginTop="16dp"
         android:text="lastName_placeholder"
         android:textColor="@android:color/white"
@@ -49,9 +51,10 @@
     <TextView
         android:id="@+id/math_textview"
         android:layout_width="155dp"
-        android:layout_height="25dp"
+        android:layout_height="27dp"
         android:layout_marginTop="16dp"
         android:text="math_placeholder"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/reading_title_textview"
@@ -62,9 +65,10 @@
     <TextView
         android:id="@+id/reading_textview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="27dp"
         android:layout_marginTop="16dp"
         android:text="reading_placeholder"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/reading_title_textview"
@@ -141,5 +145,21 @@
         app:layout_constraintEnd_toEndOf="@+id/math_textview"
         app:layout_constraintStart_toStartOf="@+id/math_textview"
         app:layout_constraintTop_toBottomOf="@+id/math_textview" />
+
+    <Button
+        android:id="@+id/edit_firstname_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="86dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="128dp"
+        android:text="@string/edit_text"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:onClick="editAccount"
+        app:layout_constraintBottom_toBottomOf="@+id/email_title_textview"
+        app:layout_constraintStart_toStartOf="@+id/email_title_textview"
+        app:layout_constraintTop_toTopOf="@+id/email_title_textview"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

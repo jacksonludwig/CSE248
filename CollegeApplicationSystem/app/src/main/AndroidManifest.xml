@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ViewAccountActivity"></activity>
+        <activity android:name=".EditFirstNamePopupActivity"
+            android:theme="@style/AppTheme.EditAccountPopup"></activity>
+        <activity android:name=".ViewAccountActivity" />
         <activity android:name=".MainSearchMenuActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

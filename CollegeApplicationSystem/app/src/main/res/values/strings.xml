@@ -14,6 +14,15 @@
     <string name="email">Email:</string>
     <string name="first_name">First Name:</string>
     <string name="last_name">Last Name:</string>
-    <string name="math_score">Math Score:</string>
-    <string name="reading_score">Reading Score:</string>
+    <string name="math_score">SAT Math Score:</string>
+    <string name="reading_score">SAT Reading Score:</string>
+    <string name="edit_text">edit...</string>
+    <string name="first_name_menu">first name</string>
+    <string name="last_name_menu">last name</string>
+    <string name="math_score_menu">math score</string>
+    <string name="reading_score_menu">reading score</string>
+    <string name="first_name_prompt">First Name</string>
+    <string name="last_name_prompt">Last Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="accept">Accept</string>
 </resources>
