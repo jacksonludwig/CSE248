@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,8 @@ import java.util.Map;
 
 public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String TAG = "USER_QUERY";
+    private static final String TAG2 = "USER DATA ENTRY";
+
     private static final int EDIT_FIRST_NAME_REQUEST_CODE = 10;
     private static final int EDIT_LAST_NAME_REQUEST_CODE = 20;
     private static final int EDIT_MATH_SCORE_REQUEST_CODE = 30;
@@ -102,7 +105,7 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            Log.w("User data entry", "Error writing document", e);
+                                            Log.w(TAG2, "Error writing document", e);
                                         }
                                     });
                             firstNameTextView = findViewById(R.id.firstname_textview);
@@ -130,7 +133,7 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            Log.w("User data entry", "Error writing document", e);
+                                            Log.w(TAG2, "Error writing document", e);
                                         }
                                     });
                             lastNameTextView = findViewById(R.id.lastname_textview);
@@ -158,7 +161,7 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            Log.w("User data entry", "Error writing document", e);
+                                            Log.w(TAG2, "Error writing document", e);
                                         }
                                     });
                             mathScoreTextView = findViewById(R.id.math_textview);
@@ -186,7 +189,7 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            Log.w("User data entry", "Error writing document", e);
+                                            Log.w(TAG2, "Error writing document", e);
                                         }
                                     });
                             readingScoreTextView = findViewById(R.id.reading_textview);
@@ -237,26 +240,31 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
             if (resultCode == RESULT_OK) {
                 updateFirstName(data.getStringExtra("firstName"));
             } else {
-
+                showErrorToast();
             }
         } else if (requestCode == EDIT_LAST_NAME_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 updateLastName(data.getStringExtra("lastName"));
             } else {
-
+                showErrorToast();
             }
         } else if (requestCode == EDIT_MATH_SCORE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 updateMathScore(data.getStringExtra("mathScore"));
             } else {
-
+                showErrorToast();
             }
         } else if (requestCode == EDIT_READING_SCORE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 updateReadingScore(data.getStringExtra("readingScore"));
             } else {
-
+                showErrorToast();
             }
         }
     }
+
+    private void showErrorToast() {
+        Toast.makeText(this, "Error updating data", Toast.LENGTH_SHORT).show();
+    }
 }
+
