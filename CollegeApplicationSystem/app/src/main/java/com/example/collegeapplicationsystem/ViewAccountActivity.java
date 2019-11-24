@@ -7,17 +7,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String TAG = "USER_QUERY";
@@ -25,6 +29,12 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+    private TextView emailTextView;
+    private TextView firstNameTextView;
+    private TextView lastNameTextView;
+    private TextView mathScoreTextView;
+    private TextView readingScoreTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +50,15 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
     }
 
     private void setEmailView() {
-        TextView emailTextView = findViewById(R.id.email_textview);
+        emailTextView = findViewById(R.id.email_textview);
         emailTextView.setText(user.getEmail());
     }
 
     private void setNameAndScoreView() {
-        final TextView firstNameTextView = findViewById(R.id.firstname_textview);
-        final TextView lastNameTextView = findViewById(R.id.lastname_textview);
-        final TextView mathScoreTextView = findViewById(R.id.math_textview);
-        final TextView readingScoreTextView = findViewById(R.id.reading_textview);
+        firstNameTextView = findViewById(R.id.firstname_textview);
+        lastNameTextView = findViewById(R.id.lastname_textview);
+        mathScoreTextView = findViewById(R.id.math_textview);
+        readingScoreTextView = findViewById(R.id.reading_textview);
         db.collection("userdata")
                 .document(user.getEmail())
                 .get()
@@ -71,6 +81,35 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
                     }
                 });
     }
+
+    private void updateFirstName(final String name) {
+        db.collection("userdata")
+                .whereEqualTo("email", user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            Map<String, Object> userdata = new HashMap<>();
+                            userdata.put("firstName", name);
+
+                            db.collection("userdata").document(user.getEmail())
+                                    .update(userdata)
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("User data entry", "Error writing document", e);
+                                        }
+                                    });
+                            firstNameTextView = findViewById(R.id.firstname_textview);
+                            firstNameTextView.setText(name);
+                        }
+                    }
+                });
+
+    }
+
 
     public void editAccount(View view) {
         PopupMenu popupMenu = new PopupMenu(this, view);
@@ -106,7 +145,7 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
 
         if (requestCode == EDIT_FIRST_NAME_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                System.out.println("NEW NAME: " + data.getStringExtra("firstName"));
+                updateFirstName(data.getStringExtra("firstName"));
             } else {
 
             }
