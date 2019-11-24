@@ -11,4 +11,9 @@
     <string name="search_by_scores">Search by SAT scores</string>
     <string name="view_account">View account</string>
     <string name="view_favorites">View favorites</string>
+    <string name="email">Email:</string>
+    <string name="first_name">First Name:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="math_score">Math Score:</string>
+    <string name="reading_score">Reading Score:</string>
 </resources>
