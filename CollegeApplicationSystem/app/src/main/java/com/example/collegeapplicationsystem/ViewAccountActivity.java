@@ -26,6 +26,9 @@ import java.util.Map;
 public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private static final String TAG = "USER_QUERY";
     private static final int EDIT_FIRST_NAME_REQUEST_CODE = 10;
+    private static final int EDIT_LAST_NAME_REQUEST_CODE = 20;
+    private static final int EDIT_MATH_SCORE_REQUEST_CODE = 30;
+    private static final int EDIT_READING_SCORE_REQUEST_CODE = 40;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -110,6 +113,34 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
 
     }
 
+    private void updateLastName(final String name) {
+        db.collection("userdata")
+                .whereEqualTo("email", user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            Map<String, Object> userdata = new HashMap<>();
+                            userdata.put("lastName", name);
+
+                            db.collection("userdata").document(user.getEmail())
+                                    .update(userdata)
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("User data entry", "Error writing document", e);
+                                        }
+                                    });
+                            lastNameTextView = findViewById(R.id.lastname_textview);
+                            lastNameTextView.setText(name);
+                        }
+                    }
+                });
+
+    }
+
 
     public void editAccount(View view) {
         PopupMenu popupMenu = new PopupMenu(this, view);
@@ -122,11 +153,12 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.editFirst:
-                Intent intent = new Intent(getApplicationContext(), EditFirstNamePopupActivity.class);
-                startActivityForResult(intent, EDIT_FIRST_NAME_REQUEST_CODE);
+                Intent firstIntent = new Intent(getApplicationContext(), EditFirstNamePopupActivity.class);
+                startActivityForResult(firstIntent, EDIT_FIRST_NAME_REQUEST_CODE);
                 return true;
             case R.id.editLast:
-
+                Intent lastIntent = new Intent(getApplicationContext(), EditLastNamePopupActivity.class);
+                startActivityForResult(lastIntent, EDIT_LAST_NAME_REQUEST_CODE);
                 return true;
             case R.id.editMath:
 
@@ -146,6 +178,12 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
         if (requestCode == EDIT_FIRST_NAME_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 updateFirstName(data.getStringExtra("firstName"));
+            } else {
+
+            }
+        } else if(requestCode == EDIT_LAST_NAME_REQUEST_CODE) {
+            if(resultCode == RESULT_OK) {
+                updateLastName(data.getStringExtra("lastName"));
             } else {
 
             }
