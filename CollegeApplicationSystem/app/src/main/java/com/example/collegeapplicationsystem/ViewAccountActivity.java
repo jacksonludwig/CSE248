@@ -141,6 +141,34 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
 
     }
 
+    private void updateMathScore(final String score) {
+        db.collection("userdata")
+                .whereEqualTo("email", user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            Map<String, Object> userdata = new HashMap<>();
+                            userdata.put("math", score);
+
+                            db.collection("userdata").document(user.getEmail())
+                                    .update(userdata)
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("User data entry", "Error writing document", e);
+                                        }
+                                    });
+                            mathScoreTextView = findViewById(R.id.math_textview);
+                            mathScoreTextView.setText(score);
+                        }
+                    }
+                });
+
+    }
+
 
     public void editAccount(View view) {
         PopupMenu popupMenu = new PopupMenu(this, view);
@@ -161,7 +189,8 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
                 startActivityForResult(lastIntent, EDIT_LAST_NAME_REQUEST_CODE);
                 return true;
             case R.id.editMath:
-
+                Intent mathIntent = new Intent(getApplicationContext(), EditMathScorePopupActivity.class);
+                startActivityForResult(mathIntent, EDIT_MATH_SCORE_REQUEST_CODE);
                 return true;
             case R.id.editReading:
 
@@ -181,9 +210,15 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
             } else {
 
             }
-        } else if(requestCode == EDIT_LAST_NAME_REQUEST_CODE) {
-            if(resultCode == RESULT_OK) {
+        } else if (requestCode == EDIT_LAST_NAME_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
                 updateLastName(data.getStringExtra("lastName"));
+            } else {
+
+            }
+        } else if (requestCode == EDIT_MATH_SCORE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                updateMathScore(data.getStringExtra("mathScore"));
             } else {
 
             }

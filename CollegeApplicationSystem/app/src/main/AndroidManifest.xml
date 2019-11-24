@@ -12,6 +12,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".EditMathScorePopupActivity"
+            android:theme="@style/AppTheme.EditAccountPopup"></activity>
+        <activity
             android:name=".EditLastNamePopupActivity"
             android:theme="@style/AppTheme.EditAccountPopup"></activity>
         <activity
