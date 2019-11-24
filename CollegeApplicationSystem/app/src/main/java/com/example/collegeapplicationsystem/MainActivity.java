@@ -61,27 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 RC_SIGN_IN_REQUEST_CODE);
     }
 
-    public void anonSignInAndStartCollegeIntent(View view) {
-        mAuth.signInAnonymously()
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            startCollegeIntent();
-                            Toast.makeText(getApplicationContext(), "Anon Sign in successful!", Toast.LENGTH_SHORT).show();
-                            //updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
-                        }
-                        // ...
-                    }
-                });
-    }
-
     private void startCollegeIntent() {
         Intent intent = new Intent(getApplicationContext(), MainSearchMenuActivity.class);
         startActivity(intent);
@@ -96,10 +75,13 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful() && task.getResult().isEmpty()) {
-                            FirebaseFirestore db = FirebaseFirestore.getInstance();
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             Map<String, Object> userdata = new HashMap<>();
                             userdata.put("email", user.getEmail());
+                            userdata.put("reading", 0);
+                            userdata.put("math", 0);
+                            userdata.put("firstName", "first name");
+                            userdata.put("lastName", "last name");
                             ArrayList<String> favorites = new ArrayList<>();
                             userdata.put("favorites", favorites);
 

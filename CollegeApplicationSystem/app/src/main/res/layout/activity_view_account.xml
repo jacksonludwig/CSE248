@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3E4046"
+    tools:context=".ViewAccountActivity">
+
+    <TextView
+        android:id="@+id/email_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="email_placeholder"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.323" />
+
+    <TextView
+        android:id="@+id/firstname_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="firstName_placeholder"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/lastname_textview"
+        app:layout_constraintEnd_toEndOf="@+id/email_textview"
+        app:layout_constraintStart_toStartOf="@+id/email_textview"
+        app:layout_constraintTop_toBottomOf="@+id/email_textview" />
+
+    <TextView
+        android:id="@+id/lastname_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="lastName_placeholder"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/math_textview"
+        app:layout_constraintEnd_toEndOf="@+id/firstname_textview"
+        app:layout_constraintStart_toStartOf="@+id/firstname_textview"
+        app:layout_constraintTop_toBottomOf="@+id/firstname_textview" />
+
+    <TextView
+        android:id="@+id/math_textview"
+        android:layout_width="155dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="10dp"
+        android:text="math_placeholder"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/reading_textview"
+        app:layout_constraintEnd_toEndOf="@+id/lastname_textview"
+        app:layout_constraintStart_toStartOf="@+id/lastname_textview"
+        app:layout_constraintTop_toBottomOf="@+id/lastname_textview" />
+
+    <TextView
+        android:id="@+id/reading_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="reading_placeholder"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/math_textview"
+        app:layout_constraintStart_toStartOf="@+id/math_textview"
+        app:layout_constraintTop_toBottomOf="@+id/math_textview" />
+</androidx.constraintlayout.widget.ConstraintLayout>

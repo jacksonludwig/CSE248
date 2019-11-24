@@ -14,7 +14,7 @@
         android:text="@string/login_welcome_title"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="30sp"
+        android:textSize="35dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,8 +24,9 @@
 
     <TextView
         android:id="@+id/login_welcomesubtitle_textview"
-        android:layout_width="374dp"
-        android:layout_height="89dp"
+        android:layout_width="376dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="@string/login_welcome_text"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -33,31 +34,20 @@
         app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="@+id/login_welcome_textview"
         app:layout_constraintStart_toStartOf="@+id/login_welcome_textview"
-        app:layout_constraintTop_toBottomOf="@+id/login_welcome_textview" />
+        app:layout_constraintTop_toBottomOf="@+id/login_welcome_textview"
+        app:layout_constraintWidth_percent=".5" />
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="135dp"
+        android:layout_width="139dp"
         android:layout_height="65dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:onClick="createSignInIntent"
         android:text="@string/login_button_text"
         android:textAllCaps="false"
-        android:textSize="14sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/login_welcomesubtitle_textview"
         app:layout_constraintStart_toStartOf="@+id/login_welcomesubtitle_textview"
         app:layout_constraintTop_toBottomOf="@+id/login_welcomesubtitle_textview" />
-
-    <Button
-        android:id="@+id/anon_login_button"
-        android:layout_width="135dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="20dp"
-        android:onClick="anonSignInAndStartCollegeIntent"
-        android:text="@string/login_button_text_guest"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/login_button"
-        app:layout_constraintStart_toStartOf="@+id/login_button"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

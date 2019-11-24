@@ -1,7 +1,9 @@
 package com.example.collegeapplicationsystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +23,7 @@ public class MainSearchMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu_search);
 
-        Task<QuerySnapshot> queryDocumentSnapshot = db.collection("colleges")
+        db.collection("colleges")
                 .whereGreaterThanOrEqualTo("schoolName", "Stony")
                 .whereLessThan("schoolName", "Stonz")
                 .get()
@@ -40,6 +42,15 @@ public class MainSearchMenuActivity extends AppCompatActivity {
                 });
 
 
+    }
+
+    public void openAccountView(View view) {
+        startAccountViewIntent();
+    }
+
+    private void startAccountViewIntent() {
+        Intent intent = new Intent(getApplicationContext(), ViewAccountActivity.class);
+        startActivity(intent);
     }
 
 }
