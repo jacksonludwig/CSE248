@@ -1,6 +1,7 @@
 package com.example.collegeapplicationsystem;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.collegeapplicationsystem.JSONParsing.College;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -46,12 +48,20 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new CollegeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                College college = documentSnapshot.toObject(College.class);
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         adapter.startListening();
+        Toast.makeText(this, "Query Attempted...", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -62,6 +72,12 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
 
     private void setSearchQuery() {
         searchText = getIntent().getStringExtra("nameSearch");
+        if (searchText != null) {
+            searchText = searchText.trim();
+        }
+        if(searchText.equals(" ") || searchText.equals("")) {
+            searchText = "text not searchable";
+        }
     }
 
     private String getEndOfQuery(String search) {

@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.collegeapplicationsystem.JSONParsing.College;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAdapter.CollegeHolder> {
 
     private static final String NO_DATA = "Data not given";
+
+    private OnItemClickListener onItemClickListener;
 
     public CollegeAdapter(@NonNull FirestoreRecyclerOptions<College> options) {
         super(options);
@@ -104,6 +107,24 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             reading75 = itemView.findViewById(R.id.reading75);
             math25 = itemView.findViewById(R.id.math25);
             math75 = itemView.findViewById(R.id.math75);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if(position != RecyclerView.NO_POSITION && onItemClickListener != null) {
+                        onItemClickListener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }
