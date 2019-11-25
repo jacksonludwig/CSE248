@@ -63,6 +63,8 @@ public class College implements Serializable {
         return latestCostTuitionOutOfState;
     }
 
+    public College() { }
+
     @JsonProperty("latest.cost.tuition.out_of_state")
     public void setLatestCostTuitionOutOfState(Integer latestCostTuitionOutOfState) {
         this.latestCostTuitionOutOfState = latestCostTuitionOutOfState;

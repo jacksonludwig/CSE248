@@ -264,7 +264,7 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
     }
 
     private void showErrorToast() {
-        Toast.makeText(this, "Error updating data", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "data not updated", Toast.LENGTH_SHORT).show();
     }
 }
 

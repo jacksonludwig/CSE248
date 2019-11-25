@@ -1,56 +1,61 @@
 package com.example.collegeapplicationsystem;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.InputType;
 import android.view.View;
+import android.widget.EditText;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainSearchMenuActivity extends AppCompatActivity {
+    private static final String TAG = "Query";
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private String nameSearchText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu_search);
-
-        db.collection("colleges")
-                .whereGreaterThanOrEqualTo("schoolName", "Stony")
-                .whereLessThan("schoolName", "Stonz")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("Query", document.getId() + " => " + document.getData());
-                            }
-
-                        } else {
-                            Log.d("Query", "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
-
-
     }
 
     public void openAccountView(View view) {
-        startAccountViewIntent();
-    }
-
-    private void startAccountViewIntent() {
         Intent intent = new Intent(getApplicationContext(), ViewAccountActivity.class);
         startActivity(intent);
     }
+
+    public void openNameSearchInput(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("College Name Search");
+
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        builder.setPositiveButton("SEARCH", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                nameSearchText = input.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), CollegeNameSearchActivity.class);
+                intent.putExtra("nameSearch", nameSearchText);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+    }
+
 
 }

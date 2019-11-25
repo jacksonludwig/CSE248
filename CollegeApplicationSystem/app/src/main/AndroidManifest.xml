@@ -11,18 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".CollegeNameSearchActivity"></activity>
         <activity
             android:name=".EditReadingScorePopupActivity"
-            android:theme="@style/AppTheme.EditAccountPopup"></activity>
+            android:theme="@style/AppTheme.EditAccountPopup" />
         <activity
             android:name=".EditMathScorePopupActivity"
-            android:theme="@style/AppTheme.EditAccountPopup"></activity>
+            android:theme="@style/AppTheme.EditAccountPopup" />
         <activity
             android:name=".EditLastNamePopupActivity"
-            android:theme="@style/AppTheme.EditAccountPopup"></activity>
+            android:theme="@style/AppTheme.EditAccountPopup" />
         <activity
             android:name=".EditFirstNamePopupActivity"
-            android:theme="@style/AppTheme.EditAccountPopup"></activity>
+            android:theme="@style/AppTheme.EditAccountPopup" />
         <activity android:name=".ViewAccountActivity" />
         <activity android:name=".MainSearchMenuActivity" />
         <activity android:name=".MainActivity">
