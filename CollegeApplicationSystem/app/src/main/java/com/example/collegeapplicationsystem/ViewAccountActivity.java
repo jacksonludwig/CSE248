@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -113,7 +114,37 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
                         }
                     }
                 });
+        syncFirstName(name);
+    }
 
+    private void syncFirstName(String name) {
+        String[] username = user.getDisplayName().split(" ");
+        UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder()
+                .setDisplayName(name + " " + username[1])
+                .build();
+
+        updateUserProfile(userProfileChangeRequest);
+    }
+
+    private void syncLastName(String name) {
+        String[] username = user.getDisplayName().split(" ");
+        UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder()
+                .setDisplayName(username[0] + " " + name)
+                .build();
+
+        updateUserProfile(userProfileChangeRequest);
+    }
+
+    private void updateUserProfile(UserProfileChangeRequest userProfileChangeRequest) {
+        user.updateProfile(userProfileChangeRequest)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG2, "User profile changed");
+                        }
+                    }
+                });
     }
 
     private void updateLastName(final String name) {
@@ -141,7 +172,7 @@ public class ViewAccountActivity extends AppCompatActivity implements PopupMenu.
                         }
                     }
                 });
-
+        syncLastName(name);
     }
 
     private void updateMathScore(final String score) {

@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -27,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "DEFAULT_NAME";
 
     private static final int RC_SIGN_IN_REQUEST_CODE = 0;
 
@@ -79,8 +81,15 @@ public class MainActivity extends AppCompatActivity {
                             userdata.put("email", user.getEmail());
                             userdata.put("reading", 0);
                             userdata.put("math", 0);
-                            userdata.put("firstName", "first name");
-                            userdata.put("lastName", "last name");
+
+                            String[] fullName = user.getDisplayName().trim().split(" ");
+                            if(fullName.length < 2) {
+                                userdata.put("firstName", fullName[0]);
+                                userdata.put("lastName", "none");
+                            } else {
+                                userdata.put("firstName", fullName[0]);
+                                userdata.put("lastName", fullName[1]);
+                            }
                             ArrayList<String> favorites = new ArrayList<>();
                             userdata.put("favorites", favorites);
 
