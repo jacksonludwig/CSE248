@@ -9,11 +9,12 @@
 
     <Button
         android:id="@+id/name_search"
-        android:layout_width="206dp"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="@string/search_by_name"
         android:onClick="openNameSearchInput"
+        android:text="@string/search_by_name"
         app:layout_constraintBottom_toTopOf="@+id/id_search"
         app:layout_constraintEnd_toEndOf="@+id/id_search"
         app:layout_constraintStart_toStartOf="@+id/id_search"
@@ -21,7 +22,8 @@
 
     <Button
         android:id="@+id/state_search"
-        android:layout_width="206dp"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/search_by_state"
@@ -32,7 +34,8 @@
 
     <Button
         android:id="@+id/view_favorites"
-        android:layout_width="206dp"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/view_favorites"
@@ -43,11 +46,12 @@
 
     <Button
         android:id="@+id/edit_account"
-        android:layout_width="206dp"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:text="@string/view_account"
         android:onClick="openAccountView"
+        android:text="@string/view_account"
         app:layout_constraintBottom_toTopOf="@+id/view_favorites"
         app:layout_constraintEnd_toEndOf="@+id/state_search"
         app:layout_constraintStart_toStartOf="@+id/state_search"
@@ -56,7 +60,8 @@
 
     <Button
         android:id="@+id/id_search"
-        android:layout_width="206dp"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:text="@string/search_by_id"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +69,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".36"
+        app:layout_constraintVertical_bias=".33"
         app:layout_constraintWidth_percent=".5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

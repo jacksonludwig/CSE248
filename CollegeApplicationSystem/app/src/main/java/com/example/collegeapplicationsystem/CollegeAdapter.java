@@ -27,7 +27,14 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
         holder.state.setText(model.getSchoolState());
         holder.city.setText(model.getSchoolCity());
         holder.zip.setText(model.getSchoolZip());
-        holder.url.setText(model.getSchoolSchoolUrl());
+
+        if (String.valueOf(model.getSchoolSchoolUrl()).equals(" ")
+                || String.valueOf(model.getSchoolSchoolUrl()).equalsIgnoreCase("")
+                || String.valueOf(model.getSchoolSchoolUrl()).equals("null")) {
+            holder.url.setText(NO_DATA);
+        } else {
+            holder.url.setText(model.getSchoolSchoolUrl());
+        }
 
         if (String.valueOf(model.getLatestCostTuitionInState()).equalsIgnoreCase("null")) {
             holder.inStateTuition.setText(NO_DATA);

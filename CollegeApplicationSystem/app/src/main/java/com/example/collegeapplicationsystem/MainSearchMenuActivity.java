@@ -31,7 +31,7 @@ public class MainSearchMenuActivity extends AppCompatActivity {
     }
 
     public void openNameSearchInput(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
         builder.setTitle("College Name Search");
 
         final EditText input = new EditText(this);

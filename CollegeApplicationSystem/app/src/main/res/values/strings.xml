@@ -16,7 +16,7 @@
     <string name="last_name">Last Name:</string>
     <string name="math_score">SAT Math Score:</string>
     <string name="reading_score">SAT Reading Score:</string>
-    <string name="edit_text">edit...</string>
+    <string name="edit_text">edit</string>
     <string name="first_name_menu">first name</string>
     <string name="last_name_menu">last name</string>
     <string name="math_score_menu">math score</string>

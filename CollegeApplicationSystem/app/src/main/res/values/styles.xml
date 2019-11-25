@@ -5,26 +5,43 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#505050</item>
         <item name="colorPrimaryDark">#333333</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#3B5ACA</item>
     </style>
 
     <style name="SignInTheme" parent="FirebaseUI">
-        <item name="android:textColor">#FFFFFF</item>
         <item name="colorPrimary">#464958</item>
-        <item name="colorPrimaryDark">#505050</item>
-        <item name="colorAccent">#333333</item>
-        <item name="android:windowBackground">#414950</item>
+        <item name="colorPrimaryDark">#333333</item>
+        <item name="colorAccent">#3B5ACA</item>
+        <item name="android:windowBackground">#505050</item>
         <item name="colorControlNormal">#FFFFFF</item>
         <item name="colorControlActivated">#FFFFFF</item>
         <item name="colorControlHighlight">#FFFFFF</item>
         <item name="android:textColorHint">#FFFFFF</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
+    <style name="FirebaseUI.Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="FirebaseUI.Text.Link">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="AppTheme.EditAccountPopup" parent="Theme.AppCompat.NoActionBar">
-
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
 
+    <style name="AlertDialogCustom" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">#464958</item>
+        <item name="colorPrimaryDark">#505050</item>
+        <item name="colorAccent">#333333</item>
     </style>
 
 </resources>
