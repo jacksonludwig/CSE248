@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".CollegeNameSearchActivity"></activity>
+        <activity android:name=".ViewCollegeDetailsActivity"></activity>
+        <activity android:name=".CollegeNameSearchActivity" />
         <activity
             android:name=".EditReadingScorePopupActivity"
             android:theme="@style/AppTheme.EditAccountPopup" />

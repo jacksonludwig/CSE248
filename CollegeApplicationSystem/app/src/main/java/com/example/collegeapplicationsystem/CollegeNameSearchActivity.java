@@ -1,5 +1,6 @@
 package com.example.collegeapplicationsystem;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -38,6 +39,8 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
                 .whereLessThan("schoolName", getEndOfQuery(searchText))
                 .orderBy("schoolName", Query.Direction.ASCENDING);
 
+        Toast.makeText(this, "Query Attempted...", Toast.LENGTH_SHORT).show();
+
         FirestoreRecyclerOptions<College> options = new FirestoreRecyclerOptions.Builder<College>()
                 .setQuery(query, College.class)
                 .build();
@@ -53,8 +56,9 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 College college = documentSnapshot.toObject(College.class);
-                Toast.makeText(CollegeNameSearchActivity.this,
-                        college.getSchoolName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ViewCollegeDetailsActivity.class);
+                intent.putExtra("clickedCollege", college);
+                startActivity(intent);
             }
         });
     }
@@ -63,7 +67,6 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         adapter.startListening();
-        Toast.makeText(this, "Query Attempted...", Toast.LENGTH_SHORT).show();
     }
 
     @Override
