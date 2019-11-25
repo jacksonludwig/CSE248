@@ -90,7 +90,7 @@
             android:layout_below="@id/stateLabel"
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginTop="0dp"
             android:text="City:"
             android:textColor="#EEFFFFFF" />
 
