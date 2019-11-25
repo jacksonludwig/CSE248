@@ -3,16 +3,16 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">#505050</item>
+        <item name="colorPrimaryDark">#333333</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="SignInTheme" parent="FirebaseUI">
         <item name="android:textColor">#FFFFFF</item>
         <item name="colorPrimary">#464958</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#505050</item>
+        <item name="colorAccent">#333333</item>
         <item name="android:windowBackground">#414950</item>
         <item name="colorControlNormal">#FFFFFF</item>
         <item name="colorControlActivated">#FFFFFF</item>
