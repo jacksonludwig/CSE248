@@ -14,6 +14,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAdapter.CollegeHolder> {
 
+    private static final String NO_DATA = "Data not given";
+
     public CollegeAdapter(@NonNull FirestoreRecyclerOptions<College> options) {
         super(options);
     }
@@ -26,12 +28,37 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
         holder.city.setText(model.getSchoolCity());
         holder.zip.setText(model.getSchoolZip());
         holder.url.setText(model.getSchoolSchoolUrl());
-        holder.inStateTuition.setText(String.valueOf(model.getLatestCostTuitionInState()));
-        holder.outOfStateTuition.setText(String.valueOf(model.getLatestCostTuitionOutOfState()));
-        holder.reading25.setText(String.valueOf(model.getLatestAdmissionsSatScores25thPercentileCriticalReading()));
-        holder.reading75.setText(String.valueOf(model.getLatestAdmissionsSatScores75thPercentileCriticalReading()));
-        holder.math25.setText(String.valueOf(model.getLatestAdmissionsSatScores25thPercentileMath()));
-        holder.math75.setText(String.valueOf(model.getLatestAdmissionsSatScores75thPercentileMath()));
+
+        if (String.valueOf(model.getLatestCostTuitionInState()).equalsIgnoreCase("null")) {
+            holder.inStateTuition.setText(NO_DATA);
+        } else {
+            holder.inStateTuition.setText("$" + String.valueOf(model.getLatestCostTuitionInState()));
+        }
+        if (String.valueOf(model.getLatestCostTuitionOutOfState()).equalsIgnoreCase("null")) {
+            holder.outOfStateTuition.setText(NO_DATA);
+        } else {
+            holder.outOfStateTuition.setText("$" + String.valueOf(model.getLatestCostTuitionOutOfState()));
+        }
+        if (String.valueOf(model.getLatestAdmissionsSatScores25thPercentileCriticalReading()).equalsIgnoreCase("null")) {
+            holder.reading25.setText(NO_DATA);
+        } else {
+            holder.reading25.setText(String.valueOf(model.getLatestAdmissionsSatScores25thPercentileCriticalReading()));
+        }
+        if (String.valueOf(model.getLatestAdmissionsSatScores75thPercentileCriticalReading()).equalsIgnoreCase("null")) {
+            holder.reading75.setText(NO_DATA);
+        } else {
+            holder.reading75.setText(String.valueOf(model.getLatestAdmissionsSatScores75thPercentileCriticalReading()));
+        }
+        if (String.valueOf(model.getLatestAdmissionsSatScores25thPercentileMath()).equalsIgnoreCase("null")) {
+            holder.math25.setText(NO_DATA);
+        } else {
+            holder.math25.setText(String.valueOf(model.getLatestAdmissionsSatScores25thPercentileMath()));
+        }
+        if (String.valueOf(model.getLatestAdmissionsSatScores75thPercentileMath()).equalsIgnoreCase("null")) {
+            holder.math75.setText(NO_DATA);
+        } else {
+            holder.math75.setText(String.valueOf(model.getLatestAdmissionsSatScores75thPercentileMath()));
+        }
     }
 
     @NonNull

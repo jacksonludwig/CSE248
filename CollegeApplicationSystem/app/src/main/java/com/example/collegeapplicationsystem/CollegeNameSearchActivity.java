@@ -33,7 +33,8 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
     private void startRecycler() {
         Query query = collegeRef
                 .whereGreaterThanOrEqualTo("schoolName", searchText)
-                .whereLessThan("schoolName", getEndOfQuery(searchText));
+                .whereLessThan("schoolName", getEndOfQuery(searchText))
+                .orderBy("schoolName", Query.Direction.ASCENDING);
 
         FirestoreRecyclerOptions<College> options = new FirestoreRecyclerOptions.Builder<College>()
                 .setQuery(query, College.class)

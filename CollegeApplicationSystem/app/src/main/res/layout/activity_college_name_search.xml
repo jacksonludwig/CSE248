@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CollegeNameSearchActivity">
+    tools:context=".CollegeNameSearchActivity"
+    android:background="#393D49">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/college_recycler"
