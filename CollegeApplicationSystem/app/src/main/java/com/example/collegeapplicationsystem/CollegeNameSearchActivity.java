@@ -53,6 +53,8 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
                 College college = documentSnapshot.toObject(College.class);
+                Toast.makeText(CollegeNameSearchActivity.this,
+                        college.getSchoolName(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -75,7 +77,7 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
         if (searchText != null) {
             searchText = searchText.trim();
         }
-        if(searchText.equals(" ") || searchText.equals("")) {
+        if (searchText.equals(" ") || searchText.equals("")) {
             searchText = "text not searchable";
         }
     }

@@ -18,9 +18,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:paddingLeft="5dp"
             android:ellipsize="end"
+            android:fontFamily="@font/andada"
             android:maxLines="2"
+            android:paddingLeft="5dp"
             android:text="College Title"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="@android:color/white"
@@ -32,19 +33,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/collegeTitle"
             android:layout_alignParentStart="false"
-            android:paddingLeft="20dp"
             android:layout_toRightOf="@id/idLabel"
+            android:paddingLeft="20dp"
             android:text="id"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/idLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/collegeTitle"
-            android:paddingLeft="20dp"
             android:layout_alignParentStart="true"
+            android:fontFamily="serif"
+            android:paddingLeft="20dp"
             android:text="IPEDS ID:"
             android:textColor="#EEFFFFFF" />
 
@@ -54,11 +56,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/id"
             android:layout_alignParentStart="false"
+            android:layout_toRightOf="@id/stateLabel"
             android:paddingLeft="20dp"
             android:text="state"
-            android:layout_toRightOf="@id/stateLabel"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/stateLabel"
@@ -67,7 +69,8 @@
             android:layout_below="@id/idLabel"
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="-1dp"
+            android:layout_marginTop="0dp"
+            android:fontFamily="serif"
             android:text="State:"
             android:textColor="#EEFFFFFF" />
 
@@ -81,7 +84,7 @@
             android:paddingLeft="20dp"
             android:text="city"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cityLabel"
@@ -91,6 +94,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="20dp"
             android:layout_marginTop="0dp"
+            android:fontFamily="serif"
             android:text="City:"
             android:textColor="#EEFFFFFF" />
 
@@ -104,15 +108,16 @@
             android:paddingLeft="20dp"
             android:text="zip"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/zipLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
             android:layout_below="@id/cityLabel"
             android:layout_alignParentStart="true"
+            android:fontFamily="serif"
+            android:paddingLeft="20dp"
             android:text="ZIP:"
             android:textColor="#EEFFFFFF" />
 
@@ -123,19 +128,20 @@
             android:layout_below="@id/zip"
             android:layout_alignParentStart="false"
             android:layout_toRightOf="@id/zipLabel"
+            android:maxLines="1"
             android:paddingLeft="20dp"
             android:text="url"
-            android:maxLines="1"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/urlLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
             android:layout_below="@id/zip"
             android:layout_alignParentStart="true"
+            android:fontFamily="serif"
+            android:paddingLeft="20dp"
             android:text="URL:"
             android:textColor="#EEFFFFFF" />
 
@@ -149,15 +155,16 @@
             android:paddingLeft="20dp"
             android:text="in state tuition"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/inStateTuitionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
             android:layout_below="@id/urlLabel"
             android:layout_alignParentStart="true"
+            android:fontFamily="serif"
+            android:paddingLeft="20dp"
             android:text="In-state tuition:"
             android:textColor="#EEFFFFFF" />
 
@@ -172,15 +179,16 @@
             android:text="out of state tuition"
             android:textAllCaps="false"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/outOfStateTuitionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
             android:layout_below="@id/inStateTuitionLabel"
             android:layout_alignParentStart="true"
+            android:fontFamily="serif"
+            android:paddingLeft="20dp"
             android:text="Out-of-state tuition:"
             android:textColor="#EEFFFFFF" />
 
@@ -194,15 +202,16 @@
             android:paddingLeft="20dp"
             android:text="reading 25th percentile"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/reading25Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
             android:layout_below="@id/outOfStateTuitionLabel"
             android:layout_alignParentStart="true"
+            android:fontFamily="serif"
+            android:paddingLeft="20dp"
             android:text="SAT Reading 25th Percentile:"
             android:textColor="#EEFFFFFF" />
 
@@ -216,15 +225,16 @@
             android:paddingLeft="20dp"
             android:text="reading 75th percentile"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/reading75Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
             android:layout_below="@id/reading25Label"
             android:layout_alignParentStart="true"
+            android:fontFamily="serif"
+            android:paddingLeft="20dp"
             android:text="SAT Reading 75th Percentile:"
             android:textColor="#EEFFFFFF" />
 
@@ -238,15 +248,16 @@
             android:paddingLeft="20dp"
             android:text="math 25th percentile"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/math25Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
             android:layout_below="@id/reading75Label"
             android:layout_alignParentStart="true"
+            android:fontFamily="serif"
+            android:paddingLeft="20dp"
             android:text="SAT Math 25th Percentile:"
             android:textColor="#EEFFFFFF" />
 
@@ -260,15 +271,16 @@
             android:paddingLeft="20dp"
             android:text="math 75th percentile"
             android:textColor="#EEFFFFFF"
-            android:textStyle="italic" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/math75Label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/math25Label"
-            android:paddingLeft="20dp"
             android:layout_alignParentStart="true"
+            android:fontFamily="serif"
+            android:paddingLeft="20dp"
             android:text="SAT Math 75th Percentile:"
             android:textColor="#EEFFFFFF" />
 
