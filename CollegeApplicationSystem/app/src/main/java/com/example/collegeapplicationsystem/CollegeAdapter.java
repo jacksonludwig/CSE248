@@ -24,7 +24,7 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull CollegeHolder holder, int position, @NonNull College model) {
+    protected void onBindViewHolder(@NonNull final CollegeHolder holder, int position, @NonNull College model) {
         holder.title.setText(model.getSchoolName());
         holder.id.setText(String.valueOf(model.getId()));
         holder.state.setText(model.getSchoolState());
@@ -69,6 +69,133 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
         } else {
             holder.math75.setText(String.valueOf(model.getLatestAdmissionsSatScores75thPercentileMath()));
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.id.getVisibility() == View.VISIBLE) {
+                    holder.id.setVisibility(View.GONE);
+                } else {
+                    holder.id.setVisibility(View.VISIBLE);
+                }
+                if (holder.idLabel.getVisibility() == View.VISIBLE) {
+                    holder.idLabel.setVisibility(View.GONE);
+                } else {
+                    holder.idLabel.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.state.getVisibility() == View.VISIBLE) {
+                    holder.state.setVisibility(View.GONE);
+                } else {
+                    holder.state.setVisibility(View.VISIBLE);
+                }
+                if (holder.stateLabel.getVisibility() == View.VISIBLE) {
+                    holder.stateLabel.setVisibility(View.GONE);
+                } else {
+                    holder.stateLabel.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.city.getVisibility() == View.VISIBLE) {
+                    holder.city.setVisibility(View.GONE);
+                } else {
+                    holder.city.setVisibility(View.VISIBLE);
+                }
+                if (holder.cityLabel.getVisibility() == View.VISIBLE) {
+                    holder.cityLabel.setVisibility(View.GONE);
+                } else {
+                    holder.cityLabel.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.zip.getVisibility() == View.VISIBLE) {
+                    holder.zip.setVisibility(View.GONE);
+                } else {
+                    holder.zip.setVisibility(View.VISIBLE);
+                }
+                if (holder.zipLabel.getVisibility() == View.VISIBLE) {
+                    holder.zipLabel.setVisibility(View.GONE);
+                } else {
+                    holder.zipLabel.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.url.getVisibility() == View.VISIBLE) {
+                    holder.url.setVisibility(View.GONE);
+                } else {
+                    holder.url.setVisibility(View.VISIBLE);
+                }
+                if (holder.urlLabel.getVisibility() == View.VISIBLE) {
+                    holder.urlLabel.setVisibility(View.GONE);
+                } else {
+                    holder.urlLabel.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.inStateTuition.getVisibility() == View.VISIBLE) {
+                    holder.inStateTuition.setVisibility(View.GONE);
+                } else {
+                    holder.inStateTuition.setVisibility(View.VISIBLE);
+                }
+                if (holder.inStateTuitionLabel.getVisibility() == View.VISIBLE) {
+                    holder.inStateTuitionLabel.setVisibility(View.GONE);
+                } else {
+                    holder.inStateTuitionLabel.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.outOfStateTuition.getVisibility() == View.VISIBLE) {
+                    holder.outOfStateTuition.setVisibility(View.GONE);
+                } else {
+                    holder.outOfStateTuition.setVisibility(View.VISIBLE);
+                }
+                if (holder.outOfStateTuitionLabel.getVisibility() == View.VISIBLE) {
+                    holder.outOfStateTuitionLabel.setVisibility(View.GONE);
+                } else {
+                    holder.outOfStateTuitionLabel.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.reading25.getVisibility() == View.VISIBLE) {
+                    holder.reading25.setVisibility(View.GONE);
+                } else {
+                    holder.reading25.setVisibility(View.VISIBLE);
+                }
+                if (holder.reading25Label.getVisibility() == View.VISIBLE) {
+                    holder.reading25Label.setVisibility(View.GONE);
+                } else {
+                    holder.reading25Label.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.reading75.getVisibility() == View.VISIBLE) {
+                    holder.reading75.setVisibility(View.GONE);
+                } else {
+                    holder.reading75.setVisibility(View.VISIBLE);
+                }
+                if (holder.reading75Label.getVisibility() == View.VISIBLE) {
+                    holder.reading75Label.setVisibility(View.GONE);
+                } else {
+                    holder.reading75Label.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.math25.getVisibility() == View.VISIBLE) {
+                    holder.math25.setVisibility(View.GONE);
+                } else {
+                    holder.math25.setVisibility(View.VISIBLE);
+                }
+                if (holder.math25Label.getVisibility() == View.VISIBLE) {
+                    holder.math25Label.setVisibility(View.GONE);
+                } else {
+                    holder.math25Label.setVisibility(View.VISIBLE);
+                }
+
+                if (holder.math75.getVisibility() == View.VISIBLE) {
+                    holder.math75.setVisibility(View.GONE);
+                } else {
+                    holder.math75.setVisibility(View.VISIBLE);
+                }
+                if (holder.math75Label.getVisibility() == View.VISIBLE) {
+                    holder.math75Label.setVisibility(View.GONE);
+                } else {
+                    holder.math75Label.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
     }
 
     @NonNull
@@ -82,37 +209,59 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
     class CollegeHolder extends RecyclerView.ViewHolder {
         TextView title;
         TextView id;
+        TextView idLabel;
         TextView state;
+        TextView stateLabel;
         TextView city;
+        TextView cityLabel;
         TextView zip;
+        TextView zipLabel;
         TextView url;
+        TextView urlLabel;
         TextView inStateTuition;
+        TextView inStateTuitionLabel;
         TextView outOfStateTuition;
+        TextView outOfStateTuitionLabel;
         TextView reading25;
+        TextView reading25Label;
         TextView reading75;
+        TextView reading75Label;
         TextView math25;
+        TextView math25Label;
         TextView math75;
+        TextView math75Label;
 
         public CollegeHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.collegeTitle);
             id = itemView.findViewById(R.id.id);
+            idLabel = itemView.findViewById(R.id.idLabel);
             state = itemView.findViewById(R.id.state);
+            stateLabel = itemView.findViewById(R.id.stateLabel);
             city = itemView.findViewById(R.id.city);
+            cityLabel = itemView.findViewById(R.id.cityLabel);
             zip = itemView.findViewById(R.id.zip);
+            zipLabel = itemView.findViewById(R.id.zipLabel);
             url = itemView.findViewById(R.id.url);
+            urlLabel = itemView.findViewById(R.id.urlLabel);
             inStateTuition = itemView.findViewById(R.id.inStateTuition);
+            inStateTuitionLabel = itemView.findViewById(R.id.inStateTuitionLabel);
             outOfStateTuition = itemView.findViewById(R.id.outOfStateTuition);
+            outOfStateTuitionLabel = itemView.findViewById(R.id.outOfStateTuitionLabel);
             reading25 = itemView.findViewById(R.id.reading25);
+            reading25Label = itemView.findViewById(R.id.reading25Label);
             reading75 = itemView.findViewById(R.id.reading75);
+            reading75Label = itemView.findViewById(R.id.reading75Label);
             math25 = itemView.findViewById(R.id.math25);
+            math25Label = itemView.findViewById(R.id.math25Label);
             math75 = itemView.findViewById(R.id.math75);
+            math75Label = itemView.findViewById(R.id.math75Label);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int position = getAdapterPosition();
-                    if(position != RecyclerView.NO_POSITION && onItemClickListener != null) {
+                    if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
                         onItemClickListener.onItemClick(getSnapshots().getSnapshot(position), position);
                     }
                 }
