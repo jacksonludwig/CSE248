@@ -7,6 +7,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainSearchMenuActivity extends AppCompatActivity {
     private static final String TAG = "Query";
+    private static final int STATE_REQUEST_CODE = 50;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -86,5 +88,23 @@ public class MainSearchMenuActivity extends AppCompatActivity {
         builder.show();
     }
 
+    public void openNameStateSearchInput(View view) {
+        Intent intent = new Intent(getApplicationContext(), SearchByStatePopupActivity.class);
+        startActivityForResult(intent, STATE_REQUEST_CODE);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == STATE_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Intent intent = new Intent(getApplicationContext(), CollegeSearchActivity.class);
+                intent.putExtra("queryType", "state");
+                intent.putExtra("search", data.getStringExtra("chosenState"));
+                startActivity(intent);
+            } else {
+                // state search canceled
+            }
+        }
+    }
 }

@@ -47,7 +47,8 @@ public class CollegeSearchActivity extends AppCompatActivity {
             case "state":
                 return null; // change later
             default:
-                return null; // change later
+                return collegeRef
+                        .whereEqualTo("id", 100654);
         }
 
     }

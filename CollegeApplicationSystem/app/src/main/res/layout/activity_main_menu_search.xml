@@ -30,7 +30,8 @@
         app:layout_constraintEnd_toEndOf="@+id/id_search"
         app:layout_constraintStart_toStartOf="@+id/id_search"
         app:layout_constraintTop_toBottomOf="@+id/id_search"
-        app:layout_constraintWidth_percent=".5" />
+        app:layout_constraintWidth_percent=".5"
+        android:onClick="openNameStateSearchInput"/>
 
     <Button
         android:id="@+id/view_favorites"
