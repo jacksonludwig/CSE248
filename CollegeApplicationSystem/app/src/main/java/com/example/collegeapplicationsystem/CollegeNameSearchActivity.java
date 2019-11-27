@@ -2,7 +2,6 @@ package com.example.collegeapplicationsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,11 +33,27 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
         startRecycler();
     }
 
+    private Query chooseQueryType() {
+        String queryType = getIntent().getStringExtra("queryType");
+        switch (queryType) {
+            case "name":
+                return collegeRef
+                        .whereGreaterThanOrEqualTo("schoolName", searchText)
+                        .whereLessThan("schoolName", getEndOfQuery(searchText))
+                        .orderBy("schoolName", Query.Direction.ASCENDING);
+            case "id":
+                return collegeRef
+                        .whereEqualTo("id", Integer.parseInt(searchText));
+            case "state":
+                return null; // change later
+            default:
+                return null; // change later
+        }
+
+    }
+
     private void startRecycler() {
-        Query query = collegeRef
-                .whereGreaterThanOrEqualTo("schoolName", searchText)
-                .whereLessThan("schoolName", getEndOfQuery(searchText))
-                .orderBy("schoolName", Query.Direction.ASCENDING);
+        Query query = chooseQueryType();
 
         Toast.makeText(this, "Query Attempted...", Toast.LENGTH_SHORT).show();
 
@@ -78,6 +93,7 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
 
     private void setSearchQuery() {
         searchText = getIntent().getStringExtra("nameSearch");
+        System.out.println(searchText);
         if (searchText != null) {
             searchText = searchText.trim();
         }
