@@ -70,7 +70,7 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             holder.math75.setText(String.valueOf(model.getLatestAdmissionsSatScores75thPercentileMath()));
         }
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (holder.id.getVisibility() == View.VISIBLE) {
@@ -260,9 +260,11 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
-                        onItemClickListener.onItemClick(getSnapshots().getSnapshot(position), position);
+                    if (view != title) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
+                            onItemClickListener.onItemClick(getSnapshots().getSnapshot(position), position);
+                        }
                     }
                 }
             });
