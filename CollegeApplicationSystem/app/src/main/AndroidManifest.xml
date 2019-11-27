@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ViewCollegeDetailsActivity"></activity>
-        <activity android:name=".CollegeNameSearchActivity" />
+        <activity android:name=".CollegeSearchActivity" />
         <activity
             android:name=".EditReadingScorePopupActivity"
             android:theme="@style/AppTheme.EditAccountPopup" />

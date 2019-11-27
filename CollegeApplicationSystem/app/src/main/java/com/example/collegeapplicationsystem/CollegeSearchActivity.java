@@ -15,7 +15,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class CollegeNameSearchActivity extends AppCompatActivity {
+public class CollegeSearchActivity extends AppCompatActivity {
 
     private String searchText;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -92,7 +92,7 @@ public class CollegeNameSearchActivity extends AppCompatActivity {
     }
 
     private void setSearchQuery() {
-        searchText = getIntent().getStringExtra("nameSearch");
+        searchText = getIntent().getStringExtra("search");
         System.out.println(searchText);
         if (searchText != null) {
             searchText = searchText.trim();

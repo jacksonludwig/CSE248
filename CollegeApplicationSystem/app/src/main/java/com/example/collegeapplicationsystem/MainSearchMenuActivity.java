@@ -17,7 +17,7 @@ public class MainSearchMenuActivity extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private String nameSearchText = "";
+    private String searchText = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +41,10 @@ public class MainSearchMenuActivity extends AppCompatActivity {
         builder.setPositiveButton("SEARCH", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                nameSearchText = input.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), CollegeNameSearchActivity.class);
+                searchText = input.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), CollegeSearchActivity.class);
                 intent.putExtra("queryType", "name");
-                intent.putExtra("nameSearch", nameSearchText);
+                intent.putExtra("search", searchText);
                 startActivity(intent);
             }
         });
@@ -69,10 +69,10 @@ public class MainSearchMenuActivity extends AppCompatActivity {
         builder.setPositiveButton("SEARCH", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                nameSearchText = input.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), CollegeNameSearchActivity.class);
+                searchText = input.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), CollegeSearchActivity.class);
                 intent.putExtra("queryType", "id");
-                intent.putExtra("nameSearch", nameSearchText);
+                intent.putExtra("search", searchText);
                 startActivity(intent);
             }
         });
