@@ -24,7 +24,7 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
 
     private boolean wasUpdated = false;
 
-    Thread updateThread;
+    private Thread updateThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
