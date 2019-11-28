@@ -43,7 +43,7 @@
         android:id="@+id/user_reading_score"
         android:layout_width="25dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="777"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -157,7 +157,7 @@
         android:id="@+id/user_math_score"
         android:layout_width="25dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="777"
         android:textAlignment="center"
         android:textColor="@android:color/white"
@@ -292,5 +292,17 @@
         app:layout_constraintBottom_toTopOf="@+id/college_reading25"
         app:layout_constraintEnd_toStartOf="@+id/college_reading75"
         app:layout_constraintStart_toEndOf="@+id/college_reading25" />
+
+    <Button
+        android:id="@+id/add_to_fav_button"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Add to Favorites"
+        android:onClick="addToFavorites"
+        app:layout_constraintBottom_toTopOf="@+id/college_id_details"
+        app:layout_constraintEnd_toEndOf="@+id/college_id_details"
+        app:layout_constraintStart_toStartOf="@+id/college_id_details" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

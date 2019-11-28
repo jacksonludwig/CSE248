@@ -3,18 +3,24 @@ package com.example.collegeapplicationsystem;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.collegeapplicationsystem.JSONParsing.College;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 public class ViewCollegeDetailsActivity extends AppCompatActivity {
     private static final String TAG = "COMPARISON";
@@ -34,6 +40,8 @@ public class ViewCollegeDetailsActivity extends AppCompatActivity {
     private TextView userMathScore;
     private TextView userAcceptanceChance;
 
+    private ArrayList<String> favoritesList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +51,7 @@ public class ViewCollegeDetailsActivity extends AppCompatActivity {
 
         setCollegeViews();
         setUserScoreView();
+        fetchFavorites();
     }
 
     private void getCollegeFromIntent() {
@@ -108,10 +117,10 @@ public class ViewCollegeDetailsActivity extends AppCompatActivity {
         int userCombinedScore = Math.round(Float.parseFloat(userMathScore.getText().toString())) + Math.round(Float.parseFloat(userReadingScore.getText().toString()));
 
         if (collegeCombinedScore25 != 0 && collegeCombinedScore75 != 0) {
-            if (userCombinedScore > collegeCombinedScore75) {
+            if (userCombinedScore >= collegeCombinedScore75) {
                 userAcceptanceChance.setText("Likely");
                 userAcceptanceChance.setTextColor(Color.GREEN);
-            } else if (userCombinedScore < collegeCombinedScore75 && userCombinedScore > collegeCombinedScore25) {
+            } else if (userCombinedScore > collegeCombinedScore25) {
                 userAcceptanceChance.setText("Somewhat Likely");
                 userAcceptanceChance.setTextColor(Color.YELLOW);
             } else {
@@ -122,5 +131,70 @@ public class ViewCollegeDetailsActivity extends AppCompatActivity {
             userAcceptanceChance.setText("UNKNOWN");
             userAcceptanceChance.setTextColor(Color.GRAY);
         }
+    }
+
+    private void fetchFavorites() {
+        db.collection("userdata")
+                .document(user.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                favoritesList = (ArrayList<String>) document.get("favorites");
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    public void addToFavorites(View view) {
+        db.collection("colleges")
+                .document(String.valueOf(clickedCollege.getId()))
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String id = String.valueOf(document.get("id"));
+                                if(!favoritesList.contains(id)) {
+                                    favoritesList.add(id);
+                                    updateFavorites();
+                                }
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
+    }
+
+    private void updateFavorites() {
+        db.collection("userdata")
+                .document(user.getEmail())
+                .update("favorites", favoritesList)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(ViewCollegeDetailsActivity.this, "Favorite added to database!", Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating document", e);
+                    }
+                });
     }
 }
