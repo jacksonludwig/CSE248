@@ -35,8 +35,6 @@ public class CollegeSearchActivity extends AppCompatActivity {
 
     private Query chooseQueryType() {
         String queryType = getIntent().getStringExtra("queryType");
-        System.out.println(queryType);
-        System.out.println(getIntent().getStringExtra("search"));
         switch (queryType) {
             case "name":
                 return collegeRef

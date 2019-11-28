@@ -19,7 +19,8 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
 
     private int expandedPosition = -1;
     private int previousExpandedPosition = -1;
-    private String currentlyExapandedCard = "";
+    private boolean isClickable = false;
+    private String currentlySelectedCollege = "";
 
     private OnItemClickListener onItemClickListener;
 
@@ -100,7 +101,7 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
         holder.math75Label.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
         holder.title.setActivated(isExpanded);
 
-        if(isExpanded) {
+        if (isExpanded) {
             previousExpandedPosition = position;
         }
 
@@ -108,8 +109,10 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             @Override
             public void onClick(View v) {
                 expandedPosition = isExpanded ? -1 : position;
-                System.out.println(holder.title.toString());
-                currentlyExapandedCard = model.getSchoolName();
+
+                isClickable = !isClickable;
+                currentlySelectedCollege = model.getSchoolName();
+
                 notifyItemChanged(previousExpandedPosition);
                 notifyItemChanged(position);
             }
@@ -178,8 +181,7 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println(title.getText());
-                    if (title.getText().equals(currentlyExapandedCard)) {
+                    if (isClickable && title.getText().equals(currentlySelectedCollege)) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
                             onItemClickListener.onItemClick(getSnapshots().getSnapshot(position), position);
