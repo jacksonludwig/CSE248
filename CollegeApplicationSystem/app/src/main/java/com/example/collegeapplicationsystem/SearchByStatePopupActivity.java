@@ -7,7 +7,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,9 +17,8 @@ import java.util.ArrayList;
 
 public class SearchByStatePopupActivity extends AppCompatActivity {
 
-    private ArrayList<String> statesList = new ArrayList<>();
-
     Spinner spinner;
+    private ArrayList<String> statesList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

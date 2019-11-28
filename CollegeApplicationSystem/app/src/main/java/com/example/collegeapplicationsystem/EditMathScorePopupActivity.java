@@ -36,13 +36,13 @@ public class EditMathScorePopupActivity extends AppCompatActivity {
         getWindow().setAttributes(layoutParams);
 
         EditText editText = (EditText) findViewById(R.id.mathScoreEditText);
-        editText.setFilters(new InputFilter[]{new InputFilterMinMax("0","800")});
+        editText.setFilters(new InputFilter[]{new InputFilterMinMax("0", "800")});
     }
 
     public void acceptMathScoreEdit(View view) {
         EditText editText = (EditText) findViewById(R.id.mathScoreEditText);
         Intent intent = getIntent();
-        intent.putExtra("mathScore",editText.getText().toString());
+        intent.putExtra("mathScore", editText.getText().toString());
         setResult(RESULT_OK, intent);
         finish();
     }

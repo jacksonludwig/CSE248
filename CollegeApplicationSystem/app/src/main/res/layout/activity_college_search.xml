@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CollegeSearchActivity"
-    android:background="#2B2F38">
+    android:background="#2B2F38"
+    tools:context=".CollegeSearchActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/college_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipChildren="false"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

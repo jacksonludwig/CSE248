@@ -58,12 +58,13 @@ public class College implements Serializable {
     @JsonProperty("school.city")
     private String schoolCity;
 
+    public College() {
+    }
+
     @JsonProperty("latest.cost.tuition.out_of_state")
     public Integer getLatestCostTuitionOutOfState() {
         return latestCostTuitionOutOfState;
     }
-
-    public College() { }
 
     @JsonProperty("latest.cost.tuition.out_of_state")
     public void setLatestCostTuitionOutOfState(Integer latestCostTuitionOutOfState) {

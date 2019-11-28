@@ -36,13 +36,13 @@ public class EditReadingScorePopupActivity extends AppCompatActivity {
         getWindow().setAttributes(layoutParams);
 
         EditText editText = (EditText) findViewById(R.id.readingScoreEditText);
-        editText.setFilters(new InputFilter[]{new InputFilterMinMax("0","800")});
+        editText.setFilters(new InputFilter[]{new InputFilterMinMax("0", "800")});
     }
 
     public void acceptReadingScoreEdit(View view) {
         EditText editText = (EditText) findViewById(R.id.readingScoreEditText);
         Intent intent = getIntent();
-        intent.putExtra("readingScore",editText.getText().toString());
+        intent.putExtra("readingScore", editText.getText().toString());
         setResult(RESULT_OK, intent);
         finish();
     }

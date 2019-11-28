@@ -67,18 +67,6 @@ public enum States {
         this.ISOabbreviation = ISOabbreviation;
     }
 
-    public String getUnabbreviated() {
-        return this.unabbreviated;
-    }
-
-    public String getANSIAbbreviation() {
-        return this.ANSIabbreviation;
-    }
-
-    public String getISOAbbreviation() {
-        return this.ISOabbreviation;
-    }
-
     public static States parse(String input) {
         if (null == input) {
             return null;
@@ -92,5 +80,17 @@ public enum States {
             }
         }
         return null;
+    }
+
+    public String getUnabbreviated() {
+        return this.unabbreviated;
+    }
+
+    public String getANSIAbbreviation() {
+        return this.ANSIabbreviation;
+    }
+
+    public String getISOAbbreviation() {
+        return this.ISOabbreviation;
     }
 }

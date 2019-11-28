@@ -16,7 +16,7 @@
             android:theme="@style/AppTheme.EditAccountPopup" />
         <activity
             android:name=".ViewCollegeDetailsActivity"
-            android:theme="@style/AppTheme.EditAccountPopup"/>
+            android:theme="@style/AppTheme.EditAccountPopup" />
         <activity android:name=".CollegeSearchActivity" />
         <activity
             android:name=".EditReadingScorePopupActivity"

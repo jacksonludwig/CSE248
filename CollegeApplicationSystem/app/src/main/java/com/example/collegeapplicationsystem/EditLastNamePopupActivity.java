@@ -36,7 +36,7 @@ public class EditLastNamePopupActivity extends AppCompatActivity {
     public void acceptLastNameEdit(View view) {
         EditText editText = (EditText) findViewById(R.id.lastNameEditText);
         Intent intent = getIntent();
-        intent.putExtra("lastName",editText.getText().toString());
+        intent.putExtra("lastName", editText.getText().toString());
         setResult(RESULT_OK, intent);
         finish();
     }

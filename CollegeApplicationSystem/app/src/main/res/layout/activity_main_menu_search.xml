@@ -26,12 +26,12 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:onClick="openNameStateSearchInput"
         android:text="@string/search_by_state"
         app:layout_constraintEnd_toEndOf="@+id/id_search"
         app:layout_constraintStart_toStartOf="@+id/id_search"
         app:layout_constraintTop_toBottomOf="@+id/id_search"
-        app:layout_constraintWidth_percent=".5"
-        android:onClick="openNameStateSearchInput"/>
+        app:layout_constraintWidth_percent=".5" />
 
     <Button
         android:id="@+id/view_favorites"
@@ -39,6 +39,7 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
+        android:onClick="openFavoritesView"
         android:text="@string/view_favorites"
         app:layout_constraintEnd_toEndOf="@+id/edit_account"
         app:layout_constraintStart_toStartOf="@+id/edit_account"
@@ -64,6 +65,7 @@
         style="@android:style/Widget.Holo.Button"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
+        android:onClick="openNameIDSearchInput"
         android:text="@string/search_by_id"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +73,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".33"
-        app:layout_constraintWidth_percent=".5"
-        android:onClick="openNameIDSearchInput"/>
+        app:layout_constraintWidth_percent=".5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

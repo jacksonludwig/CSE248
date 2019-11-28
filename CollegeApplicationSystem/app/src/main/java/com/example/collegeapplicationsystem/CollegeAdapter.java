@@ -125,6 +125,14 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
         return new CollegeHolder(view);
     }
 
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+
     class CollegeHolder extends RecyclerView.ViewHolder {
         TextView title;
         TextView id;
@@ -188,13 +196,5 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
                 }
             });
         }
-    }
-
-    public interface OnItemClickListener {
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
-        this.onItemClickListener = onItemClickListener;
     }
 }

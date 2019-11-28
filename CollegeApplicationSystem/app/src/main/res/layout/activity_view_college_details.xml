@@ -299,8 +299,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="Add to Favorites"
         android:onClick="addToFavorites"
+        android:text="Add to Favorites"
+        app:layout_constraintBottom_toTopOf="@+id/college_id_details"
+        app:layout_constraintEnd_toEndOf="@+id/college_id_details"
+        app:layout_constraintStart_toStartOf="@+id/college_id_details" />
+
+    <Button
+        android:id="@+id/delete_from_fav_button"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="#77420D0B"
+        android:onClick="removeFromFavorites"
+        android:text="Delete From Favorites"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/college_id_details"
         app:layout_constraintEnd_toEndOf="@+id/college_id_details"
         app:layout_constraintStart_toStartOf="@+id/college_id_details" />

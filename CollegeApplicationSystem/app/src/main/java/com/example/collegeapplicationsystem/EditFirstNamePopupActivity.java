@@ -1,7 +1,5 @@
 package com.example.collegeapplicationsystem;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -9,6 +7,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EditFirstNamePopupActivity extends AppCompatActivity {
 
@@ -36,7 +36,7 @@ public class EditFirstNamePopupActivity extends AppCompatActivity {
     public void acceptFirstNameEdit(View view) {
         EditText editText = (EditText) findViewById(R.id.firstNameEditText);
         Intent intent = getIntent();
-        intent.putExtra("firstName",editText.getText().toString());
+        intent.putExtra("firstName", editText.getText().toString());
         setResult(RESULT_OK, intent);
         finish();
     }

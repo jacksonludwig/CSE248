@@ -16,12 +16,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -83,15 +81,13 @@ public class MainActivity extends AppCompatActivity {
                             userdata.put("math", 0);
 
                             String[] fullName = user.getDisplayName().trim().split(" ");
-                            if(fullName.length < 2) {
+                            if (fullName.length < 2) {
                                 userdata.put("firstName", fullName[0]);
                                 userdata.put("lastName", "none");
                             } else {
                                 userdata.put("firstName", fullName[0]);
                                 userdata.put("lastName", fullName[1]);
                             }
-                            ArrayList<String> favorites = new ArrayList<>();
-                            userdata.put("favorites", favorites);
 
                             db.collection("userdata").document(user.getEmail())
                                     .set(userdata)
@@ -104,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+
     }
 
     @Override

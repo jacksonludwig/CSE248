@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainSearchMenuActivity extends AppCompatActivity {
-    private static final String TAG = "Query";
     private static final int STATE_REQUEST_CODE = 50;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -91,6 +90,13 @@ public class MainSearchMenuActivity extends AppCompatActivity {
     public void openNameStateSearchInput(View view) {
         Intent intent = new Intent(getApplicationContext(), SearchByStatePopupActivity.class);
         startActivityForResult(intent, STATE_REQUEST_CODE);
+    }
+
+    public void openFavoritesView(View view) {
+        Intent intent = new Intent(getApplicationContext(), CollegeSearchActivity.class);
+        intent.putExtra("queryType", "favorites");
+        intent.putExtra("search", "placeholder");
+        startActivity(intent);
     }
 
     @Override
