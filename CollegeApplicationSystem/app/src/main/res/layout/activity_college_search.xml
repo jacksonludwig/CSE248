@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CollegeSearchActivity"
-    android:background="#393D49">
+    android:background="#2B2F38">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/college_recycler"

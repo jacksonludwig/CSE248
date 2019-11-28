@@ -19,7 +19,6 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
 
     private int expandedPosition = -1;
     private int previousExpandedPosition = -1;
-    private boolean isClickable = false;
     private String currentlySelectedCollege = "";
 
     private OnItemClickListener onItemClickListener;
@@ -110,7 +109,6 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             public void onClick(View v) {
                 expandedPosition = isExpanded ? -1 : position;
 
-                isClickable = !isClickable;
                 currentlySelectedCollege = model.getSchoolName();
 
                 notifyItemChanged(previousExpandedPosition);
@@ -181,7 +179,7 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (isClickable && title.getText().equals(currentlySelectedCollege)) {
+                    if (view != title && title.getText().equals(currentlySelectedCollege)) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
                             onItemClickListener.onItemClick(getSnapshots().getSnapshot(position), position);
