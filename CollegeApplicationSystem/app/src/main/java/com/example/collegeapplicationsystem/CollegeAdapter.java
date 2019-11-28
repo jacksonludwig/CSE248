@@ -17,7 +17,9 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
 
     private static final String NO_DATA = "Data not given";
 
-    private int mExpandedPosition = -1;
+    private int expandedPosition = -1;
+    private int previousExpandedPosition = -1;
+    private String currentlyExapandedCard = "";
 
     private OnItemClickListener onItemClickListener;
 
@@ -26,7 +28,7 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull final CollegeHolder holder, final int position, @NonNull College model) {
+    protected void onBindViewHolder(@NonNull final CollegeHolder holder, final int position, @NonNull final College model) {
         holder.title.setText(model.getSchoolName());
         holder.id.setText(String.valueOf(model.getId()));
         holder.state.setText(model.getSchoolState());
@@ -72,94 +74,46 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             holder.math75.setText(String.valueOf(model.getLatestAdmissionsSatScores75thPercentileMath()));
         }
 
-        final boolean isExpanded = position == mExpandedPosition;
-        holder.id.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.idLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.state.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.stateLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.city.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.cityLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.zip.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.zipLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.url.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.urlLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.inStateTuition.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.inStateTuitionLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.outOfStateTuition.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.outOfStateTuitionLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.reading25.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.reading25Label.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.reading75.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.reading75Label.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.math25.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.math25Label.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.math75.setVisibility(isExpanded?View.VISIBLE:View.GONE);
-        holder.math75Label.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        final boolean isExpanded = position == expandedPosition;
 
+        holder.id.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.idLabel.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.state.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.stateLabel.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.city.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.cityLabel.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.zip.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.zipLabel.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.url.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.urlLabel.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.inStateTuition.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.inStateTuitionLabel.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.outOfStateTuition.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.outOfStateTuitionLabel.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.reading25.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.reading25Label.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.reading75.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.reading75Label.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.math25.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.math25Label.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.math75.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
+        holder.math75Label.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
         holder.title.setActivated(isExpanded);
+
+        if(isExpanded) {
+            previousExpandedPosition = position;
+        }
+
         holder.title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mExpandedPosition = isExpanded ? -1 : position;
+                expandedPosition = isExpanded ? -1 : position;
+                System.out.println(holder.title.toString());
+                currentlyExapandedCard = model.getSchoolName();
+                notifyItemChanged(previousExpandedPosition);
                 notifyItemChanged(position);
             }
         });
-
-        /*
-        holder.title.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (holder.id.getVisibility() == View.VISIBLE) {
-                    holder.id.setVisibility(View.GONE);
-                    holder.idLabel.setVisibility(View.GONE);
-                    holder.state.setVisibility(View.GONE);
-                    holder.stateLabel.setVisibility(View.GONE);
-                    holder.city.setVisibility(View.GONE);
-                    holder.cityLabel.setVisibility(View.GONE);
-                    holder.zip.setVisibility(View.GONE);
-                    holder.zipLabel.setVisibility(View.GONE);
-                    holder.url.setVisibility(View.GONE);
-                    holder.urlLabel.setVisibility(View.GONE);
-                    holder.inStateTuition.setVisibility(View.GONE);
-                    holder.inStateTuitionLabel.setVisibility(View.GONE);
-                    holder.outOfStateTuition.setVisibility(View.GONE);
-                    holder.outOfStateTuitionLabel.setVisibility(View.GONE);
-                    holder.reading25.setVisibility(View.GONE);
-                    holder.reading25Label.setVisibility(View.GONE);
-                    holder.reading75.setVisibility(View.GONE);
-                    holder.reading75Label.setVisibility(View.GONE);
-                    holder.math25.setVisibility(View.GONE);
-                    holder.math25Label.setVisibility(View.GONE);
-                    holder.math75.setVisibility(View.GONE);
-                    holder.math75Label.setVisibility(View.GONE);
-                } else {
-                    holder.id.setVisibility(View.VISIBLE);
-                    holder.idLabel.setVisibility(View.VISIBLE);
-                    holder.state.setVisibility(View.VISIBLE);
-                    holder.stateLabel.setVisibility(View.VISIBLE);
-                    holder.city.setVisibility(View.VISIBLE);
-                    holder.cityLabel.setVisibility(View.VISIBLE);
-                    holder.zip.setVisibility(View.VISIBLE);
-                    holder.zipLabel.setVisibility(View.VISIBLE);
-                    holder.url.setVisibility(View.VISIBLE);
-                    holder.urlLabel.setVisibility(View.VISIBLE);
-                    holder.inStateTuition.setVisibility(View.VISIBLE);
-                    holder.inStateTuitionLabel.setVisibility(View.VISIBLE);
-                    holder.outOfStateTuition.setVisibility(View.VISIBLE);
-                    holder.outOfStateTuitionLabel.setVisibility(View.VISIBLE);
-                    holder.reading25.setVisibility(View.VISIBLE);
-                    holder.reading25Label.setVisibility(View.VISIBLE);
-                    holder.reading75.setVisibility(View.VISIBLE);
-                    holder.reading75Label.setVisibility(View.VISIBLE);
-                    holder.math25.setVisibility(View.VISIBLE);
-                    holder.math25Label.setVisibility(View.VISIBLE);
-                    holder.math75.setVisibility(View.VISIBLE);
-                    holder.math75Label.setVisibility(View.VISIBLE);
-                }
-
-            }
-        });
-        */
     }
 
     @NonNull
@@ -224,7 +178,8 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (view != title) {
+                    System.out.println(title.getText());
+                    if (title.getText().equals(currentlyExapandedCard)) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
                             onItemClickListener.onItemClick(getSnapshots().getSnapshot(position), position);
