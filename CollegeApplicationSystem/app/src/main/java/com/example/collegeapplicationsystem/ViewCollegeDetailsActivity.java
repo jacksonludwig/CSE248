@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class ViewCollegeDetailsActivity extends AppCompatActivity {
     private static final String TAG = "COMPARISON";
+    private static final String TAG2 = "UPDATE_FAVORITIES";
 
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -187,13 +188,13 @@ public class ViewCollegeDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(ViewCollegeDetailsActivity.this, "Favorite added to database!", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+                        Log.d(TAG2, "DocumentSnapshot successfully updated!");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error updating document", e);
+                        Log.w(TAG2, "Error updating document", e);
                     }
                 });
     }
