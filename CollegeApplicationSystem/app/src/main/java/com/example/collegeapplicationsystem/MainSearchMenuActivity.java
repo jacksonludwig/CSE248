@@ -99,6 +99,22 @@ public class MainSearchMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void updateDatabase(View view) {
+        new AlertDialog.Builder(view.getContext(), R.style.AlertDialogDatabase)
+                .setTitle("Are you sure you want to update the database?")
+                .setMessage("Are you sure you want to update the database?\n" +
+                        "This may take a LONG time!")
+                .setPositiveButton("I'm sure", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(getApplicationContext(), UpdateDBPopupActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

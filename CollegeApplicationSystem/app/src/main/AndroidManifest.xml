@@ -12,6 +12,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
+            android:name=".UpdateDBPopupActivity"
+            android:theme="@style/AppTheme.UpdateDBPopup" />
+        <activity
             android:name=".SearchByStatePopupActivity"
             android:theme="@style/AppTheme.EditAccountPopup" />
         <activity

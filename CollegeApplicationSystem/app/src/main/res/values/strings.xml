@@ -25,4 +25,5 @@
     <string name="last_name_prompt">Last Name</string>
     <string name="cancel">Cancel</string>
     <string name="accept">Accept</string>
+    <string name="updateDatabse">Update database</string>
 </resources>

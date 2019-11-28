@@ -47,6 +47,19 @@
         app:layout_constraintWidth_percent=".5" />
 
     <Button
+        android:id="@+id/update_database"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:onClick="updateDatabase"
+        android:text="@string/updateDatabse"
+        app:layout_constraintEnd_toEndOf="@+id/view_favorites"
+        app:layout_constraintStart_toStartOf="@+id/view_favorites"
+        app:layout_constraintTop_toBottomOf="@+id/view_favorites"
+        app:layout_constraintWidth_percent=".5" />
+
+    <Button
         android:id="@+id/edit_account"
         style="@android:style/Widget.Holo.Button"
         android:layout_width="220dp"
@@ -72,7 +85,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".33"
+        app:layout_constraintVertical_bias=".31"
         app:layout_constraintWidth_percent=".5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

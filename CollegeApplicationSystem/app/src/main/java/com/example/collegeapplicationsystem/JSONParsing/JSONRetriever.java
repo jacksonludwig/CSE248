@@ -22,7 +22,7 @@ public class JSONRetriever {
     private static final int TOTAL_PAGES = 71;
     private static final int TIMEOUT_TIME = 30000;
 
-    private static int connectionCount = 0;
+    private int connectionCount = 0;
 
     public JSONRetriever() {
     }
@@ -33,8 +33,6 @@ public class JSONRetriever {
             URL url = new URL(link);
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
-
-            httpURLConnection.setDoOutput(true);
 
             httpURLConnection.setReadTimeout(TIMEOUT_TIME);
             httpURLConnection.connect();
