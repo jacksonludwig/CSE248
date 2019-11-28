@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="#393D49">
+    app:cardBackgroundColor="#393D49"
+    app:cardUseCompatPadding="false">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,6 +23,10 @@
             android:ellipsize="end"
             android:fontFamily="@font/andada"
             android:maxLines="3"
+
+            android:paddingTop="16dp"
+            android:paddingBottom="12dp"
+
             android:paddingLeft="5dp"
             android:text="College Title"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -318,6 +323,9 @@
             android:layout_alignParentStart="true"
             android:fontFamily="serif"
             android:paddingLeft="20dp"
+
+            android:paddingBottom="16dp"
+
             android:text="SAT Math 75th Percentile:"
             android:textColor="#EEFFFFFF"
             android:visibility="gone" />

@@ -26,7 +26,7 @@ public class CollegeSearchActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_college_name_search);
+        setContentView(R.layout.activity_college_search);
 
         setSearchQuery();
 
@@ -35,6 +35,8 @@ public class CollegeSearchActivity extends AppCompatActivity {
 
     private Query chooseQueryType() {
         String queryType = getIntent().getStringExtra("queryType");
+        System.out.println(queryType);
+        System.out.println(getIntent().getStringExtra("search"));
         switch (queryType) {
             case "name":
                 return collegeRef
@@ -45,7 +47,9 @@ public class CollegeSearchActivity extends AppCompatActivity {
                 return collegeRef
                         .whereEqualTo("id", Integer.parseInt(searchText));
             case "state":
-                return null; // change later
+                return collegeRef
+                        .whereEqualTo("schoolState", searchText)
+                        .orderBy("schoolName", Query.Direction.ASCENDING);
             default:
                 return collegeRef
                         .whereEqualTo("id", 100654);
@@ -94,7 +98,6 @@ public class CollegeSearchActivity extends AppCompatActivity {
 
     private void setSearchQuery() {
         searchText = getIntent().getStringExtra("search");
-        System.out.println(searchText);
         if (searchText != null) {
             searchText = searchText.trim();
         }

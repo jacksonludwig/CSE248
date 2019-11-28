@@ -17,6 +17,8 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
 
     private static final String NO_DATA = "Data not given";
 
+    private int mExpandedPosition = -1;
+
     private OnItemClickListener onItemClickListener;
 
     public CollegeAdapter(@NonNull FirestoreRecyclerOptions<College> options) {
@@ -24,7 +26,7 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull final CollegeHolder holder, int position, @NonNull College model) {
+    protected void onBindViewHolder(@NonNull final CollegeHolder holder, final int position, @NonNull College model) {
         holder.title.setText(model.getSchoolName());
         holder.id.setText(String.valueOf(model.getId()));
         holder.state.setText(model.getSchoolState());
@@ -70,132 +72,94 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
             holder.math75.setText(String.valueOf(model.getLatestAdmissionsSatScores75thPercentileMath()));
         }
 
+        final boolean isExpanded = position == mExpandedPosition;
+        holder.id.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.idLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.state.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.stateLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.city.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.cityLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.zip.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.zipLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.url.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.urlLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.inStateTuition.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.inStateTuitionLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.outOfStateTuition.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.outOfStateTuitionLabel.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.reading25.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.reading25Label.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.reading75.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.reading75Label.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.math25.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.math25Label.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.math75.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        holder.math75Label.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+
+        holder.title.setActivated(isExpanded);
+        holder.title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mExpandedPosition = isExpanded ? -1 : position;
+                notifyItemChanged(position);
+            }
+        });
+
+        /*
         holder.title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (holder.id.getVisibility() == View.VISIBLE) {
                     holder.id.setVisibility(View.GONE);
-                } else {
-                    holder.id.setVisibility(View.VISIBLE);
-                }
-                if (holder.idLabel.getVisibility() == View.VISIBLE) {
                     holder.idLabel.setVisibility(View.GONE);
-                } else {
-                    holder.idLabel.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.state.getVisibility() == View.VISIBLE) {
                     holder.state.setVisibility(View.GONE);
-                } else {
-                    holder.state.setVisibility(View.VISIBLE);
-                }
-                if (holder.stateLabel.getVisibility() == View.VISIBLE) {
                     holder.stateLabel.setVisibility(View.GONE);
-                } else {
-                    holder.stateLabel.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.city.getVisibility() == View.VISIBLE) {
                     holder.city.setVisibility(View.GONE);
-                } else {
-                    holder.city.setVisibility(View.VISIBLE);
-                }
-                if (holder.cityLabel.getVisibility() == View.VISIBLE) {
                     holder.cityLabel.setVisibility(View.GONE);
-                } else {
-                    holder.cityLabel.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.zip.getVisibility() == View.VISIBLE) {
                     holder.zip.setVisibility(View.GONE);
-                } else {
-                    holder.zip.setVisibility(View.VISIBLE);
-                }
-                if (holder.zipLabel.getVisibility() == View.VISIBLE) {
                     holder.zipLabel.setVisibility(View.GONE);
-                } else {
-                    holder.zipLabel.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.url.getVisibility() == View.VISIBLE) {
                     holder.url.setVisibility(View.GONE);
-                } else {
-                    holder.url.setVisibility(View.VISIBLE);
-                }
-                if (holder.urlLabel.getVisibility() == View.VISIBLE) {
                     holder.urlLabel.setVisibility(View.GONE);
-                } else {
-                    holder.urlLabel.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.inStateTuition.getVisibility() == View.VISIBLE) {
                     holder.inStateTuition.setVisibility(View.GONE);
-                } else {
-                    holder.inStateTuition.setVisibility(View.VISIBLE);
-                }
-                if (holder.inStateTuitionLabel.getVisibility() == View.VISIBLE) {
                     holder.inStateTuitionLabel.setVisibility(View.GONE);
-                } else {
-                    holder.inStateTuitionLabel.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.outOfStateTuition.getVisibility() == View.VISIBLE) {
                     holder.outOfStateTuition.setVisibility(View.GONE);
-                } else {
-                    holder.outOfStateTuition.setVisibility(View.VISIBLE);
-                }
-                if (holder.outOfStateTuitionLabel.getVisibility() == View.VISIBLE) {
                     holder.outOfStateTuitionLabel.setVisibility(View.GONE);
-                } else {
-                    holder.outOfStateTuitionLabel.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.reading25.getVisibility() == View.VISIBLE) {
                     holder.reading25.setVisibility(View.GONE);
-                } else {
-                    holder.reading25.setVisibility(View.VISIBLE);
-                }
-                if (holder.reading25Label.getVisibility() == View.VISIBLE) {
                     holder.reading25Label.setVisibility(View.GONE);
-                } else {
-                    holder.reading25Label.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.reading75.getVisibility() == View.VISIBLE) {
                     holder.reading75.setVisibility(View.GONE);
-                } else {
-                    holder.reading75.setVisibility(View.VISIBLE);
-                }
-                if (holder.reading75Label.getVisibility() == View.VISIBLE) {
                     holder.reading75Label.setVisibility(View.GONE);
-                } else {
-                    holder.reading75Label.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.math25.getVisibility() == View.VISIBLE) {
                     holder.math25.setVisibility(View.GONE);
-                } else {
-                    holder.math25.setVisibility(View.VISIBLE);
-                }
-                if (holder.math25Label.getVisibility() == View.VISIBLE) {
                     holder.math25Label.setVisibility(View.GONE);
-                } else {
-                    holder.math25Label.setVisibility(View.VISIBLE);
-                }
-
-                if (holder.math75.getVisibility() == View.VISIBLE) {
                     holder.math75.setVisibility(View.GONE);
-                } else {
-                    holder.math75.setVisibility(View.VISIBLE);
-                }
-                if (holder.math75Label.getVisibility() == View.VISIBLE) {
                     holder.math75Label.setVisibility(View.GONE);
                 } else {
+                    holder.id.setVisibility(View.VISIBLE);
+                    holder.idLabel.setVisibility(View.VISIBLE);
+                    holder.state.setVisibility(View.VISIBLE);
+                    holder.stateLabel.setVisibility(View.VISIBLE);
+                    holder.city.setVisibility(View.VISIBLE);
+                    holder.cityLabel.setVisibility(View.VISIBLE);
+                    holder.zip.setVisibility(View.VISIBLE);
+                    holder.zipLabel.setVisibility(View.VISIBLE);
+                    holder.url.setVisibility(View.VISIBLE);
+                    holder.urlLabel.setVisibility(View.VISIBLE);
+                    holder.inStateTuition.setVisibility(View.VISIBLE);
+                    holder.inStateTuitionLabel.setVisibility(View.VISIBLE);
+                    holder.outOfStateTuition.setVisibility(View.VISIBLE);
+                    holder.outOfStateTuitionLabel.setVisibility(View.VISIBLE);
+                    holder.reading25.setVisibility(View.VISIBLE);
+                    holder.reading25Label.setVisibility(View.VISIBLE);
+                    holder.reading75.setVisibility(View.VISIBLE);
+                    holder.reading75Label.setVisibility(View.VISIBLE);
+                    holder.math25.setVisibility(View.VISIBLE);
+                    holder.math25Label.setVisibility(View.VISIBLE);
+                    holder.math75.setVisibility(View.VISIBLE);
                     holder.math75Label.setVisibility(View.VISIBLE);
                 }
+
             }
         });
-
+        */
     }
 
     @NonNull
