@@ -64,7 +64,7 @@ public class MainSearchMenuActivity extends AppCompatActivity {
         builder.setTitle("College IPEDS ID Search");
 
         final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
         builder.setView(input);
 
         builder.setPositiveButton("SEARCH", new DialogInterface.OnClickListener() {
