@@ -59,7 +59,6 @@ public class CollegeSearchActivity extends AppCompatActivity {
             case "favorites":
                 activityType = "favorites";
                 return favoritesRef
-                        .orderBy("schoolState", Query.Direction.ASCENDING)
                         .orderBy("schoolName", Query.Direction.ASCENDING);
             default:
                 activityType = "id";
