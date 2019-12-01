@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/edit_account_popup_bg"
-    tools:context=".UpdateDBPopupActivity" >
+    tools:context=".UpdateDBPopupActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"

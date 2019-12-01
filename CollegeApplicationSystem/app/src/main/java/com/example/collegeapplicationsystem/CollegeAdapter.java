@@ -133,7 +133,7 @@ public class CollegeAdapter extends FirestoreRecyclerAdapter<College, CollegeAda
         void onItemClick(DocumentSnapshot documentSnapshot, int position);
     }
 
-    class CollegeHolder extends RecyclerView.ViewHolder {
+    public class CollegeHolder extends RecyclerView.ViewHolder {
         TextView title;
         TextView id;
         TextView idLabel;

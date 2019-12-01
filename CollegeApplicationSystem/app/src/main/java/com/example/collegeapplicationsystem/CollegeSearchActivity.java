@@ -108,6 +108,11 @@ public class CollegeSearchActivity extends AppCompatActivity {
         adapter.stopListening();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     private void setSearchQuery() {
         searchText = getIntent().getStringExtra("search");
         if (searchText != null) {

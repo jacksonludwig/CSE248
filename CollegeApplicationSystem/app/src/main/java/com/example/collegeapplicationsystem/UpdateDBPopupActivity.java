@@ -15,12 +15,9 @@ import com.example.collegeapplicationsystem.JSONParsing.JSONRetriever;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-
 public class UpdateDBPopupActivity extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private HashMap<String, College> collegeHashMap;
 
     private boolean wasUpdated = false;
 
@@ -67,11 +64,11 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
                                 .document(String.valueOf(college.getId()))
                                 .set(college)
                                 .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                finish();
-                            }
-                        });
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        finish();
+                                    }
+                                });
                     }
                     wasUpdated = true;
                 }
