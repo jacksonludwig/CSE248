@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Scanner;
 
 public class JSONRetriever {
@@ -73,13 +71,4 @@ public class JSONRetriever {
         }
         return allColleges;
     }
-
-    public HashMap<String, College> collegeListToHashMap(List<College> colleges) {
-        HashMap<String, College> collegeHashMap = new HashMap<>();
-        for (College college : colleges) {
-            collegeHashMap.put(String.valueOf(college.getId()), college);
-        }
-        return collegeHashMap;
-    }
-
 }

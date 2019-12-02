@@ -111,6 +111,7 @@ public class CollegeSearchActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        adapter.notifyDataSetChanged();
     }
 
     private void setSearchQuery() {
