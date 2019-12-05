@@ -26,6 +26,7 @@ public class CollegeSearchActivity extends AppCompatActivity {
     private CollectionReference favoritesRef = db.collection("userdata")
             .document(user.getEmail())
             .collection("favorites");
+    private RecyclerView recyclerView;
     private CollegeAdapter adapter;
 
     @Override
@@ -79,7 +80,7 @@ public class CollegeSearchActivity extends AppCompatActivity {
 
         adapter = new CollegeAdapter(options);
 
-        RecyclerView recyclerView = findViewById(R.id.college_recycler);
+        recyclerView = findViewById(R.id.college_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
@@ -111,7 +112,8 @@ public class CollegeSearchActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.notifyDataSetChanged();
+        if (activityType.equals("favorites"))
+            adapter.notifyDataSetChanged();
     }
 
     private void setSearchQuery() {
