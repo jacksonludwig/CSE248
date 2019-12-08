@@ -59,6 +59,7 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
                     System.out.println("Database update interrupted.");
                 }
                 if (holder != null) {
+                    System.out.println(holder.getColleges().size());
                     for (College college : holder.getColleges()) {
                         db.collection("colleges")
                                 .document(String.valueOf(college.getId()))
