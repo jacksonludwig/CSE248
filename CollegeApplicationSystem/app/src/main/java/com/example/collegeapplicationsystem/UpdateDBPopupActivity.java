@@ -76,6 +76,7 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
                 finish();
             }
         });
+        updateThread.setPriority(Thread.MAX_PRIORITY);
         updateThread.start();
     }
 
