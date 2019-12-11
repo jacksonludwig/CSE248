@@ -103,7 +103,7 @@ public class MainSearchMenuActivity extends AppCompatActivity {
         new AlertDialog.Builder(view.getContext(), R.style.AlertDialogDatabase)
                 .setTitle("Are you sure you want to update the database?")
                 .setMessage("Are you sure you want to update the database?\n" +
-                        "This may take a LONG time!")
+                        "This may take a long time.")
                 .setPositiveButton("I'm sure", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getApplicationContext(), UpdateDBPopupActivity.class);
