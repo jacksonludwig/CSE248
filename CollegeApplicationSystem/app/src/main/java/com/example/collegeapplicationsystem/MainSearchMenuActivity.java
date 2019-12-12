@@ -32,31 +32,8 @@ public class MainSearchMenuActivity extends AppCompatActivity {
     }
 
     public void openNameSearchInput(View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
-        builder.setTitle("College Name Search");
-
-        final EditText input = new EditText(this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        builder.setView(input);
-
-        builder.setPositiveButton("SEARCH", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                searchText = input.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), CollegeSearchActivity.class);
-                intent.putExtra("queryType", "name");
-                intent.putExtra("search", searchText);
-                startActivity(intent);
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        builder.show();
+        Intent intent = new Intent(getApplicationContext(), CollegeRealTimeNameSearchActivity.class);
+        startActivity(intent);
     }
 
     public void openNameIDSearchInput(View view) {

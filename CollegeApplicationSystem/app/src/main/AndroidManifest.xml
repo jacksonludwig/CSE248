@@ -33,6 +33,7 @@
         <activity
             android:name=".EditFirstNamePopupActivity"
             android:theme="@style/AppTheme.EditAccountPopup" />
+        <activity android:name=".CollegeRealTimeNameSearchActivity" />
         <activity android:name=".ViewAccountActivity" />
         <activity android:name=".MainSearchMenuActivity" />
         <activity android:name=".MainActivity">

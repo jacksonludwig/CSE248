@@ -18,8 +18,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 public class CollegeSearchActivity extends AppCompatActivity {
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    String activityType;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String activityType;
     private String searchText;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference collegeRef = db.collection("colleges");

@@ -84,7 +84,9 @@ public class ViewCollegeDetailsActivity extends AppCompatActivity {
     private void checkIfInFavoritiesView() {
         favoritesButton = findViewById(R.id.add_to_fav_button);
         deleteButton = findViewById(R.id.delete_from_fav_button);
-        if (getIntent().getStringExtra("activitySenderType").equals("favorites")) {
+
+        String viewOrDeleteCheck = getIntent().getStringExtra("activitySenderType");
+        if (viewOrDeleteCheck != null && viewOrDeleteCheck.equals("favorites")) {
             favoritesButton.setVisibility(View.GONE);
             deleteButton.setVisibility(View.VISIBLE);
         } else {
