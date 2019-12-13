@@ -9,7 +9,9 @@ Upon launching the app, you can use your email to create a new account. You will
 If you had previously used the app, entering your email will instead allow your to login with the password you made with the account.
 
 ### SAT Scores
-After you make an account, you can press the "View Account" button in order to add your SAT reading and SAT math score to your profile. These scores will be used to calculate your likelihood of acceptance into different colleges by comparing their 25th and 75th percentile scores.
+After you make an account, you can press the "View Account" button in order to bring up the account window. From here you can click "edit" in order to add your SAT reading and SAT math score to your profile. These scores will be used to calculate your likelihood of acceptance into different colleges by comparing their 25th and 75th percentile scores.
+
+You may also change your account's name from here if you would like.
 
 ## Search Module
 By pressing any of the three search buttons ("Search by College Name," "Search by College ID," or "Search by State,") you can query colleges from the Cloud Firestore database.
