@@ -1,7 +1,4 @@
 # College Application System (CAS)
-CSE248 Final Project
-
-Jackson Ludwig
 
 ## Database Retrieval
 Pressing the "update database" button in the main menu will pull the most recent set of data from https://collegescorecard.ed.gov/
@@ -40,3 +37,5 @@ selected state.
 After adding favorites from any of the search menus, you can view them by clicking the "View Favorites" button. From here, you can look at all of the colleges information you were able to view in the search menus.
 
 You may delete a college from your favorites by clicking on its details (the menu through which you added the college to your favorites earlier) and clicking the "delete from favorites" button.
+___
+CSE248 Final Project - Jackson Ludwig
