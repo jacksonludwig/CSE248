@@ -45,21 +45,12 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
                 .build();
 
         adapter = new CollegeAdapter(options);
-
         recyclerView = findViewById(R.id.college_name_recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new CollegeAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                College college = documentSnapshot.toObject(College.class);
-                Intent intent = new Intent(getApplicationContext(), ViewCollegeDetailsActivity.class);
-                intent.putExtra("clickedCollege", college);
-                startActivity(intent);
-            }
-        });
+        setOnClick();
     }
 
     private void updateRecycler(Query query) {
@@ -70,18 +61,9 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
                 .build();
 
         adapter = new CollegeAdapter(options);
-
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new CollegeAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                College college = documentSnapshot.toObject(College.class);
-                Intent intent = new Intent(getApplicationContext(), ViewCollegeDetailsActivity.class);
-                intent.putExtra("clickedCollege", college);
-                startActivity(intent);
-            }
-        });
+        setOnClick();
 
         adapter.startListening();
     }
@@ -145,5 +127,17 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
             search = search + (char) (lastCharIterated + 1);
         }
         return search;
+    }
+
+    private void setOnClick() {
+        adapter.setOnItemClickListener(new CollegeAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                College college = documentSnapshot.toObject(College.class);
+                Intent intent = new Intent(getApplicationContext(), ViewCollegeDetailsActivity.class);
+                intent.putExtra("clickedCollege", college);
+                startActivity(intent);
+            }
+        });
     }
 }

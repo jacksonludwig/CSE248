@@ -54,18 +54,9 @@ public class JSONRetriever {
 
     public Holder mapPageToObject(int page) {
         String data = getDataFromApi(BASE_LINK + page);
-        ObjectMapper objectMapper = new ObjectMapper();
-        Holder holder = null;
+        Holder holder = parseJSON(data);
+        addSearchNameToCollege(holder);
 
-        try {
-            holder = objectMapper.readValue(data, Holder.class);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        for (College college : holder.getColleges()) {
-            college.setSearchName(college.getSchoolName().trim().toLowerCase());
-        }
         return holder;
     }
 
@@ -75,5 +66,22 @@ public class JSONRetriever {
             allColleges.getColleges().addAll(mapPageToObject(i).getColleges());
         }
         return allColleges;
+    }
+
+    private void addSearchNameToCollege(Holder holder) {
+        for (College college : holder.getColleges()) {
+            college.setSearchName(college.getSchoolName().trim().toLowerCase());
+        }
+    }
+
+    private Holder parseJSON(String data) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Holder holder = null;
+        try {
+            holder = objectMapper.readValue(data, Holder.class);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return holder;
     }
 }
