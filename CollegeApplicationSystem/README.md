@@ -4,6 +4,8 @@
 Pressing the "update database" button in the main menu will pull the most recent set of data from https://collegescorecard.ed.gov/
 and then send it to a Cloud Firestore database for more efficient accessing. 
 
+This is only necessary if there is updated data on the government website that you want to be displayed in the app, as the Cloud Firestore database is already loaded with a set of all colleges.
+
 ## User Profiles
 Upon launching the app, you can use your email to create a new account. You will be prompted to enter your name and password for the account as well.
 If you had previously used the app, entering your email will instead allow your to login with the password you made with the account.
