@@ -8,7 +8,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.collegeapplicationsystem.JSONParsing.College;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -43,8 +40,6 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
     private void startRecycler() {
         Query query = collegeRef.whereEqualTo("schoolName", "");
 
-        Toast.makeText(this, "Query Attempted...", Toast.LENGTH_SHORT).show();
-
         FirestoreRecyclerOptions<College> options = new FirestoreRecyclerOptions.Builder<College>()
                 .setQuery(query, College.class)
                 .build();
@@ -69,6 +64,7 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
 
     private void updateRecycler(Query query) {
         adapter.stopListening();
+
         FirestoreRecyclerOptions<College> options = new FirestoreRecyclerOptions.Builder<College>()
                 .setQuery(query, College.class)
                 .build();
@@ -86,6 +82,7 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         adapter.startListening();
     }
 
