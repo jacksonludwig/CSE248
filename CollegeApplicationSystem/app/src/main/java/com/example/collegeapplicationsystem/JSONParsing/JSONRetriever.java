@@ -56,10 +56,15 @@ public class JSONRetriever {
         String data = getDataFromApi(BASE_LINK + page);
         ObjectMapper objectMapper = new ObjectMapper();
         Holder holder = null;
+
         try {
             holder = objectMapper.readValue(data, Holder.class);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+        }
+
+        for (College college : holder.getColleges()) {
+            college.setSearchName(college.getSchoolName().trim().toLowerCase());
         }
         return holder;
     }

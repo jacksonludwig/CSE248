@@ -24,7 +24,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
-    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference collegeRef = db.collection("colleges");
     private RecyclerView recyclerView;
@@ -43,6 +42,7 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
 
     private void startRecycler() {
         Query query = collegeRef.whereEqualTo("schoolName", "");
+
         Toast.makeText(this, "Query Attempted...", Toast.LENGTH_SHORT).show();
 
         FirestoreRecyclerOptions<College> options = new FirestoreRecyclerOptions.Builder<College>()
@@ -68,6 +68,7 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
     }
 
     private void updateRecycler(Query query) {
+        adapter.stopListening();
         FirestoreRecyclerOptions<College> options = new FirestoreRecyclerOptions.Builder<College>()
                 .setQuery(query, College.class)
                 .build();
@@ -85,6 +86,7 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        adapter.startListening();
     }
 
     private void listenToSearch() {
@@ -109,17 +111,12 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence query, int start, int before, int count) {
-                String queryString = query.toString().trim()/*.toLowerCase() put back after db update*/;
-                System.out.println(queryString);
-                System.out.println(getEndOfQuery(queryString));
-
-               /* Query searchQuery = collegeRef
-                        .whereGreaterThanOrEqualTo("schoolName", queryString)
-                        .whereLessThan("schoolName", getEndOfQuery(queryString))
-                        .orderBy("schoolName", Query.Direction.ASCENDING); */
+                String queryString = query.toString().trim().toLowerCase();
 
                 Query searchQuery = collegeRef
-                        .whereEqualTo("id", 100654);
+                        .whereGreaterThanOrEqualTo("searchName", queryString)
+                        .whereLessThan("searchName", getEndOfQuery(queryString))
+                        .orderBy("searchName", Query.Direction.ASCENDING);
 
                 updateRecycler(searchQuery);
                 System.out.println(recyclerView.getAdapter().getItemCount());

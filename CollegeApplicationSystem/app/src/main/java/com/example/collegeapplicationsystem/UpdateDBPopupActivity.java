@@ -13,6 +13,7 @@ import com.example.collegeapplicationsystem.JSONParsing.College;
 import com.example.collegeapplicationsystem.JSONParsing.Holder;
 import com.example.collegeapplicationsystem.JSONParsing.JSONRetriever;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UpdateDBPopupActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
     private boolean wasUpdated = false;
 
     private Thread updateThread;
+    private int updatedCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,12 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
                         db.collection("colleges")
                                 .document(String.valueOf(college.getId()))
                                 .set(college)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        System.out.println("Colleges Updated: " + ++updatedCount);
+                                    }
+                                })
                                 .addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
@@ -72,8 +80,8 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
                                 });
                     }
                     wasUpdated = true;
+                    finish();
                 }
-                finish();
             }
         });
         updateThread.setPriority(Thread.MAX_PRIORITY);

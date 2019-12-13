@@ -58,6 +58,8 @@ public class College implements Serializable {
     @JsonProperty("school.city")
     private String schoolCity;
 
+    private String searchName;
+
     public College() {
     }
 
@@ -181,6 +183,14 @@ public class College implements Serializable {
         this.schoolCity = schoolCity;
     }
 
+    public String getSearchName() {
+        return searchName;
+    }
+
+    public void setSearchName(String searchName) {
+        this.searchName = searchName;
+    }
+
     @Override
     public String toString() {
         return "College{" +
@@ -196,6 +206,7 @@ public class College implements Serializable {
                 ", schoolState='" + schoolState + '\'' +
                 ", id=" + id +
                 ", schoolCity='" + schoolCity + '\'' +
+                ", searchName='" + searchName + '\'' +
                 '}';
     }
 }
