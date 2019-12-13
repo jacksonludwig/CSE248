@@ -22,8 +22,9 @@ Additionally, you can click the "Add to Favorites" button to added the selected 
 
 ### Name Search
 Pressing this button will bring up a new window that will allow you to real-time search the database for colleges by their name. 
-Searches are not case sensitive and are displayed in ascending alphabetical order (A -> Z).
-Press the "enter" key on a keyboard or use your phone's interface to lower the on-screen keyboard when you are done searching so that it does not cover your results.
+Searches are not case sensitive, ignore extra spaces, and are displayed in ascending alphabetical order (A -> Z).
+
+You may want to press the "enter" key on a keyboard or use your phone's interface to lower the on-screen keyboard when you are done searching so that it does not cover your results.
 
 ### ID Search
 This option will open up a popup dialog box in which you can type in the IPEDS ID of a college in order to query a single specific
