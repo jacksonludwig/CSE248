@@ -119,7 +119,6 @@ public class CollegeRealTimeNameSearchActivity extends AppCompatActivity {
                         .orderBy("searchName", Query.Direction.ASCENDING);
 
                 updateRecycler(searchQuery);
-                System.out.println(recyclerView.getAdapter().getItemCount());
             }
 
             @Override

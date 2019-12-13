@@ -14,7 +14,9 @@ import com.example.collegeapplicationsystem.JSONParsing.Holder;
 import com.example.collegeapplicationsystem.JSONParsing.JSONRetriever;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 
 public class UpdateDBPopupActivity extends AppCompatActivity {
 
@@ -53,6 +55,7 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
             @Override
             public void run() {
                 JSONRetriever jsonRetriever = new JSONRetriever();
+                WriteBatch collegeUpdateBatch = db.batch();
 
                 Holder holder = null;
                 try {
@@ -61,23 +64,10 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
                     System.out.println("Database update interrupted.");
                 }
                 if (holder != null) {
-                    System.out.println(holder.getColleges().size());
                     for (College college : holder.getColleges()) {
-                        db.collection("colleges")
-                                .document(String.valueOf(college.getId()))
-                                .set(college)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        System.out.println("Colleges Updated: " + ++updatedCount);
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        finish();
-                                    }
-                                });
+                        DocumentReference updatedCollege = db.collection("colleges")
+                                .document(String.valueOf(college.getId()));
+                        collegeUpdateBatch.set(updatedCollege, college);
                     }
                     wasUpdated = true;
                     finish();
