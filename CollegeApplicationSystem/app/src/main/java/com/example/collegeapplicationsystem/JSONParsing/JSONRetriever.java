@@ -17,10 +17,11 @@ public class JSONRetriever {
             "latest.admissions.sat_scores.25th_percentile.math&api_key=dgUsHXeGByGDW8f0tZNaettzE1VmI7329ru1vLKl&_per_page=100" +
             "&page=";
     private static final int START_PAGE = 0;
-    private static final int TOTAL_PAGES = 71;
     private static final int TIMEOUT_TIME = 30000;
 
-    private int connectionCount = 0;
+    private int totalPages;
+
+    private static int connectionCount = 0;
 
     public JSONRetriever() {
     }
@@ -62,7 +63,14 @@ public class JSONRetriever {
 
     public Holder mapAllPagesToObjects() {
         Holder allColleges = mapPageToObject(START_PAGE);
-        for (int i = START_PAGE + 1; i < TOTAL_PAGES + 1; i++) {
+        int totalColleges = allColleges.getMetadata().getTotal();
+        if (totalColleges % 100 == 0) {
+            totalPages = totalColleges / 100;
+        } else {
+            totalPages = totalColleges / 100 + 1;
+        }
+
+        for (int i = START_PAGE + 1; i < totalPages; i++) {
             allColleges.getColleges().addAll(mapPageToObject(i).getColleges());
         }
         return allColleges;
@@ -83,5 +91,13 @@ public class JSONRetriever {
             e.printStackTrace();
         }
         return holder;
+    }
+
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
     }
 }
