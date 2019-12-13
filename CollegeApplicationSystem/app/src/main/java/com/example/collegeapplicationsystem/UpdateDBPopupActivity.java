@@ -61,7 +61,7 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
                 try {
                     holder = jsonRetriever.mapAllPagesToObjects();
                 } catch (Exception e) {
-                    System.out.println("Database update interrupted.");
+                    finish();
                 }
                 if (holder != null) {
                     for (College college : holder.getColleges()) {
