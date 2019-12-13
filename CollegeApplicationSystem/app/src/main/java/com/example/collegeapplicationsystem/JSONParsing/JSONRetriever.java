@@ -14,7 +14,7 @@ public class JSONRetriever {
             "&_fields=id,school.city,school.zip,school.state,school.school_url,school.name,latest.cost.tuition.in_state,latest.cost.tuition.out_of_state,latest.admissions.sat_scores.25th_percentile.critical_reading," +
             "latest.admissions.sat_scores.75th_percentile.critical_reading," +
             "latest.admissions.sat_scores.75th_percentile.math," +
-            "latest.admissions.sat_scores.25th_percentile.math&api_key=sKv5sBMASkdn4S1SiSvybvlGkmEb41AweWGoj8MS&_per_page=100" +
+            "latest.admissions.sat_scores.25th_percentile.math&api_key=dgUsHXeGByGDW8f0tZNaettzE1VmI7329ru1vLKl&_per_page=100" +
             "&page=";
     private static final int START_PAGE = 0;
     private static final int TOTAL_PAGES = 71;

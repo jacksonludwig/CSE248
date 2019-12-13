@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.collegeapplicationsystem.JSONParsing.College;
 import com.example.collegeapplicationsystem.JSONParsing.Holder;
 import com.example.collegeapplicationsystem.JSONParsing.JSONRetriever;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
@@ -68,14 +68,25 @@ public class UpdateDBPopupActivity extends AppCompatActivity {
                         DocumentReference updatedCollege = db.collection("colleges")
                                 .document(String.valueOf(college.getId()));
                         collegeUpdateBatch.set(updatedCollege, college);
+                        System.out.println(college.getSchoolName() + " updated/added");
                     }
-                    wasUpdated = true;
-                    finish();
+                    collegeUpdateBatch.commit().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                wasUpdated = true;
+                                finish();
+                            } else {
+                                finish();
+                            }
+                        }
+                    });
                 }
             }
         });
         updateThread.setPriority(Thread.MAX_PRIORITY);
         updateThread.start();
+
     }
 
     @Override
