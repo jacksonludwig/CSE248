@@ -38,7 +38,7 @@ This option will open up a popup dialog box in which you can type in the IPEDS I
 This will open up a popup menu where you can choose from any of the 50 states and Puerto-Rico. This will show all colleges from the selected state.
 
 ## Favorites 
-After adding favorites from any of the search menus, you can view them by clicking the "View Favorites" button. From here, you can look at all of the colleges information you were able to view in the search menus.
+After adding favorites from any of the search menus, you can view them by clicking the "View Favorites" button. From here, you can look at all of the college's information you were able to view in the search menus.
 
 You may delete a college from your favorites by clicking on it and then clicking the "delete from favorites" button.
 ___
