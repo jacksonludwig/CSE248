@@ -193,7 +193,6 @@ public class ViewCollegeDetailsActivity extends AppCompatActivity {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
                                 College college = document.toObject(College.class);
-                                ;
                                 if (!favoritesMap.containsKey(String.valueOf(college.getId()))) {
                                     favoritesMap.put(String.valueOf(college.getId()), college);
                                     updateFavorites();
