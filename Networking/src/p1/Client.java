@@ -20,7 +20,7 @@ public class Client {
 
         nameList1 = (ArrayList<String>) objectInputStreamFromServer.readObject();
         nameList1.add("Carl");
+        System.out.println("The edited object is being sent to the server");
         objectOutputStreamToServer.writeObject(nameList1);
-        System.out.println("The edited object was sent to the server");
     }
 }

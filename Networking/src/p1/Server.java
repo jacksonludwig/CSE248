@@ -28,6 +28,7 @@ public class Server {
         objectOutputStreamToClient.flush(); // send it
 
         ArrayList<String> nameList2 = (ArrayList<String>) objectInputStreamFromClient.readObject();
+        System.out.println("The edited object was received");
         System.out.println(nameList2);
     }
 }
