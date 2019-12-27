@@ -51,3 +51,5 @@ After adding favorites from any of the search menus, you can view them by clicki
 You may delete a college from your favorites by clicking on it and then clicking the "delete from favorites" button.
 ___
 CSE248 Final Project - Jackson Ludwig
+
+Database writing disabled as of 12/27/19
